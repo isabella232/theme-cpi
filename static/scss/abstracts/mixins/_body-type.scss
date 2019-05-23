@@ -1,0 +1,13 @@
+@mixin body-type {
+    @include mq($bp--sm) {
+        font-size: 16px;
+    }
+
+    @include mq($bp--md) {
+        font-size: 18px;
+    }
+
+    @include mq($bp--xl) {
+        font-size: 20px;
+    }
+}

@@ -1,0 +1,15 @@
+@mixin head-type($kind: null) {
+  @if $kind=='shout' {
+    @include fluid-font(21px $bp--xxs, 48px $bp--xl);
+    @include block-spacing-md;
+    font: 500 18px / 1 $f-druk;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+  }
+  @else {
+    @include fluid-font(21px $bp--xxs, 48px $bp--xl);
+    @include block-spacing-md;
+    color: $c-blue-bright;
+    font: 500 18px / 1 $f-larish;
+  }
+}

@@ -1,0 +1,15 @@
+// Use instead of top property with fixed or sticky positioning.
+// Has no effect unless the Wordpress admin-bar is present — if it is, it adds the height of the admin bar to the passed top value
+@mixin admin-bar-top( $top: 0) {
+  $narrow-offset: $wp-narrow-offset + $top;
+  $wide-offset: $wp-wide-offset + $top; // without admin bar present, just use the passed value
+  top: $top;
+  .admin-bar & {
+    @media screen and (min-width: $bp--admin-bar-sticks) {
+      top: $narrow-offset;
+    }
+    @media screen and (min-width: $bp--admin-bar-gets-taller) {
+      top: $wide-offset;
+    }
+  }
+}

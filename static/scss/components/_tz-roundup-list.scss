@@ -1,0 +1,22 @@
+.tz-roundup-list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  @include mq($bp--xl) {
+    @include grid-width(10);
+    @include grid-width(1, $gutter-count: 1, $property: 'margin-left');
+  }
+}
+
+.tz-roundup-list>* {
+  @include block-spacing-md('bottom');
+  @include mq($bp--md) {
+    @include grid-width(6);
+    padding-right: $space-md;
+  }
+  @include mq($bp--xl) {
+    @include grid-width(5, 10);
+  }
+}

@@ -1,0 +1,20 @@
+//
+body.home {
+  @include grid-lines;
+}
+
+.home-section {
+  @include block-spacing-xl(bottom);
+  &.home-topper {
+    margin-bottom: 0 !important;
+  }
+  &.home-support {
+    margin-bottom: 0 !important;
+  }
+  &.home-support~.home-topics {
+    @include block-spacing-xl(top);
+  }
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}

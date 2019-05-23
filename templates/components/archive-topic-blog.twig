@@ -1,0 +1,17 @@
+<div class="archive-content">
+    <div class="archive-content__inner">
+
+        {% if posts and pagination.current == 1 %}
+            <section class="archive-section">
+                <h2 class="archive-main__head">{{ term.featured_label ?? 'Featured' }}</h2>
+
+                {% for post in posts %}
+                    {% set articleTopperStyle = post.topper_style ? post.topper_style : 'light' %}
+
+                    {% include "components/article-topper.twig" with {'article' : post, 'articleTopperContext': 'tease'} %}
+                {% endfor %}
+            </section>
+        {% endif %}
+
+    </div>
+</div>

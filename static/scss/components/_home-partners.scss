@@ -1,0 +1,58 @@
+$bp--home-partners-splits: $bp--lg;
+// Home Partners
+.home-partners {
+  @include site-pad(horiz);
+  position: relative;
+  z-index: 2;
+}
+
+.home-partners__inner {
+  margin: 0 auto;
+  max-width: $layout-content;
+  @include mq($bp--home-partners-splits) {
+    align-items: flex-start;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.home-partners__head {
+  @include head-type;
+}
+
+.home-partners__text {
+  margin-bottom: $space-lg;
+  @include mq( $bp--home-partners-splits) {
+    @include grid-width(3);
+    margin-bottom: 0;
+  }
+}
+
+.home-partners__body {
+  @include fluid-font(16px $bp--sm, 22px $bp--xl);
+  color: $c-blue-dark;
+  font: 400 16px / 1.375 $f-maison;
+}
+
+.home-partners__logos {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  >* {
+    @include grid-width(6);
+    margin-bottom: $space-md;
+    padding-right: $layout-gutter-pct;
+    @include mq($bp--sm) {
+      @include grid-width(4);
+    }
+  }
+  @include mq( $bp--home-partners-splits) {
+    @include grid-width(9);
+    padding-top: $space-xl;
+    >* {
+      @include grid-width(3, 9);
+    }
+  }
+}

@@ -1,0 +1,38 @@
+.mini-profile {
+  @include block-spacing-xl;
+  @include mq($bp--md) {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.mini-profile__inner {
+  @include mq($bp--md) {
+    @include grid-width(6);
+    text-align: right;
+  }
+  @include mq($bp--lg) {
+    @include grid-width(5);
+  }
+  @include mq($bp--xl) {
+    @include grid-width(5);
+    @include grid-width(1, $gutter-count: 1, $property: 'margin-right');
+  }
+}
+
+.mini-profile__head {
+  @include fluid-font(18px $bp--xs, 22px $bp--lg);
+  color: $c-blue-dark;
+  font: 400 18px / 1.375 $f-maison;
+  margin: 0 0 $space-md;
+  padding: 0 0 $space-md;
+  border-bottom: 8px solid $c-blue-dark;
+  strong {
+    font-weight: 600;
+  }
+}
+
+.mini-profile__outro-link {
+  @include arrow-small(right, after, $c-blue-bright, $c-coral);
+  @include small-caps;
+}

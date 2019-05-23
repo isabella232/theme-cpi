@@ -1,0 +1,251 @@
+{
+    "key": "group_5bc4a97535e1f",
+    "title": "Category Details",
+    "fields": [
+        {
+            "key": "field_5bc4aa1feb78b",
+            "label": "Category Type",
+            "name": "category-type",
+            "type": "select",
+            "instructions": "When creating a sub-topic, be sure to select its associated parent topic above.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Main Topic": "Main Topic",
+                "Sub-Topic": "Sub-Topic",
+                "Blog": "Blog"
+            },
+            "default_value": [
+                "Sub-Topic"
+            ],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_5bc4c8801a628",
+            "label": "Series?",
+            "name": "series",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5bc4aa1feb78b",
+                        "operator": "==",
+                        "value": "Sub-Topic"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "Yes",
+            "ui_off_text": "No"
+        },
+        {
+            "key": "field_5bc4d129f90aa",
+            "label": "Image Attachment",
+            "name": "image_attachment",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5bc4aa1feb78b",
+                        "operator": "==",
+                        "value": "Main Topic"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_5bc4aa1feb78b",
+                        "operator": "==",
+                        "value": "Blog"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5bc4d170f90ab",
+            "label": "Featured Posts",
+            "name": "featured_posts",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5bc4aa1feb78b",
+                        "operator": "==",
+                        "value": "Main Topic"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_5bc4c8801a628",
+                        "operator": "==",
+                        "value": "1"
+                    },
+                    {
+                        "field": "field_5bc4c8801a628",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "post"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 1,
+            "return_format": "object",
+            "ui": 1
+        },
+        {
+            "key": "field_5bc4d1d6f90ac",
+            "label": "Featured Authors",
+            "name": "featured_authors",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5bc4aa1feb78b",
+                        "operator": "==",
+                        "value": "Main Topic"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_5bc4aa1feb78b",
+                        "operator": "==",
+                        "value": "Blog"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "author",
+            "field_type": "multi_select",
+            "allow_null": 0,
+            "add_term": 1,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "object",
+            "multiple": 0
+        },
+        {
+            "key": "field_5bc64abdddca5",
+            "label": "Featured Label Text",
+            "name": "featured_label",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5bc4c8801a628",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5bc64aefddca6",
+            "label": "Latest Label Text",
+            "name": "latest_label",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5bc4c8801a628",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "taxonomy",
+                "operator": "==",
+                "value": "category"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1558016190
+}

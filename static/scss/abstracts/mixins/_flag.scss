@@ -1,0 +1,15 @@
+@mixin flag($c-bg: $c-blue-light) {
+  background-color: $c-bg;
+  color: $c-white;
+  display: block;
+  font: 500 14px / 1 $f-druk;
+  letter-spacing: 1.3px;
+  margin: 0;
+  padding: 9px 12px;
+  text-transform: uppercase;
+  text-align: center;
+  @include mq($bp--lg) {
+    font-size: 15px;
+    padding: 12px 18px;
+  }
+}

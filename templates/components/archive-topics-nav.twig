@@ -1,0 +1,27 @@
+{% if term.children %}
+    <div class="archive-topics-nav{{ term.image_attachment ? ' archive-topics-nav--has-image' : '' }}">
+
+        <div class="archive-topics-nav__inner">
+
+            {% if term.image_attachment %}
+                <figure class="archive-topics-nav__image">
+                    <img src="{{ TimberImage(term.image_attachment).src | resize (900, 900) }}" alt="{{ term.image_attachment.alt }}"/>
+                </figure>
+            {% endif %}
+
+            <div class="archive-topics-nav__text">
+                <h3 class="archive-topics-nav__head">Explore
+                    {{ term.title }}</h3>
+
+                <ul class="archive-topics-nav__list">
+                    {% for subTerm in term.children %}
+                        <li class="archive-topics-nav__item">
+                            <a class="archive-topics-nav__link" href="{{ subTerm.link }}">{{ subTerm.title }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+        </div>
+    </div>
+{% endif %}

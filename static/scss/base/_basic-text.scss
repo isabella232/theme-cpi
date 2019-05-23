@@ -1,0 +1,215 @@
+.basic-text {
+    @include body-type;
+    color: $c-blue-dark;
+    font-family: $f-maison;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+    line-height: 1.5;
+
+    a {
+        @include animate-underline($c-blue-bright, $c-coral);
+        color: $c-blue-dark;
+        transition: all $t-med linear;
+    }
+
+    // Paragraphs
+    p {
+        @include block-spacing('bottom');
+    }
+
+    em,
+    i {
+        font-style: italic;
+    }
+
+    strong,
+    b {
+        font-weight: 600;
+    }
+
+    >ul,
+    >ol,
+    table {
+        @include block-spacing-md;
+    }
+
+    // nesting
+    ul ol,
+    ul ul,
+    ol ul,
+    ol ol {
+        @include block-spacing('bottom');
+        content: counters(basic-text-ol, '.') ' ';
+        margin-top: $space-md;
+    }
+
+    // Lists
+    ul,
+    ol {
+        list-style: none;
+
+        li {
+            padding-left: 1.25em;
+            position: relative;
+        }
+    }
+
+    // ordered lists
+    ul {
+        li {
+            position: relative;
+
+            &:before {
+                @include size(11px, 2px);
+                @include pseudo(0.55em x x 0);
+                background-color: $c-blue-bright;
+            }
+        }
+    }
+
+    // Unordered lists
+    ol {
+        list-style: none;
+        counter-reset: basic-text-ol;
+
+        li {
+
+            &::before {
+                @include absolute(0.4em x x 0);
+                @include smooth-text;
+                color: $c-blue-bright;
+                content: counter(basic-text-ol);
+                counter-increment: basic-text-ol;
+                font: 600 12px / 1 $f-maison;
+                color: $c-blue-bright;
+
+                @include mq($bp--lg) {
+                    font-size: 16px;
+                    top: 0.38;
+                }
+            }
+        }
+    }
+
+    li {
+        margin-bottom: 0.5em;
+    }
+
+    // Hide dashes in nested lists
+    ol>li>ul>li::after,
+    ul>li>ol>li::before {
+        display: none;
+    }
+
+    // Headings
+    h1,
+    h2 {
+        @include fluid-font(36px $bp--xxs, 56px $bp--xl);
+        @include padding($space-xxl x $space-md);
+        color: $c-blue-dark;
+        font: 500 36px / 1 $f-druk;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+
+        @include mq($bp--xl) {
+            @include padding($space-xxxl x $space-lg);
+        }
+
+        b,
+        strong {
+            font-weight: 500;
+        }
+    }
+
+    h3 {
+        @include fluid-font(21px $bp--xs, 28px $bp--xl);
+        color: $c-blue-dark;
+        font: 500 21px / 1.3 $f-larish;
+        letter-spacing: 0;
+        margin: 0 0 0.5em;
+        padding-top: 0;
+        @include margin($space-xl x $space-md);
+
+        @include mq($bp--xl) {
+            @include margin($space-xxxl x $space-xl);
+        }
+
+        b,
+        strong {
+            font-weight: 500;
+        }
+    }
+
+    h4 {
+        @include body-type;
+        @include margin($space-lg x $space-md);
+        padding-top: $space-xl;
+        color: $c-blue-dark;
+        font: 600 16px / 1 $f-maison;
+
+        @include mq($bp--xl) {
+            @include margin($space-xl x $space-lg);
+        }
+    }
+
+    h5 {
+        @include margin($space-xl x $space-md);
+        color: $c-blue-dark;
+        font: italic 400 26px / 1 $f-maison;
+
+        @include mq($bp--xl) {
+            @include margin($space-xxl x $space-lg);
+        }
+    }
+
+    // Tables
+    table {
+        font-size: 80%;
+        width: 100%;
+
+        &.is-style-stripes,
+        &.is-style-stripes table {
+            tr:nth-child(even) {
+                background-color: mix($c-mint-light, $c-white, 50%);
+            }
+        }
+
+        &.has-fixed-layout,
+        &.has-fixed-layout table {
+            table-layout: fixed;
+        }
+    }
+
+    td,
+    th {
+        @include padding(9px 10px 6px 0);
+        text-align: left;
+        vertical-align: top;
+
+        @include mq($bp--lg) {
+            @include padding(12px 12px 10px);
+        }
+    }
+
+    th {
+        font-weight: 600;
+    }
+
+    tr {
+        border-bottom: 1px solid $c-gray-light;
+    }
+
+    // Rules / Separators
+    hr,
+    .wp-block-separator {
+        border: 0;
+        margin: 40px 0;
+        position: relative;
+        height: 1px;
+        background-color: $c-gridline;
+
+        @include mq($bp--lg) {
+            @include margin(80px x);
+        }
+    }
+}

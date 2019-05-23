@@ -1,0 +1,69 @@
+.about-intro {
+    @include block-spacing-md(bottom);
+    @include clearfix;
+    @include inset-pad;
+    background-color: $c-beige-light;
+    margin-left: -#{$site-padding--mobile};
+    margin-right: -#{$site-padding--mobile};
+
+    @include mq($bp--sm) {
+        @include margin(x 0);
+    }
+}
+
+.about-intro__head {
+    @include head-type;
+    margin-top: 0 !important;
+
+    @include mq($bp--md) {
+        margin-top: -1.5em !important;
+    }
+}
+
+.about-intro__big-paragraph {
+    @include block-spacing-sm(bottom);
+
+    p {
+        @include bold-intro-type;
+    }
+
+    &::after {
+        @include pseudo;
+        @include size(100%, 2px);
+        background-color: $c-blue-bright;
+        margin-top: $space-xl;
+    }
+}
+
+.about-intro__image {
+    @include block-spacing-md(bottom);
+
+    img {
+        display: block;
+        max-width: none;
+        width: 100%;
+    }
+
+    @include mq($bp--md) {
+        float: right;
+        @include grid-width(4, $context-col-count: 8);
+        @include grid-width(0, $gutter-count: 1, $context-col-count: 8, $property: 'margin-left');
+    }
+
+    @include mq($bp--lg) {
+        img {
+            @include grid-width(5, $context-col-count: 4);
+        }
+    }
+}
+
+.about-intro__intro-text {
+    @include fluid-font(18px $bp--xxs, 21px $bp--xl);
+    color: $c-blue-dark;
+    font: 400 18px / 1.5 $f-maison;
+}
+
+
+.about-intro__secondary {
+    margin-top: $space-xl;
+}

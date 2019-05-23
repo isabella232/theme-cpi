@@ -1,0 +1,64 @@
+{
+    "key": "group_5bc8df951ddbb",
+    "title": "Station ID",
+    "fields": [
+        {
+            "key": "field_5bc8dfb8799ca",
+            "label": "Who We Are",
+            "name": "who_we_are",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": "",
+            "rows": ""
+        },
+        {
+            "key": "field_5bd75bd4a3634",
+            "label": "About Us Page Link",
+            "name": "about_us_page_link",
+            "type": "relationship",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": ["page"],
+            "taxonomy": "",
+            "filters": ["search"],
+            "elements": "",
+            "min": "",
+            "max": 1,
+            "return_format": "object"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "site-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1540840524
+}

@@ -1,0 +1,31 @@
+{% extends "layouts/base.twig" %}
+
+{% block pageBody %}
+
+    <header class="search-page-topper">
+        <div class="search-page-topper__inner">
+            <div id="js-search-box" class="search-page-topper__input-wrap ">
+                <!-- SearchBox widget will appear here -->
+            </div>
+        </div>
+    </header>
+
+    <section class="archive-section">
+        <div class="archive-compact-content">
+            <div class="archive-compact-content__inner">
+
+                <p class="search-results__stats" id="js-stats-container"></p>
+
+                <ul id="js-search-results" class="search-results tz-result-list"></ul>
+
+            </div>
+        </div>
+
+        <div class="pagination pagination--algolia">
+            <div class="pagination__inner" id="js-search-pagination"></div>
+        </div>
+
+    </section>
+    {% include "components/search-scripts.twig" %}
+
+{% endblock %}

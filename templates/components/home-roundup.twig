@@ -1,0 +1,17 @@
+{% if page.get_field('home_roundup_articles') %}
+    <section class="home-roundup home-section">
+        <div class="home-roundup__inner">
+
+            {% if page.home_roundup_heading %}
+                <h2 class="home-roundup__head">{{ page.home_roundup_heading }}</h2>
+            {% endif %}
+
+            <ul class="home-roundup__list">
+                {% for post in page.get_field('home_roundup_articles') %}
+                    <li>{% include "components/tz-roundup.twig" with {'post' : post}%}</li>
+                {% endfor %}
+            </ul>
+
+        </div>
+    </section>
+{% endif %}

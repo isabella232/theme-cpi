@@ -1,0 +1,28 @@
+$bp--show-label: $bp--md;
+.menu-button {
+  border: 0;
+  display: flex !important;
+  justify-content: flex-start;
+  align-items: center;
+  svg {
+    display: block;
+    @include size(30px, 20px);
+    stroke: $c-blue-dark;
+    transform: translateY(-1.5px);
+    transition: all $t-reg linear;
+  }
+  span {
+    display: none;
+  }
+  @include mq($bp--show-label) {
+    span {
+      display: block;
+      margin-right: 10px;
+    }
+  }
+  @include mq($bp--lg) {
+    span {
+      margin-right: 12px;
+    }
+  }
+}

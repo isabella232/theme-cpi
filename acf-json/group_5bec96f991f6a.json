@@ -1,0 +1,62 @@
+{
+    "key": "group_5bec96f991f6a",
+    "title": "E-mail Sign-up",
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/emailsignup"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1543330081,
+    "fields": [
+        {
+            "key": "field_5bf43c757fe38",
+            "label": "Email Sign-up Headline",
+            "name": "email_signup_headline",
+            "type": "text",
+            "instructions": "Text such as <code>Investigations in your inbox</code>",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5bec97087b23b",
+            "label": "Email Sign-up Text",
+            "name": "email_signup_text",
+            "type": "text",
+            "instructions": "Text such as <code>Join the Watchdog newsletter to hear about our latest ground-breaking investigation.</code>",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        }
+    ]
+}

@@ -1,0 +1,4 @@
+@function grid-cols-to-px-width($col-count, $gutter-count: $col-count - 1) {
+    $px-width: ($col-count * $layout-col-width) + ( $gutter-count * $layout-gutter-width);
+    @return $px-width;
+}

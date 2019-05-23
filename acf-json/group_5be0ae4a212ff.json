@@ -1,0 +1,43 @@
+{
+    "key": "group_5be0ae4a212ff",
+    "title": "Page details",
+    "fields": [
+        {
+            "key": "field_5be0ae6a3358e",
+            "label": "Sidebar Heading",
+            "name": "page_sidebar_heading",
+            "type": "text",
+            "instructions": "Note: if a page has child pages, the sidebar outputs a list of them as sub-navigation. This text appears above that list. Defaults to \"In this section\" if left blank.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "parent"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1541452469
+}

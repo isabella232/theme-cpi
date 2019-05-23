@@ -1,0 +1,86 @@
+// Home Spotlight
+$bp--home-spotlight-splits: $bp--md;
+.home-spotlight {
+  @include site-pad(horiz);
+  @include padding($space-xl x);
+  @include mq($bp--lg) {
+    @include padding(120px x);
+  }
+  @include mq($bp--xl) {
+    @include padding(160px x);
+  }
+  background: $c-blue-dark no-repeat right top;
+  background-size: 100% auto;
+  color: $c-white;
+  position: relative;
+  z-index: 1;
+  @include mq($bp--home-spotlight-splits) {
+    background-position: right center;
+    background-size: 50% auto;
+  }
+  &::before {
+    @include pseudo(0 x x 0);
+    @include size(100%);
+    z-index: 1;
+    background: linear-gradient(to bottom, rgba($c-blue-dark, 0.8) 20%, $c-blue-dark 200px, $c-blue-dark 100%);
+    @include mq($bp--home-spotlight-splits) {
+      //   @include size(100%, 35%);
+      background: linear-gradient(to left, rgba($c-blue-dark, 0.6) 0%, $c-blue-dark 48%, $c-blue-dark 50%);
+    }
+  }
+}
+
+.home-spotlight__inner {
+  margin: 0 auto;
+  max-width: $layout-content;
+}
+
+.home-spotlight__text {
+  padding-top: 200px;
+  position: relative;
+  z-index: 2;
+  @include mq($bp--home-spotlight-splits) {
+    @include grid-width(6);
+    padding: 0;
+  }
+}
+
+.home-spotlight__overline {
+  @include small-caps($c-coral);
+  margin: 0 0 $space-md;
+}
+
+.home-spotlight__head-link {
+  display: block;
+  &:hover .home-spotlight__head {
+    color: $c-blue-bright;
+  }
+}
+
+.home-spotlight__head {
+  @include block-spacing-sm(bottom);
+  @include fluid-font(36px $bp--xs, 84px $bp--lg);
+  font: 500 36px / 0.9 $f-druk;
+  margin-top: 0 !important;
+  color: $c-white;
+  text-transform: uppercase;
+  transition: color $t-reg;
+}
+
+.home-spotlight__dek {
+  @include block-spacing-sm(bottom);
+  @include fluid-font(16px $bp--sm, 22px $bp--xl);
+  color: $c-white;
+  font: 400 16px / 1.375 $f-maison;
+  p {
+    margin: 0 0 1em;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.home-spotlight__read-link {
+  @include arrow-small(right, after, $c-blue-light, $c-white);
+  @include small-caps;
+}

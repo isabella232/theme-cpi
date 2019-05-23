@@ -1,0 +1,43 @@
+{% extends "layouts/base.twig" %}
+{% set pagination = pagination ? pagination: posts.pagination %}
+
+{% block pageBody %}
+    <div class="archive-wrap">
+
+        {% if pagination.current > 1 or page._wp_page_template == 'page-compact-archives.php' %}
+
+            {% set headingPrefix = term.title? : (page.title ?? 'Archives') %}
+            {% set heading = headingPrefix ~ ' — page ' ~ pagination.current %}
+            <section class="archive-section">
+                {% include "components/archive-compact.twig" with {'heading' : heading, headingIsTopper : true} %}
+                {% include "components/pagination.twig" with {
+                    pagination : pagination
+                } %}
+            </section>
+        {% elseif 'Blog' == term.get_field('category-type') %}
+            {% include "components/archive-header-blog.twig" %}
+
+            <section class="archive-section">
+                {% include "components/archive-topic-blog.twig" %}
+                {% include "components/pagination.twig" with {
+                    pagination : pagination
+                } %}
+            </section>
+
+        {% elseif parent_term and term.series %}
+            {% include "components/archive-header.twig" %}
+            {% include "components/archive-topic-series.twig" %}
+        {% elseif parent_term %}
+            <section class="archive-section">
+                {% include "components/archive-header.twig" %}
+                {% include "components/archive-topic-sub.twig" %}
+                {% include "components/pagination.twig" with {
+                    pagination : pagination
+                } %}
+            </section>
+        {% else %}
+            {% include "components/archive-header.twig" %}
+            {% include "components/archive-topic-main.twig" %}
+        {% endif %}
+    </div>
+{% endblock %}

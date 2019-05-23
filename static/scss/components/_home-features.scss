@@ -1,0 +1,72 @@
+// Features carousel
+.home-features {
+    @include block-spacing-xl(bottom);
+    @include padding($space-lg x $space-md x);
+    background-color: $c-mint-light;
+    position: relative;
+    z-index: 2;
+
+    @include mq($bp--sm) {
+        @include padding($space-xl x);
+    }
+
+    @include mq($bp--lg) {
+        @include padding($space-xxl x $space-xxl x);
+        top: -#{$space-xxl};
+    }
+}
+
+.home-features__head {
+    @include head-type;
+    @include site-pad(horiz);
+}
+
+.home-features__head-inner {
+    display: block;
+    margin: 0 auto $space-md;
+    max-width: $layout-content;
+}
+
+.home-features__list {
+    margin: 0;
+    overflow: hidden;
+
+    &:focus {
+        outline: 0;
+    }
+
+    .flickity-viewport {
+        padding-bottom: $space-lg;
+    }
+
+    .flickity-slider {
+        >li:first-of-type {
+            position: relative;
+            padding-left: $site-padding--mobile;
+
+            @include mq($bp--lg) {
+                padding-left: $site-padding--lg;
+            }
+
+            @include mq($bp--grid-reaches-max-width) {
+                padding-left: calc((100vw - #{$layout-content})/2);
+            }
+        }
+
+        >li {
+            padding-left: $space-lg;
+
+            @include mq($bp--lg) {
+                padding-left: $space-xl;
+            }
+
+            @include mq($bp--xl) {
+                padding-left: 65px;
+            }
+
+            &:last-of-type {
+                padding-right: $space-xl;
+            }
+        }
+    }
+}

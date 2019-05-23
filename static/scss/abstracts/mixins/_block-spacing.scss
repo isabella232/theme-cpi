@@ -1,0 +1,108 @@
+@mixin block-spacing($axis: 'both') {
+  @if $axis=='both' or $axis=='top' {
+    margin-top: 1.25em;
+  }
+  @if $axis=='both' or $axis=='bottom' {
+    margin-bottom: 1.25em;
+  }
+}
+
+@mixin block-spacing-sm($axis: 'both') {
+  @if $axis=='both' or $axis=='top' {
+    margin-top: $space-sm;
+  }
+  @if $axis=='both' or $axis=='bottom' {
+    margin-bottom: $space-sm;
+  }
+  @include mq($bp--md) {
+    @if $axis=='both' or $axis=='top' {
+      margin-top: $space-md;
+    }
+    @if $axis=='both' or $axis=='bottom' {
+      margin-bottom: $space-md;
+    }
+  }
+  @include mq($bp--xl) {
+    @if $axis=='both' or $axis=='top' {
+      margin-top: $space-lg;
+    }
+    @if $axis=='both' or $axis=='bottom' {
+      margin-bottom: $space-lg;
+    }
+  }
+}
+
+@mixin block-spacing-md($axis: 'both') {
+  @if $axis=='both' or $axis=='top' {
+    margin-top: $space-lg;
+  }
+  @if $axis=='both' or $axis=='bottom' {
+    margin-bottom: $space-lg;
+  }
+  @include mq($bp--md) {
+    @if $axis=='both' or $axis=='top' {
+      margin-top: $space-xl;
+    }
+    @if $axis=='both' or $axis=='bottom' {
+      margin-bottom: $space-xl;
+    }
+  }
+  @include mq($bp--xl) {
+    @if $axis=='both' or $axis=='top' {
+      margin-top: $space-xxl;
+    }
+    @if $axis=='both' or $axis=='bottom' {
+      margin-bottom: $space-xxl;
+    }
+  }
+}
+
+@mixin block-spacing-lg($axis: 'both') {
+  @if $axis=='both' or $axis=='top' {
+    margin-top: $space-xl;
+  }
+  @if $axis=='both' or $axis=='bottom' {
+    margin-bottom: $space-xl;
+  }
+  @include mq($bp--md) {
+    @if $axis=='both' or $axis=='top' {
+      margin-top: $space-xxl;
+    }
+    @if $axis=='both' or $axis=='bottom' {
+      margin-bottom: $space-xxl;
+    }
+  }
+  @include mq($bp--xl) {
+    @if $axis=='both' or $axis=='top' {
+      margin-top: $space-xxxl;
+    }
+    @if $axis=='both' or $axis=='bottom' {
+      margin-bottom: $space-xxxl;
+    }
+  }
+}
+
+@mixin block-spacing-xl($axis: 'both') {
+  @if $axis=='both' or $axis=='top' {
+    margin-top: $space-xxl;
+  }
+  @if $axis=='both' or $axis=='bottom' {
+    margin-bottom: $space-xxl;
+  }
+  @include mq($bp--md) {
+    @if $axis=='both' or $axis=='top' {
+      margin-top: $space-xxxl;
+    }
+    @if $axis=='both' or $axis=='bottom' {
+      margin-bottom: $space-xxxl;
+    }
+  }
+  @include mq($bp--xl) {
+    @if $axis=='both' or $axis=='top' {
+      margin-top: $space-xxxxl;
+    }
+    @if $axis=='both' or $axis=='bottom' {
+      margin-bottom: $space-xxxxl;
+    }
+  }
+}

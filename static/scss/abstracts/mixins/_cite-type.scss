@@ -1,0 +1,8 @@
+@mixin cite-type {
+  color: $c-gray;
+  display: block;
+  font: 12px / 1.375 $f-maison;
+  margin-top: $space-md;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}

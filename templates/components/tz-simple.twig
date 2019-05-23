@@ -1,0 +1,53 @@
+<div class="tz-simple">
+
+    <a class="tz-simple__image-link" href="{{ post.link }}">
+        <figure class="tz-simple__image">
+            {% if post.thumbnail %}
+                <img src="{{ TimberImage(post.thumbnail).src | resize (350, 350) }}" alt="{{ post.thumbnail.alt }}"/>
+            {% else %}
+                <img src="{{ site.theme.path }}/static/img/default-tz-image.svg" alt="No image available"/>
+            {% endif %}
+        </figure>
+    </a>
+
+    <div class="tz-simple__text">
+
+        {% if dateNotTopic %}
+            <h4 class="tz-simple__date">{{ post.date | date('F j, Y')}}</h4>
+
+        {% elseif term %}
+            <h4 class="tz-simple__topic">
+                <a class="tz-simple__topic-link" href=" {{ term.link }} ">{{ term }}</a>
+            </h4>
+        {% endif %}
+
+        <h2 class="tz-simple__title">
+            <a class="tz-simple__title-link" href="{{ post.link }}">{{ post.title }}</a>
+        </h2>
+
+        <div class="tz-simple__outro">
+
+            {% set article_partners = post.article_partners %}
+            {% if article_partners %}
+                <ul class="tz-simple__partners">
+                    {% for partner in article_partners %}
+                        {% if TimberTerm(partner).partner_icon %}
+                            <li class="tz-simple__partner">
+                                {# Get partner_icon (ACF custom field) from the full Term object #}
+                                <img src="{{ TimberImage(TimberTerm(partner).partner_icon).src }}" alt="{{ partner.name }}"/>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <p class="tz-simple__read">
+                <a class="tz-simple__read-link" href="{{ post.link }}">Read
+                    <svg>
+                        <use xlink:href="#arrow-small"></use>
+                    </svg>
+                </a>
+            </p>
+        </div>
+
+    </div>
+</div>

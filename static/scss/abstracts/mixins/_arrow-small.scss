@@ -1,0 +1,84 @@
+@mixin arrow-small($direction: up, $location: before, $fill: $c-blue-bright, $fill-hover: null, $size: 14px) {
+  color: $fill;
+  position: relative;
+  transition: all $t-fast ease-in-out;
+  @if $fill-hover {
+    // text hover matches fill hover
+    &:hover {
+      color: $fill-hover;
+      use {
+        fill: $fill-hover;
+      }
+    }
+  }
+  svg {
+    @include size($size);
+    display: inline-block;
+    transform-origin: 50% 50%;
+    transition: inherit;
+    @include mq($bp--md) {
+      top: 0;
+    }
+  }
+  use {
+    fill: $fill;
+  }
+  @if $location=='before' {
+    padding-left: 20px;
+    svg {
+      @include absolute(-2px x x 0);
+      @include mq($bp--md) {
+        top: -1px;
+      }
+    }
+  }
+  @if $location=='after' {
+    padding-right: 20px;
+    svg {
+      @include absolute(-2px 0 x x);
+      @include mq($bp--md) {
+        top: -1px;
+      }
+    }
+  }
+  @if $direction=='up' {
+    svg {
+      transform: rotate(-90deg);
+    }
+    @if $fill-hover {
+      &:hover svg {
+        transform: translateX(5px) rotate(-90deg);
+      }
+    }
+  }
+  @if $direction=='down' {
+    svg {
+      transform: rotate(90deg);
+    }
+    &:hover svg {
+      @if $fill-hover {
+        transform: translateX(5px) rotate(90deg);
+      }
+    }
+  }
+  @if $direction=='right' {
+    svg {
+      transform: none;
+    }
+    @if $fill-hover {
+      &:hover svg {
+        transform: translateX(5px);
+      }
+    }
+  }
+  @if $direction=='left' {
+    svg {
+      transform: scaleX(-1);
+    }
+    @if $fill-hover {
+      &:hover svg {
+        transform: translateX(-5px) scaleX(-1);
+      }
+    }
+  }
+}

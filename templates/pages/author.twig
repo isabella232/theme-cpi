@@ -1,0 +1,25 @@
+{% extends 'layouts/base.twig' %}
+
+{% set pagination = pagination ? pagination: posts.pagination %}
+
+{% block pageBody %}
+    <div class="archive-wrap">
+        <div class="archive-section">
+            {% if pagination.current > 1 %}
+                {% set heading = author.formattedName ~ ' — page ' ~ pagination.current %}
+                {% include "components/archive-compact.twig" with {'heading' : heading, headingIsTopper : true} %}
+            {% else %}
+                {% include 'components/author-header.twig' %}
+                {% include 'components/author-archive.twig'%}
+
+            {% endif %}
+
+            {% if pagination.total > 1 %}
+                {% include "components/pagination.twig" with {
+                    pagination : pagination
+                } %}
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

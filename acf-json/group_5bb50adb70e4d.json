@@ -1,0 +1,48 @@
+{
+    "key": "group_5bb50adb70e4d",
+    "title": "Partner Details",
+    "fields": [
+        {
+            "key": "field_5bb50ae984daa",
+            "label": "Partner Icon",
+            "name": "partner_icon",
+            "type": "image",
+            "instructions": "Attach an icon image here. The icon should be a black 80px-diameter circle with a white logo/typography centered in it, preferably a PNG or SVG with all type outlined.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "full",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "taxonomy",
+                "operator": "==",
+                "value": "partner"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1539010832
+}

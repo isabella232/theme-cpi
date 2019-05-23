@@ -1,0 +1,91 @@
+<header class="author-header{{ author.getPicture ? ' author-header--has-image' : ' author-header--no-image' }}">
+    {% include "components/grid-lines.twig" %}
+    <div class="author-header__inner">
+
+        <div class="author-header__row">
+            {% if author.getPicture %}
+                <figure class="author-header__figure">
+                    <img class="author-header__img" src="{{ author.getPicture.src | resize (500, 500)  }}" alt="{{ authorName }}"/>
+                </figure>
+            {% endif %}
+
+            <div class="author-header__text">
+                <div>
+                    <h1 class="author-header__name">{{ author.formattedName }}</h1>
+                    {% if author.job_title or author.organization %}
+                        <div class="author-header__meta-job-org">
+                            {% if author.job_title or author_job_title_2 %}
+                                <h2 class="author-header__jobtitle">
+                                    {% if author.job_title %}
+                                        {{ author.job_title }}
+                                    {% endif %}
+                                    {% if author.job_title and author.job_title_2 %}
+                                        <br/>{% endif %}
+                                    {% if author.job_title_2 %}
+                                        {{ author.job_title_2 }}
+                                    {% endif %}
+                                </h2>
+                            {% endif %}
+                            {% if author.organization %}
+                                <h3 class="author-header__organization">{{ author.organization }}</h3>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+
+                </div>
+                <div class="author-header__meta">
+
+                    {% if author.email or author.twitter %}
+                        <ul class="author-header__meta-list">
+                            {% if author.email %}
+                                <li class="author-header__meta-item author-header__meta-item--icon ">
+                                    <a class="author-header__meta-link" href="mailto:{{ author.email }}" target="_blank">
+                                        <svg>
+                                            <use xlink:href="#icon-email"></use>
+                                        </svg>
+                                        <span class="author-header__item-text">{{ author.email }}</span>
+                                    </a>
+                                </li>
+                            {% endif %}
+                            {% if author.twitter %}
+                                {% set authorTwitterHandle = author.twitter | replace({'http://twitter.com': '', 'https://twitter.com': '', '/': ''}) %}
+                                <li class="author-header__meta-item author-header__meta-item--icon">
+                                    <a class="author-header__meta-link" href="{{author.twitter}}" target="_blank">
+                                        <svg>
+                                            <use xlink:href="#icon-twitter"></use>
+                                        </svg>
+                                        <span class="author-header__item-text">{{ authorTwitterHandle }}</span>
+                                    </a>
+                                </li>
+                            {% endif %}
+
+                            {% if author.pgp_key %}
+                                <li class="author-header__meta-item author-header__meta-item--pgp">
+                                    <button class="author-header__pgp-btn js-copy-to-clipboard" data-default-text="Copy PGP Key" data-success-text="PGP Key copied" data-clipboard-target="#js-copy-to-clipboard-target">
+                                        <svg>
+                                            <use xlink:href="#icon-key"></use>
+                                        </svg>
+                                        <span class="js-copy-to-clipboard-feedback">Copy PGP Key</span>
+                                    </button>
+                                    <span class="author-header__item-pgp-content" id="js-copy-to-clipboard-target">
+                                        {{ author.pgp_key }}
+                                    </span>
+                                </p>
+                            {% endif %}
+
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+
+    {% if author.bio %}
+        <div class="author-header__bio basic-text">
+            {{ author.bio }}
+
+        </div>
+    {% endif %}
+
+</div>
+</header>

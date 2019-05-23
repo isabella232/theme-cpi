@@ -1,0 +1,30 @@
+{% set featured = pagination.current == 1 ? posts | slice(0, 4) : 0 %}
+{% set compact = pagination.current == 1 ? posts | slice(4): posts %}
+
+<div class="archive-content">
+    <div class="archive-content__inner">
+
+        {% if featured %}
+            <h2 class="archive-main__head">Latest</h2>
+            <section class="archive-roundup archive-section">
+                <div class="archive-roundup__inner">
+                    <ul class="tz-roundup-list">
+                        {% for post in featured %}
+                            <li>{% include "components/tz-roundup.twig" with {'post' : post, 'dateNotTopic': true }%}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </section>
+        {% endif %}
+
+        {% if compact %}
+            <h2 class="archive-main__head">More in
+                {{ term.title }}</h2>
+            <ul class="tz-compact-list">
+                {% for post in compact %}
+                    <li>{% include "components/tz-compact.twig" %}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</div>

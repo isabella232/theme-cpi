@@ -1,0 +1,7 @@
+{% if page.get_field('welcome_message_text') %}
+    <section role="banner" class="home-welcome">
+        <div class="home-welcome__inner">
+            {{ page.get_field('welcome_message_text') }}
+        </div>
+    </section>
+{% endif %}

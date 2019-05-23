@@ -1,0 +1,93 @@
+// Colors
+$c-white: #ffffff;
+$c-black: #000000;
+$c-blue-bright: #0276e8;
+$c-blue-bright-2: #4FA2ff;
+$c-blue-bright-3: #80Bcff;
+$c-blue-light: #4FA2ff;
+$c-blue-dark: #04284b;
+$c-coral: #f35d26;
+$c-gray: #777777;
+$c-gray-mid: #888888;
+$c-gray-mid-2: #8e8e8e;
+$c-gray-mid-3: #bbbbbb;
+$c-gray-light: #eaeaea;
+$c-mint: #1ebcbc;
+$c-mint-light: #ecf6f6;
+$c-beige: #d4cfbd;
+$c-beige-light: #fAf9f4;
+// Color Uses
+$c-gridline: rgba($c-blue-dark, 0.07);
+// Fonts
+$f-maison: 'MaisonNeue',
+Arial,
+Helvetica,
+Verdana,
+sans-serif;
+$f-druk: "Druk",
+"Impact",
+"Helvetica Condensed",
+Helvetica,
+Arial,
+sans-serif;
+$f-larish: 'LarishNeue',
+Georgia,
+Times,
+'Times New Roman',
+serif;
+// Layout / Grid
+// See also:
+//        functions/grid-cols-to-px-width
+//        functions/grid-cols-to-pct-width
+//        mixins/grid-width
+$site-padding--mobile: 30px;
+$site-padding--md: 50px;
+$site-padding--lg: 80px;
+$site-padding--xl: 120px;
+$site-padding--xxl: 140px;
+$layout-col-count: 12;
+$layout-col-width: 82px;
+$layout-gutter-width: 25px;
+$layout-content: ($layout-col-count * $layout-col-width)+(($layout-col-count - 1) * $layout-gutter-width);
+$layout-gutter-pct: percentage($layout-gutter-width / $layout-content);
+$layout-supermax: 1700px;
+// Breakpoints
+$bp--xxs: 380px;
+$bp--xs: 450px;
+$bp--sm: 600px;
+$bp--md: 765px;
+$bp--lg: 960px;
+$bp--xl: 1200px;
+$bp--xxl: 1400px;
+$bp--xxxl: 1600px;
+// Spacing
+$space-xs: 5px;
+$space-sm: 10px;
+$space-md: 15px;
+$space-lg: 30px;
+$space-xl: 40px;
+$space-xxl: 50px;
+$space-xxxl: 75px;
+$space-xxxxl: 100px;
+// More breakpoints
+$bp--grid-reaches-max-width: $layout-content+($site-padding--lg * 2);
+$bp--article-split-1: $bp--lg;
+$bp--article-split-2: $bp--xxl;
+$bp--author-header-splits: $bp--md;
+$bp--nav-splits: $bp--lg;
+$bp--topper-splits: $bp--md;
+$bp--topper-bg-indents: $bp--md;
+$bp--recirc-splits: $bp--lg;
+$c-topper-light: $c-mint-light;
+$c-topper-light-tease: $c-beige-light;
+$c-topper-dark: $c-blue-dark;
+// Wordpress Admin bar heights
+$bp--admin-bar-sticks: 600px;
+$bp--admin-bar-gets-taller: 783px;
+$wp-narrow-offset: 46px;
+$wp-wide-offset: 32px;
+// Timing
+$t-fast: 0.1s;
+$t-med: 0.2s;
+$t-reg: 0.3s;
+$t-slow: 0.5s;

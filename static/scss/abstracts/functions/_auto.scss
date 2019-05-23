@@ -1,0 +1,11 @@
+// Convert simple "a" to "auto" for shorthander mixin
+// @param {Value} $value - Checks for "a", replaces with "auto" otherwise returns value.
+// @link http://codepen.io/upstatement/pen/eNoMQe See it on Codepen >
+
+@function auto($value) {
+    @if $value == 'a' {
+        @return auto;
+    } @else {
+        @return $value;
+    }
+}

@@ -1,0 +1,18 @@
+@mixin small-caps($c-color: null, $c-hover: null) {
+  display: inline-block;
+  font: 600 11px / 1.1 $f-maison;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  @include mq($bp--md) {
+    font-size: 13px;
+  }
+  @if $c-color {
+    color: $c-color;
+  }
+  @if $c-hover {
+    transition: color $t-reg;
+    &:hover {
+      color: $c-hover;
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{% verbatim %}
+    <script type="text/html" id="tmpl-instantsearch-hit">
+        <# var attributes = ['content', 'title6', 'title4', 'title3', 'title2', 'title1']; if (data.post_type === 'filing') { attributes.push('legacy_summary'); } if (data.post_type === 'news') { attributes.push('news_content'); } var attribute_name; var relevant_content = ''; for ( var index in attributes ) { attribute_name = attributes[ index ]; if ( data._highlightResult[ attribute_name ] ) { if ( data._highlightResult[ attribute_name ].matchedWords.length >0 ) { relevant_content = data._snippetResult[ attribute_name ].value; } else { relevant_content = data._snippetResult[ attributes[ 0 ] ].value; } } } #>
+            <li>
+                <article class="tz-result tz-result--result">
+                    <div class="tz-result__inner">
+                        <div class="tz-result__primary">
+
+                            <a class="tz-result__image-link" href="{{ data.permalink }}">
+                                <figure class="tz-result__image">
+
+                                    <# if ('thumbnail' in data.images) { #>
+                                        <img src="{{ data.images.thumbnail.url }}" alt=""/>
+                                        ***
+                                        <# } else { #>
+                                            <img src="/wp-content/themes/cpi/static/img/default-tz-image.svg" alt="No image available"/>
+                                            <# } #>
+                                            </figure>
+                                        </a>
+
+                                        <h2 class="tz-result__title">
+                                            <p class="tz-result__date">{{ data.post_date_formatted }}</p>
+
+                                            <a class="tz-result__title-link" href="{{ data.permalink }}">{{ data.post_title }}</a>
+                                        </h2>
+                                    </div>
+
+                                    <div class="tz-result__meta">
+
+                                        <div class="tz-result__excerpt">
+                                            {{{ relevant_content }}}
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </article>
+                        </li>
+
+                    </script>
+                {% endverbatim %}

@@ -1,0 +1,5 @@
+@mixin bold-intro-type {
+    @include fluid-font(16px $bp--xxs, 26px $bp--xl);
+    color: $c-blue-dark;
+    font: 500 16px / 1.375 $f-maison;
+}

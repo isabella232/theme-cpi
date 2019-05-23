@@ -1,0 +1,131 @@
+// Box Model
+body,
+body * {
+  box-sizing: border-box;
+}
+
+// Selection
+::selection {
+  background: $c-mint-light;
+  color: $c-blue-dark;
+  text-shadow: none;
+}
+
+body {
+  font: 14px / 1.5 $f-maison;
+}
+
+// responsive images
+img,
+svg {
+  height: auto;
+  margin: 0;
+  max-width: 100%;
+}
+
+// Links
+a {
+  @include focus(default);
+  outline: 0;
+  text-decoration: none;
+}
+
+.visually-hidden {
+  @include hide(true);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  position: relative;
+}
+
+.content__body {
+  flex: 1 0 auto;
+}
+
+.content__footer {
+  flex-shrink: 0;
+}
+
+// Grid lines (hdiden by default
+.grid-lines__line {
+  display: none;
+}
+
+// flickity buttons
+.flickity-button {
+  @include size(35px);
+  display: none; // hidden on mobile
+  &[disabled] {
+    cursor: default;
+    svg {
+      fill: $c-beige;
+    }
+    &[disabled]:hover svg {
+      fill: $c-beige;
+    }
+  }
+  svg {
+    @include size(15px);
+    fill: $c-blue-dark;
+    transition: fill $t-reg;
+  }
+  &:hover svg {
+    fill: $c-blue-bright;
+  }
+  &.previous {
+    @include absolute(20px 50px x x);
+    border-right: 1px solid $c-beige;
+  }
+  &.next {
+    @include absolute(20px $space-md x x);
+  }
+  @include mq($bp--sm) {
+    display: block;
+    &.previous {
+      @include absolute(30px 75px x x);
+    }
+    &.next {
+      @include absolute(30px $space-xl x x);
+    }
+  }
+  @include mq($bp--md) {
+    &.previous {
+      @include absolute(40px 75px x x);
+    }
+    &.next {
+      @include absolute(40px $space-xl x x);
+    }
+  }
+  @include mq($bp--lg) {
+    &.previous {
+      @include absolute(80px 75px x x);
+    }
+    &.next {
+      @include absolute(80px $space-xl x x);
+    }
+  }
+}
+
+.flickity-viewport {
+  position: relative;
+}
+
+// flickity dots
+.flickity-page-dots {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  .dot {
+    @include size(6px);
+    border-radius: 50%;
+    background-color: $c-blue-bright;
+    display: block;
+    margin: 0 $space-xs;
+  }
+  .dot.is-selected {
+    background-color: $c-coral;
+  }
+}

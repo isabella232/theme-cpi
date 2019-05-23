@@ -1,0 +1,74 @@
+.tz-roundup {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.tz-roundup__image-link {
+  @include focus(imageWrap);
+}
+
+.tz-roundup__image {
+  @include size(50px);
+  @include margin(x $space-md x x);
+  @include img-hover;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  img {
+    display: block;
+  }
+  @include mq($bp--xs) {
+    @include margin(0 20px 0 0);
+    @include size(70px);
+  }
+  @include mq($bp--md) {
+    @include size(100px);
+    margin-right: 25px;
+  }
+  @include mq($bp--lg) {
+    @include size(135px);
+    margin-right: 30px;
+  }
+}
+
+.tz-roundup__date {
+  @include small-caps($c-coral);
+  margin: 0 0 8px;
+}
+
+.tz-roundup__topic {
+  margin: 0 0 8px;
+}
+
+.tz-roundup__topic-link {
+  @include small-caps($c-coral, $c-blue-bright);
+}
+
+.tz-roundup__title-link {
+  @include fluid-font(18px $bp--xxs, 22px $bp--lg);
+  color: $c-blue-dark;
+  display: block;
+  font: 500 18px / 1.2 $f-larish;
+  margin: 0 0 $space-sm;
+  transition: all $t-reg;
+  &:hover {
+    color: $c-coral;
+  }
+  @include mq($bp--md) {
+    margin-bottom: $space-md;
+  }
+  @include mq($bp--lg) {
+    margin-bottom: 15px;
+  }
+}
+
+.tz-roundup__read {
+  margin: 0;
+}
+
+.tz-roundup__read-link {
+  @include arrow-small(right, after, $c-blue-bright, $c-coral);
+  @include small-caps;
+  display: inline-block;
+}

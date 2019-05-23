@@ -1,0 +1,9 @@
+.tz-compact-list {
+  li {
+    @include padding($space-md 0);
+    border-top: 1px solid $c-gridline;
+  }
+  li:last-of-type {
+    border-bottom: 1px solid $c-gray-light;
+  }
+}

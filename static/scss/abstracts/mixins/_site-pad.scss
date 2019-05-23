@@ -1,0 +1,37 @@
+@mixin site-pad($axis: 'both') {
+  @if $axis=='both' or $axis=='vert' or $axis=='top' {
+    padding-top: $site-padding--mobile;
+    @include mq($bp--md) {
+      padding-top: $site-padding--md;
+    }
+    @include mq($bp--lg) {
+      padding-top: $site-padding--lg;
+    }
+  }
+  @if $axis=='both' or $axis=='vert' or $axis=='bottom' {
+    padding-bottom: $site-padding--mobile;
+    @include mq($bp--md) {
+      padding-bottom: $site-padding--md;
+    }
+    @include mq($bp--lg) {
+      padding-bottom: $site-padding--lg;
+    }
+  }
+  @if $axis=='both' or $axis=='horiz' or $axis=='left' {
+    padding-left: $site-padding--mobile;@include mq($bp--md) {
+      padding-left: $site-padding--md;
+    }
+    @include mq($bp--lg) {
+      padding-left: $site-padding--lg;
+    }
+  }
+  @if $axis=='both' or $axis=='horiz' or $axis=='right' {
+    padding-right: $site-padding--mobile;
+    @include mq($bp--md) {
+      padding-right: $site-padding--md;
+    }
+    @include mq($bp--lg) {
+      padding-right: $site-padding--lg;
+    }
+  }
+}

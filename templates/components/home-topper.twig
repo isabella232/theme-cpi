@@ -1,0 +1,56 @@
+<section class="home-topper home-topper--{{home_topper_type}} home-section{{ home_topper_image ? ' home-topper--has-image' : ' home-topper--no-image'}}">
+
+    {% if home_topper_image %}
+        <figure class="home-topper__image">
+            {% if home_topper_link %}
+                <a href="{{home_topper_link}}">
+            {% endif %}
+                    <img src="{{ home_topper_image.src | resize (500, 500) }}" srcset="{{ home_topper_image.src | resize (900, 900) }} 900w,
+                    {{ home_topper_image.src | resize (500, 500) }} 500w" sizes="(min-width: 768px) 50vw, (min-width: 450px) calc(100vw - 60px), 100vw" alt="{{ home_topper_image.alt }} "/>
+            {% if home_topper_link %}
+                </a>
+            {% endif %}
+        </figure>
+    {% endif %}
+
+    <div class="home-topper__text">
+        <div class="home-topper__text-inner">
+            <div class="home-topper__text-inner-2">
+
+                {% if home_topper_topic %}
+                    <h3 class="home-topper__topic">
+                        <a class="home-topper__topic-link" href="{{ home_topper_topic.link }}">{{ home_topper_topic }}</a>
+                    </h3>
+                {% endif %}
+
+                <h2 class="home-topper__title">
+                    {% if home_topper_link %}
+                        <a class="home-topper__title-link" href="{{ home_topper_link }}">
+                    {% endif %}
+                            {{ home_topper_headline | replace({' *': ' <strong>'}) |  replace({'*': '</strong>'}) }}
+                    {% if home_topper_link %}
+                        </a>
+                    {% endif %}
+
+                </h2>
+
+                {% if home_topper_dek %}
+                    <div class="home-topper__dek">
+                        <p>{{ home_topper_dek }}</p>
+                    </div>
+                {% endif %}
+
+                {% if home_topper_link %}
+                    <p class="home-topper__read">
+                        <a class="home-topper__read-link" href="{{ home_topper_link }}">{{ home_topper_link_text}}
+                            <svg class="svg">
+                                <use xlink:href="#arrow-small"></use>
+                            </svg>
+                        </a>
+                    </p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+</section>

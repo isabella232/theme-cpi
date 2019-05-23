@@ -1,0 +1,20 @@
+{% if page.home_about_headline %}
+    <section class="home-about-us home-section" {% if page.home_about_image %} style="background-image: url('{{ TimberImage(page.home_about_image).src | resize (700, 900) }}');" {% endif %}>
+        <div class="home-about-us__inner">
+            <div class="home-about-us__text">
+
+                <h2 class="home-about-us__head">
+                    {{ page.home_about_headline | replace({' *': ' <strong>'}) |  replace({'*': '</strong>'}) }}
+                </h2>
+
+                {% if page.home_about_body %}
+                    <div class="home-about-us__body">
+                        {{ page.home_about_body }}
+                    </div>
+                {% endif %}
+
+            </div>
+
+        </div>
+    </section>
+{% endif %}

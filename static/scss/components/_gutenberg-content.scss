@@ -1,0 +1,397 @@
+.gutenberg-content {
+    .hearken-embed {
+        margin-bottom: $space-xl !important;
+    }
+
+    // Blockquotes
+    .wp-block-quote {
+        @include block-spacing-md;
+        clear: both;
+        margin-left: -#{$layout-gutter-width};
+        padding-left: $layout-gutter-width;
+        position: relative; // vertical line on top of article content's grid line
+
+        &:before {
+            @include pseudo;
+            @include absolute(5px x x 0);
+            @include size(3px, calc(100% - 8px));
+            background-color: $c-blue-dark;
+            z-index: 2;
+        }
+
+        p {
+            color: $c-gray;
+        }
+
+        cite {
+            @include cite-type;
+        }
+    }
+
+    // default hanging punctuation
+    // hanging punctuation
+    // See js/components/hanging-punctuation.js
+    // adjust the negative text indent to work with your font!
+    .hang-punc-small {
+        text-indent: -0.175em;
+    }
+
+    .hang-punc-header-medium {
+        text-indent: -0.25em;
+    }
+
+    .hang-punc-medium {
+        text-indent: -0.4em;
+    }
+
+    .hang-punc-large {
+        text-indent: -0.625em;
+    }
+
+    // Pullquote
+    .wp-block-pullquote {
+        @include padding(20px x);
+        @include pullquote-type;
+        background-color: $c-white;
+        position: relative;
+        z-index: 2;
+    }
+
+    // non-recognized iframes:
+    figure:not(.about-intro__image):not(.article-gallery__source-item):not(.wp-block-embed):not(.wp-block-image):not(.alignleft):not(.alignright):not(.aligncenter):not(.alignfull) {
+        @include block-spacing-md;
+    }
+
+    // Tables
+    .wp-block-table {
+        &.alignleft {
+            @include align-left;
+        }
+
+        &.alignright {
+            @include align-right;
+        }
+
+        &.alignfull {
+            @include align-full($table: true);
+            background-color: $c-white;
+        }
+    }
+
+    // Wrapper created by scrollable-tables.js
+    .scrollable-table-wrap {
+        -webkit-overflow-scrolling: touch;
+        overflow: auto;
+        max-width: 100%;
+
+        table {
+            width: 100%;
+        }
+    }
+
+    // Embeds
+    .wp-block-embed {
+        @include block-spacing-md;
+        clear: both;
+
+        &.is-type-video {
+
+            // youtube, vimeo:  assume 16-9 ratio
+            // need to use the wp-block-embed__wrapper as the responsive container
+            .wp-block-embed__wrapper {
+                height: 0;
+                padding-top: 56.5%;
+                position: relative;
+            }
+
+            &.alignleft {
+                @include align-left;
+            }
+
+            &.alignright {
+                @include align-right;
+            }
+
+            &.alignfull {
+                @include align-full;
+            }
+
+            iframe {
+                @include absolute(0 x x 0);
+                @include size(100%);
+            }
+        }
+
+        // Twitter, instagram, soundcloud
+        &.is-type-rich {
+            .wp-block-embed__wrapper {
+                width: 100%;
+            }
+
+            &.alignleft {
+                @include align-left;
+            }
+
+            &.alignright {
+                @include align-right;
+            }
+
+            &.aligncenter {
+                @include margin(x auto);
+                max-width: 500px;
+            }
+
+            iframe {
+                max-width: 100%;
+            }
+        }
+
+        &.is-provider-documentcloud {
+
+            // documentcloud  assume 8.5 - 11 ratio with some padding,
+            .wp-block-embed__wrapper {
+                @include size(100%, 0);
+                position: relative;
+                height: 0;
+                padding-top: calc(60px + 129%);
+            }
+
+            &.alignleft {
+                @include align-left;
+            }
+
+            &.alignright {
+                @include align-right;
+            }
+
+            &.aligncenter {
+                @include margin(x auto); // max-width: 500px;
+            }
+
+            iframe {
+                @include absolute(0 x x 0);
+                @include size(100%);
+            }
+
+            figcaption {
+                @include caption-type;
+                @include caption-arrow;
+                margin-top: $space-md;
+            }
+        }
+    }
+
+    // 16*9
+    figcaption {
+        @include caption-type;
+        @include caption-arrow;
+        margin-top: $space-md;
+    }
+}
+
+// Audio
+.wp-block-audio {
+    @include block-spacing-md;
+
+    audio {
+        width: 100%;
+    }
+
+    figcaption {
+        @include caption-type;
+        @include caption-arrow;
+        margin-top: $space-md;
+    }
+}
+
+// Galleries
+.wp-block-gallery {
+    @include block-spacing-md;
+    @include margin(x 0);
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding-left: 0;
+
+    figcaption {
+        @include caption-type;
+        @include caption-arrow;
+    }
+}
+
+li.blocks-gallery-item {
+    padding-left: 0 !important;
+    @include grid-width(4, $gallery-gutters: true);
+
+    @include mq($bp--article-split-1) {
+        @include grid-width(4, 8, $gallery-gutters: true);
+    }
+
+    @include mq($bp--article-split-2) {
+        @include grid-width(3, 9, $gallery-gutters: true);
+    }
+
+    &::before {
+        display: none !important;
+    }
+
+    figure {
+        // need to override general figure styles above
+        margin: 0 0 $space-lg 0 !important;
+        padding: 0;
+        float: none;
+        width: auto !important;
+    }
+}
+
+// Images
+.wp-block-image {
+    @include block-spacing-md;
+
+    >img {
+        display: block;
+        width: 100%;
+    }
+
+    >.alignright,
+    >.alignleft,
+    >.aligncenter {
+        img {
+            max-width: 100%;
+        }
+    }
+
+    >.alignleft {
+        @include align-left;
+    }
+
+    >.alignright {
+        @include align-right;
+    }
+
+    &.alignfull {
+        @include align-full;
+
+    }
+
+    figcaption {
+        @include caption-type;
+        @include caption-arrow;
+        margin-top: $space-md;
+        padding-bottom: 15px;
+    }
+}
+
+// MP4 Videos
+.wp-block-video {
+    @include block-spacing-md;
+
+    &.alignleft {
+        @include align-left;
+    }
+
+    &.alignright {
+        @include align-right;
+    }
+
+    &.alignfull {
+        @include align-full;
+
+        video {
+            max-width: none;
+        }
+    }
+
+    video {
+        display: block;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    figcaption {
+        @include caption-type;
+        @include caption-arrow;
+        margin-top: $space-md;
+    }
+}
+
+$pullquote-outdent--article-split-1: grid-cols-to-pct-width(1, 8, $gutter-count: 1);
+$pullquote-outdent--article-split-2: grid-cols-to-pct-width(1, 7, $gutter-count: 1); // Styles scoped onky to article context (not pages)
+
+// Layout rules that apply to articles, not pages
+.gutenberg-content--article {
+
+    // Non-recognized iframes:
+    figure:not(.about-intro__image):not(.article-gallery__source-item):not(.wp-block-embed):not(.wp-block-image):not(.alignleft):not(.alignright):not(.aligncenter):not(.alignfull) {
+        @include align-none(true);
+    }
+
+    // Galleries
+    .wp-block-gallery {
+        @include mq($bp--article-split-2) {
+            @include grid-width(9,
+            7);
+        }
+    }
+
+    // Tables
+    .wp-block-table {
+        &:not(.aligncenter):not(.alignleft):not(.alignright):not(.alignfull) {
+            @include align-none($img: false);
+        }
+    }
+
+    .wp-block-image:not(.alignfull) {
+        >img:not(.alignleft):not(.alignright):not(.aligncenter):not(.alignfull) {
+            @include align-none($img: true); // break out of container
+        }
+    }
+
+    .wp-block-embed {
+        @include block-spacing-md;
+        clear: both;
+
+        &.is-type-video {
+            &:not(.aligncenter):not(.alignfull):not(.alignleft):not(.alignright) {
+                @include align-none($img: false); // break out of container
+            }
+        }
+    }
+
+    .wp-block-video {
+        &:not(.alignleft):not(.alignright):not(.aligncenter):not(.alignfull) {
+            @include align-none($img: false);
+        }
+    }
+
+    .wp-block-pullquote {
+        @include mq($bp--article-split-1) {
+            @include grid-width(9,
+            8);
+            @include padding(20px x);
+            margin-left: -#{$pullquote-outdent--article-split-1};
+        }
+
+        @include mq($bp--article-split-2) {
+            @include grid-width(10,
+            7);
+            @include padding(50px x);
+            margin-left: -#{$pullquote-outdent--article-split-2};
+        }
+    }
+}
+
+// Styles scoped only to page context (not articles)
+.gutenberg-content--page {
+
+    // in page context, make floated images smaller than in articles
+    @include mq($bp--md) {
+        .wp-block-image {
+
+            >.alignleft,
+            >.alignright {
+                width: 25% !important;
+            }
+        }
+    }
+}

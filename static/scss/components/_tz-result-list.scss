@@ -1,0 +1,9 @@
+.tz-result-list {
+  .tz-result {
+    @include padding($space-md 0);
+    border-top: 1px solid $c-gridline;
+  }
+  .tz-result:last-of-type {
+    border-bottom: 1px solid $c-gray-light;
+  }
+}

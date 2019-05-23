@@ -1,0 +1,166 @@
+.pagination {
+  @include site-pad(horiz);
+  .nav__search-pagination & {
+    @include padding(x 0);
+    margin-top: -1px
+  }
+
+}
+
+
+.pagination__inner {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: $layout-content;
+    position: relative;
+    body.topic-type-blog & {
+        border-top: 1px solid $c-gray-light;
+  }
+}
+
+.pagination__number-list {
+  align-items: flex-start;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.pagination__item {
+  display: block;
+}
+
+@include mq(0, $bp--xs) {
+  .pagination__number:not(.current):not(.dots) {
+    display: none;
+  }
+  .pagination__item:first-child,
+  .pagination__item:last-child {
+    .pagination__number {
+      display: block
+    }
+  }
+}
+
+.pagination__number {
+  @include padding($space-md $space-sm);
+  color: $c-gray-mid;
+  display: block;
+  font: 500 14px / 1 $f-maison;
+  position: relative;
+  text-align: center;
+  transition: all $t-reg ease;
+  &::before {
+    @include pseudo(-1px x x 0%);
+    @include size(100%, 2px);
+    background-color: transparent;
+    transition: inherit;
+  }
+  &--link {
+    &:hover {
+      color: $c-blue-bright;
+      &::before {
+        background-color: $c-blue-bright;
+      }
+    }
+  }
+  &.dots {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  &.current {
+    color: $c-coral;
+    &::before {
+      background-color: $c-coral;
+    }
+  }
+  @include mq($bp--md) {
+    @include padding(x $space-md);
+  }
+}
+
+.pagination__controls {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  position: relative;
+  width: 80px;
+  margin: 0;
+  &::before {
+    @include pseudo(0 x x 50%);
+    @include size(1px, 40px);
+    background-color: $c-gray-light;
+  }
+}
+
+.pagination__back,
+.pagination__forward {
+  @include size(40px);
+  position: relative;
+  flex-shrink: 0;
+  z-index: 3;
+}
+
+.pagination__arrow {
+  @include size(40px);
+  svg {
+    @include size(40px);
+    fill: $c-coral;
+    transition: fill $t-reg;
+  }
+  span {
+    @include hide;
+  }
+  &--disabled {
+    pointer-events: none;
+    svg {
+      fill: $c-gray-light;
+    }
+  }
+  &--prev,
+  &--next {
+    fill: $c-blue-dark;
+    &:hover svg {
+      fill: $c-blue-bright;
+    }
+  }
+}
+
+// algolia variant
+.pagination--algolia {
+  .pagination__controls {
+    width: 140px;
+    &::before {
+      left: 40px;
+    }
+    &::after {
+      @include pseudo(0 40px x x);
+      @include size(1px, 40px);
+      background-color: $c-gray-light;
+    }
+  }
+}
+
+.ais-pagination--link {
+  @include size(40px);
+  color: $c-blue-dark;
+  cursor: pointer;
+  display: block;
+}
+
+.ais-pagination--item__page {
+  @include padding($space-md $space-sm);
+  text-align: center;
+  color: $c-gray-mid;
+  display: block;
+  font: 500 14px / 1 $f-maison;
+}
+
+.ais-pagination--item {
+  display: block;
+  &__disabled {
+    pointer-events: none;
+    svg {
+      fill: $c-gray-light;
+    }
+  }
+}

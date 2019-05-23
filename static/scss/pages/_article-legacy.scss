@@ -1,0 +1,172 @@
+$desktop-hanging-margin: grid-cols-to-pct-width(2, $gutter-count: 2, $context-col-count: 7);
+
+.article-main .basic-text {
+    .relation-inner {
+        // overflow: hidden;
+        clear: both;
+
+        a img {
+            @include img-hover;
+        }
+
+        header+header {
+            padding-top: $space-sm;
+            border-top: 1px solid $c-gray-light;
+        }
+
+        header p:first-child {
+            margin-bottom: 0;
+        }
+
+        header img {
+            @include mq($bp--xs) {
+                width: 30px;
+                float: right;
+                margin-left: $space-sm;
+                margin-bottom: $space-sm;
+            }
+
+            @include mq($bp--sm) {
+                width: 40px
+            }
+
+            @include mq($bp--lg) {
+                width: 50px
+            }
+        }
+
+        a[target=_self] {
+            background: none;
+        }
+
+        p,
+        li {
+            font: 400 13px / 1.375 $f-maison;
+
+            @include mq($bp--article-split-1) {
+                font-size: 14px;
+            }
+        }
+
+        p {
+            margin: 0 0 0.75em;
+        }
+
+        blockquote p {
+            @include fluid-font(24px $bp--xxs, 45px $bp--xl);
+            font: 500 24px / 1.1 $f-larish;
+        }
+
+        h2 {
+            @include fluid-font(12px $bp--xs, 16px $bp--xxl);
+            font: 600 12px / 1.2 $f-maison;
+            margin: 0 0 $space-xs;
+            padding: 0;
+            letter-spacing: 0;
+
+            a {
+                color: $c-blue-dark;
+                border: 0;
+                background: none;
+                text-transform: none;
+            }
+        }
+
+        .authors,
+        .pubdate {
+            font: 400 11px / 1.5 $f-maison;
+            padding: 0;
+            margin: 0;
+
+            @include mq($bp--article-split-1) {
+                font-size: 14px;
+            }
+        }
+
+        h3 {
+            @include small-caps($c-coral);
+            margin: $space-xl 0 $space-md;
+        }
+
+        h4 {
+            font: 600 11px / 1.375 $f-maison;
+        }
+
+        section+section {
+            border-top: 1px solid $c-gray-light;
+            margin: 1em 0;
+            padding-top: 1em;
+        }
+    }
+
+    .relation-inner.grid_12,
+    .relation-inner.grid_16 {
+        @include block-spacing-md;
+
+        @include mq($bp--article-split-2) {
+            @include grid-width(9, $context-col-count: 7);
+        }
+
+        //figures inside a grid_12 or grid_16 should not break out any further
+        figure {
+            max-width: 100% !important;
+            width: 100% !important;
+        }
+    }
+
+
+    // sidebars layout
+    .relation-inner:not(.grid_12):not(.grid_16) {
+        background-color: $c-beige-light;
+        border: 0;
+        margin-bottom: 1em;
+        padding: $space-lg;
+
+        p,
+        li,
+        table {
+            font-size: 11px;
+
+            @include mq($bp--article-split-1) {
+                font-size: 12px;
+            }
+        }
+
+        figure {
+            display: block;
+            margin: $space-sm 0 !important;
+            max-width: 100% !important;
+        }
+
+        // prevent youtubes from breaking out of sidebars
+        iframe {
+            max-width: 100%;
+        }
+
+        @include mq($bp--xs) {
+            @include grid-width(6);
+            @include grid-width(0.5, $gutter-count: 1, $property: 'margin-left');
+            float: right;
+        }
+
+        @include mq($bp--md) {
+            @include grid-width(4);
+            @include grid-width(0, $gutter-count: 1, $property: 'margin-left');
+            @include padding(20px);
+        }
+
+        @include mq($bp--article-split-1) {
+            @include grid-width(3, $context-col-count: 8);
+            @include grid-width(0, $gutter-count: 1, $context-col-count: 8, $property: 'margin-left');
+        }
+
+        @include mq($bp--article-split-2) {
+            @include grid-width(3, $context-col-count: 7);
+            margin-right: -#{$desktop-hanging-margin};
+        }
+    }
+
+    .DV-annotationView {
+        position: relative;
+    }
+}

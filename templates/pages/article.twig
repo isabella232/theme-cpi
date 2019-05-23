@@ -1,0 +1,79 @@
+{% extends "layouts/base.twig" %}
+
+{% block pageBody %}
+
+    <article class="article">
+
+        {% include "components/article-topper.twig" with {'articleTopperContext': 'article'} %}
+
+        <div class="article-content">
+
+            <div class="article-content__inner-1">
+
+                <div class="article-content__inner-2">
+                    <aside class="article-sidebar">
+                        <div class="article-sidebar__inner">
+                            {% include 'components/article-wayfinding.twig' with { 'article' : article } %}
+                        </div>
+                    </aside>
+                    <div class="article-main gutenberg-content gutenberg-content--article">
+
+                        {% if article_authors %}
+                            <div class="article-authors article-authors--article">
+                                <div class="article-authors__inner">
+                                    {% for author in article_authors %}
+                                        {% include 'components/article-author.twig'%}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% endif %}
+
+                        {% if article.partnershipDescription %}
+                            <div class="article-main__partner-desc basic-text">
+                                {{ article.partnershipDescription }}
+                            </div>
+                        {% endif %}
+
+                        <div class="basic-text js-hang-punc">
+                            <h2 class="chapter-heading visually-hidden">Introduction</h2>
+                            {{ article.content }}
+                        </div>
+
+                        {% if relatedPosts | length %}
+                            <section class="article-recirc">
+                                <h2 class="article-recirc__head">Read more in
+                                    {{ article.articleTopic.topParent.name}}</h2>
+                                <div class="article-recirc__articles">
+                                    {% for relatedPost in relatedPosts %}
+                                        {% include 'components/tz-recirc.twig' with {'post' : relatedPost} %}
+                                    {% endfor %}
+                                </div>
+                            </section>
+                        {% endif %}
+                    </div>
+                </div>
+                {% include 'components/article-share.twig' with { 'classes': 'desktop'}  %}
+
+            </div>
+        </div>
+    </article>
+
+    <section class="article-comments">
+        <h2 class="article-comments__head">Join the conversation</h2>
+        <p class="article-comments__show">
+            <a href="#comments-container" class="btn article-comments__toggle">
+                <span class="article-comments__toggle-show-hide">Show</span>
+                <span class="article-comments__toggle-count"></span>
+                <span class="article-comments__toggle-comments">Comments</span>
+
+            </a>
+        </p>
+        <div id="comments-container" class="article-comments__content basic-text">
+            <div class="article-comments__content__inner">
+                {{ function('comments_template') }}
+            </div>
+
+        </div>
+    </section>
+
+{% endblock %}

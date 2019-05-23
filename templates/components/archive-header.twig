@@ -1,0 +1,33 @@
+<header class="archive-header{{ term.image_attachment ? ' archive-header--has-image' : '' }}">
+    {% include "components/grid-lines.twig" %}
+
+    <div class="archive-header__inner">
+        {% if term.image_attachment %}
+            <figure class="archive-header__image">
+                <img src="{{ TimberImage(term.image_attachment).src | resize (900, 900) }}" alt="{{ term.image_attachment.alt }}"/>
+            </figure>
+        {% endif %}
+
+        <div class="archive-header__text">
+            {% if parent_term %}
+                <p class="archive-header__parent-term">
+                    <a class="archive-header__parent-term-link" href="{{ parent_term.path }}">
+                        <svg>
+                            <use xlink:href="#arrow-small"></use>
+                        </svg>
+                        {{ parent_term.name }}
+                    </a>
+                </p>
+            {% endif %}
+
+            <h1 class="archive-header__title">{{ term.title }}</h1>
+
+            {% if term.description %}
+                <div class="archive-header__description">
+                    <p>{{ term.description }}</p>
+                </div>
+            {% endif %}
+        </div>
+
+    </div>
+</header>

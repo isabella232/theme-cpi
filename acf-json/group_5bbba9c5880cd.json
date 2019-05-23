@@ -1,0 +1,893 @@
+{
+    "key": "group_5bbba9c5880cd",
+    "title": "Home",
+    "fields": [
+        {
+            "key": "field_5bc79855c6d15",
+            "label": "Topper",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5bbbaa044d9d8",
+            "label": "Topper Type",
+            "name": "home_topper_type",
+            "type": "radio",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "datapoint": "CPI data point",
+                "article": "Featured Article"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "",
+            "layout": "horizontal",
+            "return_format": "value",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_5bc799d8ddd96",
+            "label": "Featured Article",
+            "name": "topper_article",
+            "type": "relationship",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5bbbaa044d9d8",
+                        "operator": "==",
+                        "value": "article"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": ["post"],
+            "taxonomy": "",
+            "filters": ["search", "taxonomy"],
+            "elements": ["featured_image"],
+            "min": 1,
+            "max": 1,
+            "return_format": "object"
+        },
+        {
+            "key": "field_5bc79a0bddd97",
+            "label": "Data Point Headline",
+            "name": "data_point_headline",
+            "type": "text",
+            "instructions": "Write a headline and optionally *wrap a span of text* in asterisks to highlight it in bright blue.",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5bbbaa044d9d8",
+                        "operator": "==",
+                        "value": "datapoint"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5bc79a39ddd98",
+            "label": "Data Point Dek",
+            "name": "data_point_dek",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5bbbaa044d9d8",
+                        "operator": "==",
+                        "value": "datapoint"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_5bc79ab19779f",
+            "label": "Data Point Illustration",
+            "name": "data_point_illustration",
+            "type": "image",
+            "instructions": "Optional.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5bbbaa044d9d8",
+                        "operator": "==",
+                        "value": "datapoint"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5bc7dcd627cf0",
+            "label": "Linked Page",
+            "name": "linked_page",
+            "type": "relationship",
+            "instructions": "Optional: link the data point topper to a page or post",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5bbbaa044d9d8",
+                        "operator": "==",
+                        "value": "datapoint"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": ["page", "post"],
+            "taxonomy": "",
+            "filters": ["search", "post_type", "taxonomy"],
+            "elements": "",
+            "min": "",
+            "max": 1,
+            "return_format": "object"
+        },
+        {
+            "key": "field_5bc79987ddd95",
+            "label": "Features Carousel",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5bbba9c84d9d7",
+            "label": "Features (carousel)",
+            "name": "home_features",
+            "type": "relationship",
+            "instructions": "Select 4 to 8 stories to appear under Featured Stories on the home page.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": ["post"],
+            "taxonomy": "",
+            "filters": ["search", "taxonomy"],
+            "elements": ["featured_image"],
+            "min": 4,
+            "max": 8,
+            "return_format": "object"
+        },
+        {
+            "key": "field_5bc887f3d3909",
+            "label": "Impact",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5bc649a95692d",
+            "label": "Our Impact",
+            "name": "home_impact",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "field_5bc64a585692f",
+            "min": 0,
+            "max": 4,
+            "layout": "block",
+            "button_label": "Add Impact Piece",
+            "sub_fields": [
+                {
+                    "key": "field_5bc64f826a4dd",
+                    "label": "Illustration",
+                    "name": "illustration",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "preview_size": "thumbnail",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": ""
+                },
+                {
+                    "key": "field_5bc752806129a",
+                    "label": "Flag",
+                    "name": "flag",
+                    "type": "text",
+                    "instructions": "Add a small flag, like \"New\" or \"Updated\", above the illustration.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5bc64a3b5692e",
+                    "label": "Overline",
+                    "name": "overline",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5bc64a585692f",
+                    "label": "Headline",
+                    "name": "headline",
+                    "type": "text",
+                    "instructions": "Write a custom headline that summarizes not just the story, but the impact it had. *Wrap a span of text* in asterisks to highlight it in bright blue.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5bc64ab256930",
+                    "label": "Dek",
+                    "name": "dek",
+                    "type": "textarea",
+                    "instructions": "Write a dek to expand on the headline. Aim for 160 characters or fewer.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "rows": "",
+                    "new_lines": "wpautop"
+                },
+                {
+                    "key": "field_5bc64c98fbfa8",
+                    "label": "Link Type",
+                    "name": "link_type",
+                    "type": "radio",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "none": "No Link",
+                        "article": "Link to article",
+                        "url": "Link to URL"
+                    },
+                    "allow_null": 0,
+                    "other_choice": 0,
+                    "default_value": "",
+                    "layout": "horizontal",
+                    "return_format": "value",
+                    "save_other_choice": 0
+                },
+                {
+                    "key": "field_5bc64b2456931",
+                    "label": "Linked Article",
+                    "name": "linked_article",
+                    "type": "relationship",
+                    "instructions": "Choose an article to link to.",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5bc64c98fbfa8",
+                                "operator": "==",
+                                "value": "article"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": ["post"],
+                    "taxonomy": "",
+                    "filters": ["search", "taxonomy"],
+                    "elements": "",
+                    "min": "",
+                    "max": 1,
+                    "return_format": "object"
+                },
+                {
+                    "key": "field_5bc64bc156933",
+                    "label": "Linked URL",
+                    "name": "linked_url",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5bc64c98fbfa8",
+                                "operator": "==",
+                                "value": "url"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": ""
+                }
+            ]
+        },
+        {
+            "key": "field_5bc7989fc6d16",
+            "label": "Spotlight",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5bc89f4546033",
+            "label": "Image",
+            "name": "home_spotlight_image",
+            "type": "image",
+            "instructions": "Upload a grayscale image. This image will be faded in the background, auto-cropped to 700px wide by 900px tall.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5bc89f5746034",
+            "label": "Overline",
+            "name": "home_spotlight_overline",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5bc89f9846036",
+            "label": "Headline",
+            "name": "home_spotlight_headline",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5bc89f8546035",
+            "label": "Dek",
+            "name": "home_spotlight_dek",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_5bc89fc346037",
+            "label": "Link Type",
+            "name": "home_spotlight_link_type",
+            "type": "radio",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "none": "No Link",
+                "article": "Link to article",
+                "url": "Link to URL"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "",
+            "layout": "horizontal",
+            "return_format": "value",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_5bc89ff746038",
+            "label": "Linked Article",
+            "name": "home_spotlight_linked_article",
+            "type": "relationship",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5bc89fc346037",
+                        "operator": "==",
+                        "value": "article"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": ["post"],
+            "taxonomy": "",
+            "filters": ["search", "taxonomy"],
+            "elements": ["featured_image"],
+            "min": "",
+            "max": 1,
+            "return_format": "object"
+        },
+        {
+            "key": "field_5bc8a02546039",
+            "label": "Linked URL",
+            "name": "home_spotlight_linked_url",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5bc89fc346037",
+                        "operator": "==",
+                        "value": "url"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_5bc8880bd390a",
+            "label": "Roundup",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5bc8af0b5b49c",
+            "label": "Heading",
+            "name": "home_roundup_heading",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Editors’ Roundup",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5bbccb75f8dbc",
+            "label": "Articles",
+            "name": "home_roundup_articles",
+            "type": "relationship",
+            "instructions": "Select several stories to appear in the roundup grid layout. <strong>Either either 4 or 6</strong> articles is recommended.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": ["post"],
+            "taxonomy": "",
+            "filters": ["search", "taxonomy"],
+            "elements": ["featured_image"],
+            "min": 2,
+            "max": 12,
+            "return_format": "object"
+        },
+        {
+            "key": "field_5bc88823d390b",
+            "label": "Partners",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5bc7760af2d6d",
+            "label": "Our Partners text",
+            "name": "home_partners_text",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 1
+        },
+        {
+            "key": "field_5bc77639f2d6e",
+            "label": "Our Partners logos",
+            "name": "home_partners_logos",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "field_5bc77649f2d6f",
+            "min": 3,
+            "max": 15,
+            "layout": "table",
+            "button_label": "Add Logo",
+            "sub_fields": [
+                {
+                    "key": "field_5bc77649f2d6f",
+                    "label": "Partner Logo",
+                    "name": "partner_logo",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "preview_size": "thumbnail",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": ""
+                }
+            ]
+        },
+        {
+            "key": "field_5bc8882ad390c",
+            "label": "About Us",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5bc8a1ef6b564",
+            "label": "Headline",
+            "name": "home_about_headline",
+            "type": "text",
+            "instructions": "Write a headline and optionally *wrap a span of text* in asterisks to highlight it in bright blue.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5bc8a1fd6b565",
+            "label": "Body",
+            "name": "home_about_body",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_5bc8a20d6b566",
+            "label": "Image",
+            "name": "home_about_image",
+            "type": "image",
+            "instructions": "Upload a grayscale image. This image will be faded in the background, auto-cropped to 700px wide by 900px tall.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5bec4357907c4",
+            "label": "Welcome Message",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5bec4369907c5",
+            "label": "Welcome Message Text",
+            "name": "welcome_message_text",
+            "type": "wysiwyg",
+            "instructions": "Text for the website launch. Leave empty to remove the message.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-home.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "featured_image",
+        "categories",
+        "tags"
+    ],
+    "active": 1,
+    "description": "",
+    "modified": 1543854296
+}

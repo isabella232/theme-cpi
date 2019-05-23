@@ -1,0 +1,26 @@
+@mixin inset-pad($axis: 'both') {
+  @if $axis=='both' or $axis=='vert' or $axis=='top' {
+    padding-top: $space-lg;
+    @include mq($bp--md) {
+      padding-top: $space-xl;
+    }
+  }
+  @if $axis=='both' or $axis=='vert' or $axis=='bottom' {
+    padding-bottom: $space-lg;
+    @include mq($bp--md) {
+      padding-bottom: $space-xl;
+    }
+  }
+  @if $axis=='both' or $axis=='horiz' or $axis=='left' {
+    padding-left: $space-lg;
+    @include mq($bp--md) {
+      padding-left: $space-xl;
+    }
+  }
+  @if $axis=='both' or $axis=='horiz' or $axis=='right' {
+    padding-right: $space-lg;
+    @include mq($bp--md) {
+      padding-right: $space-xl;
+    }
+  }
+}

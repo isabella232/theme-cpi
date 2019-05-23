@@ -1,0 +1,86 @@
+{
+    "key": "group_5bbdfeed9a14f",
+    "title": "Big Newsletter Sign-Up",
+    "fields": [
+        {
+            "key": "field_5bbdfefd7daa7",
+            "label": "Headline",
+            "name": "big_newsletter_signup_head",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Investigations in your inbox",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5bbdff2d7daa8",
+            "label": "Body",
+            "name": "big_newsletter_signup_body",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Sign up for our Watchdog email to get the stories that matter the most to you.",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5bfea5b2d639b",
+            "label": "Background Image",
+            "name": "big_newsletter_signup_image",
+            "type": "image",
+            "instructions": "Upload a grayscale image. This image will be faded in the background, auto-cropped to 800px square.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "site-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1543850174
+}

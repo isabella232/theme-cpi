@@ -1,0 +1,64 @@
+{
+    "key": "group_5bc77e96a0997",
+    "title": "Support Us",
+    "fields": [
+        {
+            "key": "field_5bc77ea21c931",
+            "label": "Support Us Headline",
+            "name": "support_us_headline",
+            "type": "text",
+            "instructions": "Write a headline and optionally *wrap a span of text* in asterisks to highlight it in bright blue.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5bc77ef51c932",
+            "label": "Support Us page",
+            "name": "support_us_page",
+            "type": "relationship",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": ["page"],
+            "taxonomy": "",
+            "filters": "",
+            "elements": "",
+            "min": 0,
+            "max": 1,
+            "return_format": "object"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "site-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1539880628
+}

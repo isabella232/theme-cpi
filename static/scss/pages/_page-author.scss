@@ -1,0 +1,5 @@
+body.tax-author:not(.paged) {
+  .archive-content {
+    @include block-spacing-lg;
+  }
+}

@@ -1,0 +1,11 @@
+// https://codepen.io/jmuspratt/full/PdBbJL/
+@mixin animate-underline($c-underline: transparent, $c-underline-hover: $c-blue-bright, $underline-weight: 2px, $transition-duration: $t-fast) {
+  background-image: linear-gradient($c-underline-hover 0%, $c-underline-hover 100%), linear-gradient($c-underline 0%, $c-underline 98%);
+  background-repeat: no-repeat;
+  background-size: 0 $underline-weight, 100% $underline-weight;
+  background-position: 0 100%;
+  transition: background $transition-duration ease-in-out;
+  &:hover {
+    background-size: 100% $underline-weight, 100% $underline-weight;
+  }
+}

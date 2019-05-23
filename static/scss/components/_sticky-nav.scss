@@ -1,0 +1,53 @@
+// see _article-share.scss: social icons move (partial is duplicated) to left-hand column, position: sticky
+$bp--hide-share-buttons: $bp--article-split-1;
+.sticky-nav {
+  @include admin-bar-top(0);
+  @include site-pad(horiz);
+  @include show-when-scrolled-to-article-content;
+  background-color: $c-white;
+  box-shadow: 0 2px 3px rgba($c-black, 0.1);
+  position: fixed;
+  width: 100%;
+  z-index: 8;
+  @include mq($bp--hide-share-buttons) {
+    @include padding(x 0);
+    background-color: transparent;
+    box-shadow: none;
+  }
+}
+
+.sticky-nav__inner {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: $layout-content;
+  width: 100%;
+  .article-share--mobile,
+  .menu-button {
+    @include padding($space-sm x);
+  }
+  .menu-button {
+    background-color: $c-white;
+  }
+  @include mq($bp--hide-share-buttons) {
+    justify-content: flex-end;
+    max-width: none;
+    .menu-button {
+      @include padding(x 20px);
+      background-color: $c-white;
+    }
+  }
+}
+
+// mobile: show on scroll-up
+@include mq(0, $bp--hide-share-buttons) {
+  .sticky-nav {
+    transform: translateY(-105%);
+  }
+  .js-scrolling-up {
+    .sticky-nav {
+      background-color: $c-white;
+      transform: translateY(0);
+    }
+  }
+}

@@ -1,0 +1,322 @@
+$c-nav-bg: $c-beige-light;
+
+.nav {
+    @include overlay;
+    background-color: $c-nav-bg;
+
+    &--active {
+        @include overlay-active;
+    }
+}
+
+@include mq(0, $bp--admin-bar-sticks) {
+    body.admin-bar .nav__inner {
+        padding-top: $wp-narrow-offset;
+    }
+}
+
+// TODO
+// Freeze the page content when the menu opens without losing scroll position
+body.nav-is-open {
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.nav__header {
+    @include padding(20px x); // vert padding matches site-header
+    @include site-pad(horiz);
+    position: relative;
+    z-index: 3;
+
+    @include mq($bp--md) {
+        @include padding(30px x); // vert padding matches site-header
+    }
+
+    @include mq($bp--lg) {}
+}
+
+.nav__header-inner {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: $layout-content;
+}
+
+// Page Links
+.nav__pages {
+    order: 1;
+}
+
+.nav__pages-list {
+    list-style: none;
+    align-items: center;
+    display: flex;
+    height: 30px;
+    justify-content: flex-start;
+
+    @include mq($bp--lg) {
+        height: 47px;
+    }
+}
+
+.nav__pages-item {
+    @include margin(0 20px 0 0);
+    display: block;
+
+    &:last-of-type {
+        margin-right: 0;
+    }
+
+    @include mq($bp--md) {
+        margin-right: $space-lg;
+    }
+}
+
+.nav__pages-link {
+    @include smooth-text;
+    color: $c-blue-dark;
+    display: block;
+    font: 500 16px / 1.2 $f-druk; // match links + button in site-header.scss
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    transition: color $t-reg;
+
+    @include mq($bp--md) {
+        font-size: 18px;
+    }
+
+    @include mq($bp--lg) {
+        font-size: 20px;
+    }
+
+    &:hover {
+        color: $c-blue-bright;
+    }
+}
+
+// Close button
+.nav__close {
+    @include size(40px);
+    @include padding(10px);
+    order: 2;
+    transform: translate(10px, -5px);
+
+
+    svg {
+        @include size(30px);
+        border-radius: 50%;
+        display: block;
+        stroke: $c-blue-bright;
+        transition: stroke $t-reg;
+    }
+
+    &:focus {
+        outline: 0;
+
+        svg {
+            stroke: $c-coral;
+        }
+    }
+}
+
+.nav__search {
+    @include block-spacing-lg(bottom);
+}
+
+// Nav Main
+.nav__search-box {
+    margin-bottom: $space-lg;
+}
+
+.nav__main {
+    @include site-pad(horiz);
+    @include block-spacing-sm(bottom);
+}
+
+.nav__main-inner {
+    margin: 0 auto;
+    max-width: $layout-content;
+}
+
+// Subheads
+.nav__subhead {
+    @include fluid-font(18px $bp--xxs,
+    24px $bp--xl);
+    color: $c-blue-dark;
+    font: 500 18px / 1.1 $f-larish;
+    margin-bottom: $space-lg;
+}
+
+// Topics List
+.nav__topics {
+    @include mq($bp--nav-splits) {}
+}
+
+.nav__topics-list {
+    list-style: none;
+}
+
+.nav__topics-item {
+    @include block-spacing-lg(bottom);
+    margin-left: 80px;
+    position: relative;
+
+    &:first-of-type {
+        @include block-spacing-lg(top);
+    }
+
+    @include mq($bp--sm) {
+        align-items: flex-start;
+        display: flex;
+        justify-content: space-between;
+
+        &:before {
+            @include pseudo(20px x x 0);
+            @include size(100%,
+            1px);
+            background-color: $c-blue-light;
+            z-index: 2;
+        }
+    }
+
+    @include mq($bp--md) {
+        margin-left: 100px;
+    }
+
+    @include mq($bp--lg) {
+        margin-left: 110px;
+    }
+
+    @include mq($bp--xl) {
+        margin-left: 160px;
+    }
+}
+
+.nav__topics-item-header {
+    margin: 0 0 $space-sm;
+    position: relative;
+}
+
+.nav__topics-item-illo-link {
+    @include img-hover;
+    @include size(65px);
+    display: block;
+    position: absolute;
+    left: -80px;
+    top: 50%;
+    margin-top: -25px;
+
+    @include mq($bp--sm) {
+        @include size(80px);
+        left: -95px;
+        margin-top: -40px;
+    }
+
+    @include mq($bp--md) {
+        @include size(85px);
+        left: -100px;
+        margin-top: -42.5px;
+    }
+
+    @include mq($bp--lg) {
+        @include size(110px);
+        left: -125px;
+        margin-top: -55px;
+    }
+
+    @include mq($bp--xl) {
+        @include size(130px);
+        left: -160px;
+        margin-top: -65px;
+    }
+}
+
+.nav__topics-item-illo {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.nav__topics-item-head {
+    padding-right: $space-lg;
+}
+
+.nav__topics-item-head,
+.nav__topics-sublist {
+    background-color: $c-nav-bg;
+    position: relative;
+    z-index: 3;
+}
+
+.nav__topics-item-head {
+    @include fluid-font(24px $bp--md,
+    48px $bp--xxl);
+    font: 500 24px / 1.1 $f-larish;
+}
+
+.nav__topics-item-head-link {
+    color: $c-coral;
+    display: block;
+    margin: 0 0 $space-sm;
+    transition: color $t-reg;
+
+    &:hover {
+        color: $c-blue-bright;
+    }
+}
+
+// See all
+.nav__topics-all {
+    margin: 0;
+}
+
+.nav__topics-all-link {
+    @include arrow-small(right,
+    after,
+    $c-blue-bright,
+    $c-coral);
+    @include small-caps;
+
+    @include mq(0,
+    $bp--sm) {
+        display: none;
+    }
+}
+
+// Topics Sublists
+.nav__topics-sublist {
+    border-left: 1px solid $c-blue-light;
+    list-style: none;
+    margin-left: 3px;
+    padding-left: $space-md;
+
+    @include mq($bp--sm) {
+        @include padding($space-sm x x $space-xl);
+        border-left: 0;
+        flex-shrink: 0;
+        margin-left: 0;
+        width: 250px;
+    }
+}
+
+.nav__topics-subitem {
+    margin: 0 0 3px;
+
+    @include mq($bp--lg) {
+        margin-bottom: $space-xs;
+    }
+}
+
+.nav__topics-sublink {
+    color: $c-blue-dark;
+    font: 500 14px / 1 $f-maison;
+    transition: color $t-reg;
+
+    &:hover {
+        color: $c-blue-bright;
+    }
+
+    @include mq($bp--lg) {
+        font-size: 16px;
+    }
+}

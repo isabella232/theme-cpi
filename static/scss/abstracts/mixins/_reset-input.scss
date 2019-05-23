@@ -1,0 +1,13 @@
+@mixin reset-input {
+    @include font(inherit, inherit, inherit);
+    appearance: none;
+    background-color: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    color: inherit;
+
+    &:focus {
+        outline: 0;
+    }
+}

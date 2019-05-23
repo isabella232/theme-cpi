@@ -1,0 +1,9 @@
+// Home Outro
+.home-outro {
+  padding-top: $space-lg;
+}
+
+.home-outro__more-link {
+  @include arrow-small('right', 'after', $c-blue-bright, $c-coral);
+  @include small-caps;
+}

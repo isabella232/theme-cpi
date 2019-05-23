@@ -1,0 +1,63 @@
+// texty-inputs
+input:not([type=submit]):not([type=file]) {
+  @include focus(textField);
+  @include padding($space-xs 0);
+  appearance: none;
+  border: 1px solid transparent;
+  font: 16px / 1 $f-maison;
+  transition: border $t-reg;
+  @include mq($bp--lg) {
+    font-size: 18px;
+  }
+  &::placeholder {
+    transition: color $t-slow;
+  }
+}
+
+input[type=submit] {
+  font: 500 18px / 1 $f-druk;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  width: auto;
+  @include mq($bp--lg) {
+    font-size: 21px;
+  }
+}
+
+input[type=submit],
+input[type=checkbox],
+input[type=radio] {
+  cursor: pointer;
+}
+
+a.btn,
+button.btn,
+.btn {
+  @include smooth-text;
+  background-image: none;
+  border: 1px solid $c-coral;
+  color: $c-coral;
+  display: inline-block;
+  font: 500 18px / 1 $f-druk;
+  max-width: 200px;
+  letter-spacing: 0.8px;
+  padding: $space-md $space-lg;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  transition: all $t-reg;
+  &:hover,
+  &:focus {
+    color: $c-white;
+    background-color: $c-coral;
+  }
+  @include mq($bp--lg) {
+    font-size: 20px;
+    padding: $space-md $space-xl;
+  }
+}
+
+textarea {
+  border: 0;
+  font: 400 18px / 1.2 $f-maison;
+}

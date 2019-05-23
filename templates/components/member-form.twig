@@ -1,0 +1,41 @@
+<form class="member-form" action="https://checkout.fundjournalism.org/memberform" method="get">
+
+    <div class="member-form__intro">
+        <p>I would like to contribute:</p>
+    </div>
+
+    <input name="org_id" type="hidden" value="cpi">
+
+    <div class="member-form__controls">
+
+        <section class="member-form__set member-form__set--number">
+            <div class="member-form__group member-form__group--number">
+                <label for="dollar_amount">
+                    <span>$</span>
+                    <input id="dollar_amount" name="amount" type="number" value="{{ page.get_field('member_form_default_dollar_amount') }}"/>
+                </label>
+            </div>
+        </section>
+
+        {% if page.get_field('member_form_installments') %}
+            <section class="member-form__set member-form__set--radios">
+                {% for item in page.get_field('member_form_installments') %}
+                    <div class="member-form__group member-form__group--radio">
+                        <label for="{{ item.installment_option.value }}">
+                            <input{{ item.installment_make_default ? ' checked="checked"' : '' }} class="member-form__radio" name="installmentPeriod" type="radio" value="{{ item.installment_option.value }}" id="{{ item.installment_option.value }}">
+                                <span>{{ item.installment_option.label }}</span>
+                            </label>
+                        </div>
+                    {% endfor %}
+
+                </section>
+            {% endif %}
+
+        </div>
+        <div class="member-form__radio-help"></div>
+
+        <button class="btn member-form__submit" type="submit">
+            <span>Join Now</span>
+        </button>
+
+    </form>

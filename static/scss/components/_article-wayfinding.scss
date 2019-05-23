@@ -1,0 +1,214 @@
+.article-wayfinding {
+    display: none;
+
+    @include mq($bp--article-split-1) {
+        @include admin-bar-top($space-xl);
+        @include show-when-scrolled-to-article-content;
+        @include smooth-text;
+        display: block;
+        max-width: none;
+        -webkit-overflow-scrolling: touch;
+        margin-left: -5px; // show dots even with overflow-x cut off
+
+        overflow-y: auto;
+        position: sticky;
+        z-index: 3;
+    }
+}
+
+$space-for-social-share: 260px;
+
+.article-wayfinding__inner {
+    @include mq($bp--article-split-1) {
+        max-height: calc(100vh - #{$space-for-social-share});
+        padding-left: 5px; // show dots even with overflow-x cut off
+
+        .admin-bar & {
+            max-height: calc(100vh - #{$space-for-social-share} - #{$wp-wide-offset})
+        }
+    }
+}
+
+
+.article-wayfinding__head {
+    position: relative;
+
+    &:before {
+        @include pseudo(-5px x -5px -2px);
+        width: 3px;
+        background-color: $c-white;
+        z-index: -1;
+    }
+}
+
+.article-wayfinding__head-link {
+    color: $c-coral;
+    font: 500 22px / 1 $f-druk;
+    margin: 0 0 $space-sm;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color $t-reg;
+
+    &:hover {
+        color: $c-blue-bright;
+    }
+}
+
+.article-wayfinding__item {
+    display: block;
+}
+
+.article-wayfinding__link {
+    color: $c-blue-dark;
+    display: block;
+    padding: $space-md 0;
+    position: relative;
+    transition: color $t-reg; // cover the vertical line
+
+    &:before {
+        @include pseudo(-5px x -5px -2px);
+        width: 3px;
+        background-color: $c-white;
+        z-index: -1;
+    }
+
+    .article-wayfinding__item--current & {
+        color: $c-blue-bright
+    }
+
+    &:hover {
+        color: $c-blue-bright;
+    }
+}
+
+.article-wayfinding__title {
+    font: 400 14px / 1.3 $f-larish;
+}
+
+// Chapters
+.article-chapters {
+    padding-top: $space-sm;
+    flex-shrink: 0;
+}
+
+.article-chapters__list {
+    display: flex;
+    position: relative;
+    overflow: hidden;
+
+    @include mq($bp--article-split-1) {
+        display: block;
+        overflow: visible;
+    }
+
+    &::after {
+        @include pseudo(5.5px x x 0);
+        height: 1px;
+        width: 100%;
+        background-color: $c-gridline;
+        z-index: 0;
+
+        @include mq($bp--article-split-1) {
+            display: none;
+        }
+    }
+}
+
+.article-chapters__item {
+    margin: 0 3px 0 0;
+    position: relative;
+}
+
+.article-chapters__link {
+    min-width: 15px;
+    color: $c-gray-mid;
+    display: block;
+    font: 600 13px / 1.3 $f-maison;
+    padding-bottom: $space-sm;
+    position: relative;
+    z-index: 6;
+    transition: color $t-reg;
+
+    span {
+        display: none;
+
+        @include mq($bp--article-split-1) {
+            display: block;
+            min-width: none;
+            position: static;
+        }
+    }
+
+    @include mq($bp--article-split-1) {
+        margin: 0 0 $space-md;
+        padding-left: $space-lg;
+    }
+
+    &::before {
+        @include absolute(1.25px x x 0px);
+        @include pseudo;
+        @include size(6px);
+        border-radius: 50%;
+        background: $c-gray-light;
+        border: 2px solid $c-white;
+        transition: all $t-reg ease;
+        z-index: 3;
+
+        @include mq($bp--article-split-1) {
+            left: -4.5px;
+            top: 0px;
+        }
+    }
+
+    &:hover {
+        color: $c-blue-dark;
+    }
+}
+
+// set consistent transition on line and dot
+.article-chapters__link::before,
+.article-chapters__progress {
+    transition: background $t-fast ease-in-out;
+}
+
+.article-chapters__item--active {
+    .article-chapters__link {
+        color: $c-blue-bright; // circle
+
+        &::before {
+            background-color: $c-blue-bright;
+        }
+    }
+
+    .article-sidebar__chapter-progress {
+        background-color: $c-blue-bright;
+    }
+}
+
+.article-chapters__item--complete {
+
+    // circle
+    .article-chapters__link {
+        color: $c-blue-dark;
+
+        &::before {
+            background-color: $c-blue-dark;
+        }
+    }
+}
+
+// Progress meter
+// on desktop, javascript sets the height
+.article-chapters__progress {
+    @include pseudo;
+    background-color: $c-blue-dark;
+    display: none;
+
+    @include mq($bp--article-split-1) {
+        @include absolute(12px x x 0);
+        display: block;
+        height: 0;
+        width: 1px !important;
+        transition: height $t-fast ease;
+    }
+}

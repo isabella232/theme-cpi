@@ -1,0 +1,35 @@
+.article-sidebar {
+  @include admin-bar-top(0);
+  @include padding(10px $space-lg);
+  display: none;
+  margin: 0 -#{$space-lg} 50px;
+  z-index: 4;
+  @include mq($bp--md) {
+    margin: 0 -#{$site-padding--md} 80px;
+  }
+  @include mq($bp--article-split-1) {
+    display: block;
+    margin: 0;
+    padding: 0 $space-md 0 0;
+    position: relative;
+  }
+}
+
+.article-sidebar__inner {
+  align-items: center;
+  background-color: $c-white;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  @include mq($bp--md) {
+    @include padding(x 20px);
+  }
+  @include mq($bp--article-split-1) {
+    position: relative;
+    background-color: transparent;
+    display: block;
+    padding: 0;
+    width: auto;
+    height: 100%;
+  }
+}

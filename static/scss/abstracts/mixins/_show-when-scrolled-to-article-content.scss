@@ -1,0 +1,9 @@
+@mixin show-when-scrolled-to-article-content {
+  opacity: 0;
+  pointer-events: none;
+  transition: transform $t-reg ease-out, opacity $t-slow;
+  body.js-scrolled-to-article-content & {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}

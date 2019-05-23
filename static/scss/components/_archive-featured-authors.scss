@@ -1,0 +1,109 @@
+.archive-featured-authors {
+    @include site-pad();
+    background-color: $c-mint-light;
+
+    @include mq($bp--lg) {
+        padding-top: 0 !important;
+    }
+}
+
+.archive-featured-authors__inner {
+    margin: 0 auto;
+    max-width: $layout-content;
+}
+
+.archive-featured-authors__head {
+    @include head-type(h2);
+    text-align: center;
+
+    @include mq($bp--lg) {
+        position: relative;
+        top: -0.5em;
+    }
+}
+
+.archive-featured-authors__authors {
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
+    @include mq($bp--lg) {
+        justify-content: center;
+    }
+}
+
+.archive-featured-authors__author {
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+    margin: 0 $space-xl $space-xl 0;
+
+    @include mq($bp--lg) {
+        margin-right: $space-xxxl;
+        margin-bottom: $space-xxl;
+    }
+}
+
+.archive-featured-authors__author-img-link {
+    @include focus(imageWrap);
+    @include img-hover;
+    display: block;
+    flex-shrink: 0;
+}
+
+.archive-featured-authors__author-figure {
+    @include size(50px);
+    border-radius: 50%;
+    object-fit: cover;
+    overflow: hidden;
+    margin-right: $space-sm;
+
+    @include mq($bp--lg) {
+        @include size(80px);
+        margin-right: $space-md;
+    }
+
+    @include mq($bp--xl) {
+        @include size(130px);
+        margin-right: $space-lg;
+    }
+}
+
+.archive-featured-authors__author-img {
+    display: block;
+}
+
+.archive-featured-authors__author-name,
+.archive-featured-authors__author-jobtitle {
+    font: 600 14px / 1.2 $f-maison;
+    max-width: 200px;
+
+    @include mq($bp--lg) {
+        font-size: 16px;
+    }
+
+    @include mq($bp--xl) {
+        font-size: 18px;
+    }
+}
+
+.archive-featured-authors__author-name {
+    margin: 0 0 $space-xs;
+    white-space: nowrap;
+
+    a {
+        color: $c-blue-bright;
+        transition: color $t-reg;
+
+        &:hover {
+            color: $c-coral;
+        }
+    }
+}
+
+.archive-featured-authors__author-jobtitle {
+    @include smooth-text;
+    color: $c-blue-dark;
+    font-weight: 500;
+}

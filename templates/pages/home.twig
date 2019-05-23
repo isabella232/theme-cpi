@@ -1,0 +1,25 @@
+{% extends "layouts/base.twig" %}
+
+{% block pageBody %}
+    {% include "components/home-topper.twig" %}
+    {% include "components/home-features.twig" %}
+    {% include "components/home-impact.twig" %}
+    {% include "components/home-spotlight.twig" %}
+    {% include "components/home-roundup.twig" %}
+
+    <section class="home-newsletter-cta home-section">
+        {% include "components/big-newsletter-signup.twig" %}
+    </section>
+
+    {% include "components/home-partners.twig" %}
+
+    {% if options.support_us_headline %}
+        <section class="home-support home-section">
+            {% include "components/support-us-cta.twig"  %}
+        </section>
+    {% endif %}
+
+    {% include "components/home-about-us.twig" %}
+    {% include "components/home-topics.twig" %}
+
+{% endblock %}

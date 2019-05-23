@@ -1,0 +1,56 @@
+{% set topicsMenuItems = nav_topics_menu_items?: nav_topics_menu.items %}
+
+{% if topicsMenuItems %}
+    <section class="home-topics home-section">
+        <nav class="home-topics__inner">
+
+            <h2 class="home-topics__head">Explore Our Topics</h2>
+
+            <ul class="home-topics__list">
+                {% for item in topicsMenuItems %}
+                    <li class="home-topics__item">
+
+                        <header class="home-topics__item-header">
+                            {% set illustration = item.getImage?: null %}
+                            <a class="home-topics__item-illo-link" href="{{ item.link }}">
+                                {% if illustration.src %}
+                                <figure class="home-topics__item-illo-figure">
+                                    <img class="home-topics__item-illo" src="{{ illustration.src | resize (350, 350) }}" alt="{{ illustration.alt }}"/>
+                                    </figure>
+                                {% else %}
+                                <figure class="home-topics__item-illo-figure">
+
+                                    <img class="home-topics__item-illo" src="{{ site.theme.path }}/static/img/default-tz-image.svg" alt="No image available"/>
+                                    </figure>
+
+                                {% endif %}
+                            </a>
+
+                            <h4 class="home-topics__item-head">
+
+                                <a href="{{ item.link }}" class="home-topics__item-head-link">{{ item.name }}</a>
+                            </h4>
+                        </header>
+
+                        {% set children = item.menuChildren?: item.children %}
+                        {% if children %}
+
+                            <ul class="home-topics__sublist">
+                                {% for subitem in children %}
+                                    <li class="home-topics__subitem">
+                                        <a class="home-topics__sublink" href="{{subitem.link}}">{{ subitem.name }}&#8288;<svg>
+                                                <use xlink:href="#arrow-small"></use>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+
+                    </li>
+                {% endfor %}
+            </ul>
+
+        </nav>
+    </section>
+{% endif %}

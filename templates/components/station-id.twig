@@ -1,0 +1,25 @@
+{% if stationIdText %}
+
+    <div class="station-id">
+        <div class="station-id__glyph">
+            <svg>
+                <use xlink:href="#cpi-glyph-blue"></use>
+            </svg>
+        </div>
+
+        <div class="station-id__text">
+            <h4 class="station-id__head">Who We Are</h3>
+            <p class="station-id__body">
+                {{ stationIdText }}</p>
+            <p class="station-id__outro">
+                {% if stationIdPage %}
+                    <a class="station-id__outro-link" href="{{ stationIdPage.link }}">{{ stationIdPage.title }}
+                        <svg>
+                            <use xlink:href="#arrow-small"></use>
+                        </svg>
+                    </a>
+                {% endif %}
+            </p>
+        </div>
+    </div>
+{% endif %}

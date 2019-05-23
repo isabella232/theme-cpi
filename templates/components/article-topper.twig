@@ -1,0 +1,102 @@
+{# set style depending on context (articel vstease #}
+{% set style = ('tease' == articleTopperContext) ? article.topperStyleTease: article.topperStyleArticle %}
+
+<div class="article-topper{{ articleTopperTucked ? ' article-topper--tucked' : '' }} article-topper--{{ style }} article-topper--context-{{ articleTopperContext }}">
+
+    <div class="article-topper__inner1">
+        <div class="article-topper__inner2">
+
+            {% if article.getThumbnail and 'no-image' != style %}
+                <figure class="article-topper__hero">
+                    <div class="article-topper__hero-image">
+                        {% if 'tease' == articleTopperContext %}
+                            <a class="article-topper__hero-image-link" href="{{article.link}}">
+                            {% endif %}
+
+                            {% if 'big' == style %}
+                                <picture>
+                                    <source media="(max-width: 600px)" srcset="{{ article.getThumbnail.src | resize (800, 800) }}" sizes="100vw">
+                                    <img src="{{ article.getThumbnail.src | resize (800, 400) }}" srcset="
+                                    {{ article.getThumbnail.src | resize (2000, 1000) }} 2000w,
+                                    {{ article.getThumbnail.src | resize (1500, 750) }} 1500w,
+                                    {{ article.getThumbnail.src | resize (800, 400) }} 800w" alt="{{ article.getThumbnail.alt }}"/>
+                                </picture>
+                            </div>
+
+                        {% else %}
+                            <img src="{{ article.getThumbnail.src | resize (500, 500) }}" srcset="{{ article.getThumbnail.src | resize (900, 900) }} 900w, {{ article.getThumbnail.src | resize (500, 500) }} 500w" sizes="(min-width: 768px) 50vw, calc(100vw - 80px)" alt=" {{ article.getThumbnail.alt }} "/>
+                        {% endif %}
+
+                        {% if 'tease' == articleTopperContext %}
+                        </a>
+                    {% endif %}
+                </div>
+            </figure>
+        {% endif %}
+
+        <header class="article-topper__header">
+            <div class="article-topper__header-inner">
+                {% if article.articleTopic %}
+                    <h3 class="article-topper__topic">
+                        <a class="article-topper__topic-link" href="{{ article.articleTopic.link }}">{{ article.articleTopic }}</a>
+                    </h3>
+                {% endif %}
+
+                {% if article.articleTopic.series and article.articleTopic.name == term.name and article.seriesPlace %}
+                    <h4 class="article-topper__series-place">{{ 'Part ' ~ article.seriesPlace ~ ' of ' ~ article.seriesTotal }}</h4>
+                {% endif %}
+
+                {% if article.date or article.formatUpdated %}
+                    <p class="article-topper__dates">
+                        {% if article.date %}
+                            <span class="article-topper__date article-topper__date--published">
+                                <span>Published —</span>
+                                {{ article.date('F j, Y') }}</span>
+                        {% endif %}
+
+                        {% if article.formatUpdated %}
+                            <span class="article-topper__date article-topper__date--updated">
+                                Updated —
+                                {{ article.formatUpdated }}
+                            </span>
+                        {% endif %}
+                    </p>
+                {% endif %}
+
+                <h1 class="article-topper__title">
+                    {% if 'tease' == articleTopperContext %}
+                        <a class="article-topper__title-link" href="{{article.link}}">
+                        {% endif %}
+                        {{ article.title }}
+                        {% if 'tease' == articleTopperContext %}
+                        </a>
+                    {% endif %}
+                </h1>
+            </div>
+        </header>
+
+    </div>
+</div>
+
+<div class="article-topper__hero-caption">
+    {% if article.getThumbnail.caption and 'no-image' != style and 'article' == articleTopperContext %}
+        <figcaption>
+            <p>
+                <svg>
+                    <use xlink:href="#arrow-small"></use>
+                </svg>
+                {{ article.getThumbnail.caption | replace({'<p>':'', '</p>': ' '}) }}
+            </p>
+        </figcaption>
+    {% endif %}
+</div>
+
+{% if article.subtitle %}
+    <div class="article-subtitle article-subtitle--context-{{ articleTopperContext }}">
+        <div class="article-subtitle__inner">
+            {{ article.get_field('subtitle') }}
+        </div>
+    </div>
+{% endif %}
+
+</div>

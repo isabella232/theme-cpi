@@ -1,0 +1,33 @@
+{% if authors %}
+    <div class="archive-featured-authors">
+        <div class="archive-featured-authors__inner">
+            <h2 class="archive-featured-authors__head">
+                Covering
+                {{ term.title}}
+            </h2>
+
+            <div class="archive-featured-authors__authors">
+                {% for author_obj in authors %}
+                    <div class="archive-featured-authors__author">
+                        {% set author = TimberTerm(author_obj.term_id) %}
+                        {% if author.picture %}
+                            <a class="archive-featured-authors__author-img-link" href="{{ author.link}}">
+                                <figure class="archive-featured-authors__author-figure">
+                                    <img class="archive-featured-authors__author-img" src="{{ TimberImage(author.picture).src | resize (300, 300) }}" alt="{{ author.name }}"/>
+                                </figure>
+                            </a>
+                        {% endif %}
+                        <div class="archive-featured-authors__text">
+                            <h3 class="archive-featured-authors__author-name">
+                                <a href="{{ author.link }}">{{ author.name }}</a>
+                            </h3>
+                            {% if author.job_title %}
+                                <p class="archive-featured-authors__author-jobtitle">{{ author.job_title }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endif %}

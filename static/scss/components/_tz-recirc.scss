@@ -1,0 +1,60 @@
+.tz-recirc {
+  padding: $space-xl $space-xl $space-xl 0;
+  margin-bottom: $space-lg;
+  position: relative;
+  width: 100%;
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+  &::after {
+    @include pseudo(0 0 x x);
+    @include size(70%, 100%);
+    background-color: $c-beige-light;
+    z-index: -1;
+  }
+  @include mq($bp--sm, $bp--lg) {
+    margin-bottom: 0;
+    width: 50%;
+    &:after {
+      right: $space-lg;
+    }
+  }
+  @include mq($bp--xl) {
+    margin-bottom: 0;
+    width: 50%;
+    &:after {
+      right: $space-lg;
+    }
+  }
+}
+
+.tz-recirc__topic {
+  margin: 0 0 $space-sm;
+}
+
+.tz-recirc__topic-link {
+  @include small-caps($c-coral, $c-blue-bright);
+}
+
+.tz-recirc__title {
+  @include block-spacing-sm;
+  @include fluid-font(32px $bp--md, 64px $bp--xxl);
+  font: 500 32px / 0.9 $f-druk;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+}
+
+.tz-recirc__title-link {
+  color: $c-blue-dark;
+  transition: color $t-reg;
+  &:hover {
+    color: $c-coral;
+  }
+}
+
+.tz-recirc__subtitle {
+  @include smooth-text;
+  @include fluid-font(16px $bp--xxs, 21px $bp--lg);
+  color: $c-gray;
+  font: 500 16px / 1.375 $f-maison;
+}

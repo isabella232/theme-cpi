@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+
+    {% set articleTopperTucked = false %}
+
+    {% if ( article and article.topperStyleArticle != 'no-image') %}
+        {# We want to treat a null value in this field as true:
+        true is the default setting of the ACF Field, but that default was set
+        after the big content import of legacy articles #}
+        {% set articleTopperTucked = article.get_field('topper_is_tucked')is null? true: article.get_field('topper_is_tucked') %}
+    {% elseif article %}
+        {# no-image case #}
+        {% set articleTopperTucked = true %}
+    {% endif %}
+
+    {% if article.tags %}
+        {% set articleTagSlugs = '' %}
+        {% for articleTag in article.tags %}
+            {% set articleTagSlugs = articleTagSlugs ~ ' tag-' ~ articleTag.slug | lower %}
+        {% endfor %}
+    {% endif %}
+
+    {% include "components/doc-head.twig" %}
+
+    <body class="{{ body_class }}{% if pagename %} page-name-{{ pagename }}{% endif %}{{ articleTagSlugs ?: '' }} {{ term.get_field('category-type') ? 'topic-type-' ~ term.get_field('category-type') | lower }}">
+
+        {% include "svgs.twig" %}
+        {% include "components/grid-lines.twig" %}
+
+        <div class="js-content content">
+
+            <div class="content__nav">
+                {% include "components/grid-overlay.twig" %}
+                {% include "components/home-welcome.twig" %}
+                {% include "components/site-header.twig" %}
+                {% if article %}
+                    {% include "components/sticky-nav.twig" %}
+                {% endif %}
+            </div>
+
+            <div class="content__body">
+                {% block pageBody %}{% endblock %}
+            </div>
+
+            <div class="content__footer">
+                {% include "components/footer.twig" %}
+            </div>
+
+        </div>
+        {% include "components/nav.twig" %}
+        {% if article %}
+
+            {% include "components/gallery-overlay.twig" %}
+        {% endif %}
+
+        {{ function( 'wp_footer' ) }}
+
+        <script type="text/javascript">
+            var _sf_async_config = { uid: 2241, domain: 'publicintegrity.org', useCanonical: true };
+            (function() {
+            function loadChartbeat() {
+                window._sf_endpt = (new Date()).getTime();
+                var e = document.createElement('script');
+                e.setAttribute('language', 'javascript');
+                e.setAttribute('type', 'text/javascript');
+                e.setAttribute('src','//static.chartbeat.com/js/chartbeat.js');
+                document.body.appendChild(e);
+            };
+            var oldonload = window.onload;
+            window.onload = (typeof window.onload != 'function') ?
+                loadChartbeat : function() { oldonload(); loadChartbeat(); };
+            })();
+        </script>
+    </body>
+</html>

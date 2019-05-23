@@ -1,0 +1,28 @@
+{% set reverseLogo = article and articleTopperTucked and (article.topperStyleArticle != 'no-image') %}
+{% set headerOnDark = article and articleTopperTucked and article.topperStyleArticle != 'no-image' and article.topperStyleArticle != 'light'  %}
+
+<header class="site-header site-header--{{ article.topperStyleArticle }}{{ articleTopperTucked ? ' site-header--tucked' : ' site-header--untucked'}}{{ headerOnDark ? ' site-header--ondark' : ' site-header--onlight'}}
+">
+
+    <div class="site-header__inner">
+        <a class="site-header__logo-link" href=" {{ site.link }} ">
+            <svg>
+                <use xlink:href="{{ reverseLogo ? '#cpi-logo-white-window' : '#cpi-logo-blue'}}"></use>
+            </svg>
+        </a>
+
+        <nav class="site-header__nav">
+            {% if masthead_links_menu.items %}
+                {% for item in masthead_links_menu.items %}
+                    <a href="{{ item.link }}" class="site-header__nav-link">{{ item.name }}</a>
+                {% endfor %}
+            {% endif %}
+
+            <div class="site-header__nav-item">
+                {% include 'components/menu-button.twig' %}
+            </div>
+
+        </nav>
+
+    </div>
+</header>

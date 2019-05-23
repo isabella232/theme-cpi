@@ -1,0 +1,26 @@
+.home-welcome {
+  @include site-pad;
+  background-color: $c-beige-light;
+}
+
+.home-welcome__inner {
+  @include fluid-font(18px $bp--xxs, 45px $bp--xl);
+  color: $c-blue-dark;
+  font: 500 18px / 1.2 $f-larish;
+  margin: 0 auto;
+  max-width: $layout-content;
+  p {
+    margin: 0 0 1em;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+  em {
+    color: $c-blue-bright;
+    font-style: italic;
+  }
+  a {
+    @include animate-underline;
+    color: $c-blue-bright;
+  }
+}

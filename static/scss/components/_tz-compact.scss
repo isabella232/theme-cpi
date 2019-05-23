@@ -1,0 +1,115 @@
+.tz-compact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.tz-compact__primary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0 $space-md;
+  @include mq($bp--sm) {
+    justify-content: flex-start;
+    margin-bottom: 0;
+  }
+}
+
+.tz-compact__meta {
+  @include mq($bp--xxs, $bp--md) {
+    margin-bottom: $space-sm;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+@include mq($bp--sm) {
+  .tz-compact__inner {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    min-height: 50px;
+  }
+  .tz-compact__primary {
+    @include grid-width(8);
+    order: 1;
+  }
+  .tz-compact__meta {
+    @include grid-width(3);
+    display: block;
+    margin-bottom: 0;
+    order: 2;
+  }
+}
+
+@include mq($bp--lg) {
+  .tz-compact__meta {
+    @include grid-width(2);
+  }
+}
+
+.tz-compact__image-link {
+  @include focus(imageWrap);
+  @include margin(0 0 0 15px);
+  display: block;
+  order: 2;
+  @include mq($bp--sm) {
+    @include margin(0 20px 0 0);
+    order: 1;
+  }
+  @include mq($bp--lg) {
+    margin-right: 30px;
+  }
+}
+
+.tz-compact__image {
+  @include size(60px);
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  transition: all $t-fast linear;
+  img {
+    display: block;
+  }
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.tz-compact__title {
+  order: 1;
+  @include padding(0 $space-md 0 0);
+  @include mq($bp--sm) {
+    order: 2;
+    padding-right: 0;
+  }
+}
+
+.tz-compact__title-link {
+  color: $c-blue-dark;
+  display: block;
+  font: 500 17px / 1.2 $f-larish;
+  margin: 0;
+  padding: 4px 0 0 0;
+  transition: all $t-med;
+  &:hover {
+    color: $c-coral;
+  }
+  @include mq($bp--lg) {
+    font-size: 19px;
+  }
+}
+
+.tz-compact__topic,
+.tz-compact__date {
+  margin: $space-sm 0 0 0;
+}
+
+.tz-compact__date {
+  color: $c-blue-dark;
+  font: 400 13px / 1.2 $f-larish;
+}
+
+.tz-compact__topic-link {
+  @include small-caps($c-coral, $c-blue-bright);
+}

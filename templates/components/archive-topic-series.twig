@@ -1,0 +1,38 @@
+<div class="archive-content">
+    <div class="archive-content__inner">
+
+        {% if featured_posts and pagination.current == 1 %}
+            <section class="archive-section">
+                <h2 class="archive-main__head">{{ term.featured_label | default('Featured') }}</h2>
+
+                {% for post in featured_posts %}
+                    {% set articleTopperStyle = post.topper_style ? post.topper_style : 'light' %}
+
+                    {% include "components/article-topper.twig" with {'article' : post, 'articleTopperContext': 'tease'} %}
+                {% endfor %}
+            </section>
+        {% endif %}
+
+        {% if posts | length %}
+            <section class="archive-section">
+                <h2 class="archive-main__head tz-simple-list-header">
+                    {{ term.latest_label | default('Latest') }}
+                </h2>
+                <ul class="tz-simple-list">
+                    {% for post in posts %}
+                        <li>{% include "components/tz-simple.twig" with { dateNotTopic : true } %}</li>
+                    {% endfor %}
+                </ul>
+
+            {% endif %}
+
+            {% if pagination.total > 1 %}
+                <p class="archive-main__all-btn">
+                    <a href="{{ pagination.pages[1].link }}" class="btn">More</a>
+                </p>
+            {% endif %}
+
+        </section>
+
+    </div>
+</div>

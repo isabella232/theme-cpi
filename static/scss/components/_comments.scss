@@ -1,0 +1,212 @@
+.article-comments {
+    clear: both;
+    background-color: $c-beige-light;
+
+    i {
+        font-style: normal; // icon font generally uses <i> as wrapper
+    }
+}
+
+.article-comments__head {
+    @include head-type(h2);
+    text-align: center;
+    margin-bottom: 0.375em !important;
+    margin-top: 0 !important;
+    position: relative;
+    top: -0.5em;
+}
+
+.article-comments__show {
+    text-align: center;
+    margin: 0 auto;
+    padding: $space-lg 0 $space-xxxl;
+
+    @include mq($bp--md) {
+        padding: $space-md 0 $space-xxxl;
+    }
+}
+
+.article-comments__content {
+    @include site-pad;
+}
+
+.article-comments__content-inner {
+    max-width: $layout-content;
+    margin: 0 auto;
+}
+
+// Override defaults
+#wc-comment-header {
+    display: none !important;
+}
+
+#wpcomm {
+
+    a {
+        background: none;
+    }
+
+    .wpdiscuz-front-actions {
+        background-color: transparent !important;
+        padding: 0 !important;
+    }
+
+    .wc-thread-wrapper {
+        padding-top: $space-xs;
+        border-bottom: 1px solid $c-gray-mid-3;
+    }
+
+    .wpdiscuz-sbs-wrap span {
+        @include small-caps;
+        font-weight: 500 !important;
+    }
+
+    .wpdiscuz-sort-buttons {
+        @include small-caps;
+        font-weight: 500 !important;
+    }
+
+    .avatar {
+        box-shadow: none !important;
+    }
+
+    .wc-comment-label {
+        display: block;
+        margin-top: 0 !important;
+        border: 0 !important;
+    }
+
+    .wc-comment {
+        padding-top: $space-lg;
+        border-top: 2px solid $c-blue-bright;
+        margin-bottom: 20px !important;
+
+        @include mq($bp--lg) {
+            margin-bottom: 40px !important;
+        }
+    }
+
+
+    .wc-reply {
+        border-top: 1px solid $c-gray-mid-3;
+        margin-top: 30px !important;
+    }
+
+    .article-commentswpd-xborder {
+        border: 0 !important;
+    }
+
+    .wc-comment-header {
+        border-top: 0 !important;
+        padding-top: 0 !important;
+        margin-bottom: 0 !important;
+    }
+
+
+    .wc-comment-footer {
+        padding: 0 !important;
+    }
+
+
+    .wc-comment-author,
+    .wc-comment-author a,
+    .wc-reply .wc-comment-author {
+        @include small-caps();
+        color: $c-blue-dark !important;
+    }
+
+    .wc-comment-author a {
+        color: $c-blue-bright !important;
+
+    }
+
+    .wc-comment-right {
+        background-color: transparent !important;
+    }
+
+    .wc-comment-text {
+        min-height: 80px !important;
+        padding-bottom: $space-md !important;
+
+        a {
+            @include animate-underline($c-blue-bright, $c-coral);
+        }
+
+        * {
+            font-size: 16px !important;
+            letter-spacing: 0 !important;
+        }
+    }
+
+    .wc-field-comment {
+        background-color: $c-white;
+    }
+
+    .wc-comment-right .wc_comment {
+        padding: $space-md !important;
+    }
+
+    .wpd-field {
+        background-color: $c-white !important;
+    }
+
+    .wc-cta-button-x,
+    .wc-cta-button {
+        @include smooth-text;
+        color: $c-gray !important;
+        font: 500 18px /1 $f-druk !important;
+        letter-spacing: 1px !important;
+        text-transform: uppercase !important;
+        transition: color $t-reg !important;
+
+        &.wc-cta-active {
+            color: $c-gray !important;
+            background-color: transparent !important;
+        }
+
+        &:hover {
+            color: $c-gray !important;
+            background-color: transparent !important;
+        }
+    }
+
+    .wc-cta-button-x {
+        color: $c-gray-mid !important;
+    }
+
+    .wc_save_edited_comment {
+        @include smooth-text;
+        background-color: $c-coral !important;
+        border: 0 !important;
+        color: $c-white !important;
+        font: 500 18px /1 $f-druk !important;
+        letter-spacing: 1px !important;
+        text-transform: uppercase !important;
+    }
+
+    .wc-footer-left .wc-reply-button {
+        border: 0 !important;
+        color: $c-coral !important;
+        padding-right: 24px !important;
+        background: url('/wp-content/themes/cpi/static/img/comment-reply-arrow.svg') no-repeat right 4px;
+
+        &.wc-cta-active {
+            color: $c-gray !important;
+            background-color: transparent !important;
+        }
+
+        &:hover {
+            color: $c-coral !important;
+            background: transparent url('/wp-content/themes/cpi/static/img/comment-reply-arrow.svg') no-repeat right 4px !important;
+        }
+    }
+
+    .wc-footer-right .wc-comment-date {
+        color: $c-blue-dark;
+        font: 500 13px / 1 $f-larish;
+    }
+
+    .wpd-sticky {
+        background-color: $c-coral !important;
+    }
+}

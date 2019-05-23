@@ -1,0 +1,138 @@
+.article {
+    margin: 0;
+}
+
+.article-content {
+    @include site-pad(horiz); // Layout
+
+    @include mq(0, $bp--article-split-1) {
+        margin-bottom: 80px;
+    }
+}
+
+.article-content__inner-1 {
+    margin: 0 auto;
+    max-width: $layout-content;
+    position: relative;
+}
+
+// Drop Cap
+.article-content p.has-drop-cap {
+    padding-top: 2em;
+
+    &:first-letter {
+        color: $c-blue-bright;
+        float: left;
+        font: 500 9em / 0.85 $f-druk;
+        margin-right: 0.15em;
+        margin-bottom: -0.1em;
+    }
+}
+
+// partnership description
+.article-main__partner-desc {
+    @include block-spacing-md(bottom);
+    @include body-type;
+    font-weight: 500;
+    font-family: $f-larish;
+
+    b,
+    strong {
+        font-weight: 500;
+    }
+
+}
+
+// article-main
+.article-main__date {
+    color: $c-blue-dark;
+    font: 600 14px / 1 $f-maison;
+    letter-spacing: 0.5px;
+    margin: 0 0 $space-xl;
+    text-transform: uppercase;
+}
+
+@include mq($bp--article-split-1) {
+    .article-content__inner-1 {
+
+        //   gridline
+        &:before {
+            @include pseudo(0 x x x);
+            @include size(1px, 100%);
+            background-color: $c-gridline;
+            z-index: 2;
+        }
+    }
+
+    .article-content__inner-2 {
+        display: flex;
+        align-items: stretch;
+        justify-content: space-between;
+    }
+
+    .article-main,
+    .article-sidebar {
+        position: relative;
+    }
+
+    .article-main {
+        @include grid-width(8);
+        margin-bottom: -80px; // close gap created by article-share--desktop
+
+        &::before {
+            // off the actual grid line
+            @include pseudo(0 x x x);
+            left: -#{$layout-gutter-width};
+            @include size(1px, 100%);
+            background-color: $c-gridline;
+            z-index: 2;
+        }
+    }
+
+    .article-sidebar {
+        @include grid-width(3);
+        margin-bottom: 20px;
+
+        @include mq($bp--article-split-1) {
+            margin-bottom: 0;
+        }
+
+        &:before {
+            left: 0;
+        }
+    }
+}
+
+// mq
+@include mq($bp--xxl) {
+    .article-sidebar {
+        @include grid-width(2);
+    }
+
+    .article-main {
+        @include grid-width(7);
+        @include grid-width(2, $gutter-count: 2, $property: 'margin-right');
+    }
+}
+
+// mq
+// recirc
+.article-recirc {
+    @include block-spacing-xl(top);
+    clear: both;
+
+    @include mq($bp--article-split-2) {
+        @include grid-width(9, $context-col-count: 7);
+    }
+}
+
+.article-recirc__head {
+    @include head-type;
+}
+
+.article-recirc__articles {
+    align-items: stretch;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}

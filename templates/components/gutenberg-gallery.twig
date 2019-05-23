@@ -1,0 +1,43 @@
+{% if images %}
+    <div class="article-gallery js-article-gallery">
+        <div class="article-gallery__items">
+            {% for image in images %}
+                {# only output the first three as a images #}
+                {% set alsoOutputInPage = loop.index <= 3 %}
+                <figure class="js-gallery-source-item article-gallery__source-item article-gallery__source-item--{{loop.index}} article-gallery__source-item--{{ alsoOutputInPage ? 'inline' : 'overlay' }}">
+
+                    <div class="article-gallery__image-wrap">
+                        <img {% if alsoOutputInPage %} src="{{ image.src | resize (400, 400) }}" srcset="{{ image.src | resize (400, 400) }}
+400w, {{ image.src | resize (800, 800) }} 800w" sizes="(min-width: 450px) calc(60vw - 60px), 100vw" alt="{{ image.alt }}" {% endif %} data-src="{{ image.src | resize (400, auto) }}" data-srcset="{{ image.src | resize (400, auto) }} 400w, {{ image.src | resize (600, auto) }} 600w, {{ image.src | resize (900, auto) }} 900w" data-sizes="(min-width: 768px) calc(100vw - 100px), calc(100vw - 60px)"/>
+                    </div>
+
+                    {% if image.caption %}
+                        {# Remove p tags, which legacy articles tend to have #}
+                        <figcaption class="article-gallery__item-caption">
+
+                            {% if image.caption %}
+                                {{ image.caption | replace({'<p>':'', '</p>': ' '}) }}
+                            {% endif %}
+                        </figcaption>
+                    {% endif %}
+
+                </figure>
+            {% endfor %}
+        </div>
+        {% if gallery_caption %}
+            <div class="article-gallery__caption">
+                <svg>
+                    <use xlink:href="#arrow-small"></use>
+                </svg>
+                {{ gallery_caption }}
+            </div>
+        {% endif %}
+
+        <button class="article-gallery__view js-open-gallery">View Gallery
+            <svg>
+                <use xlink:href="#arrow-small"></use>
+            </svg>
+        </button>
+    </div>
+
+{% endif %}

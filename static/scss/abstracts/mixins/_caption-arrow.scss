@@ -1,0 +1,10 @@
+@mixin caption-arrow {
+  padding-left: 24px;
+  padding-bottom: 15px;
+  position: relative;
+  &:before {
+    @include pseudo(-5px x x -10px);
+    @include size(26px);
+    background: url('/wp-content/themes/cpi/static/img/arrow-up.svg') no-repeat 50% 50%;
+  }
+}

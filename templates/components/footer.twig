@@ -1,0 +1,80 @@
+<footer class="site-footer">
+    <div class="site-footer__inner">
+
+        <a class="site-footer__logo-link" href="{{ site.link }}">
+            <svg>
+                <use xlink:href="#cpi-glyph-white"></use>
+            </svg>
+        </a>
+
+        <div class="site-footer__groups">
+            <div class="site-footer__left">
+                {% set footerPages = TimberPost(options.footer_page_links) %}
+
+                {% if footerPages %}
+                    <ul class="site-footer__pages-list">
+                        {% for page in footerPages %}
+                            <li class="site-footer__pages-item">
+                                <a class="site-footer__pages-link" href="{{ page.link }}">{{ page.title }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+
+                <ul class="site-footer__social">
+                    <li class="site-footer__social-item">
+                        <a href="https://www.facebook.com/publici" class="site-footer__social-link">
+                            <svg>
+                                <use xlink:href="#icon-facebook"></use>
+                            </svg>
+                            <span>Facebook</span>
+                        </a>
+                    </li>
+                    <li class="site-footer__social-item">
+                        <a href="https://twitter.com/publici" class="site-footer__social-link">
+                            <svg>
+                                <use xlink:href="#icon-twitter"></use>
+                            </svg>
+                            <span>Twitter</span>
+                        </a>
+                    </li>
+
+                    <li class="site-footer__social-item">
+                        <a class="site-footer__social-link" href="https://www.linkedin.com/company/center-for-public-integrity/">
+                            <svg>
+                                <use xlink:href="#icon-linkedin"></use>
+                            </svg>
+                            <span>LinkedIn</span>
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <div class="site-footer__right">
+
+                {% if options.footer_mission %}
+                    <div class="site-footer__mission">{{ options.footer_mission }}</div>
+                {% endif %}
+
+                {% set footerSupportPage = TimberPost(options.footer_support_link) %}
+                {% if footerSupportPage %}
+                    {% for page in footerSupportPage %}
+
+                        <p class="site-footer__support">
+                            <a class="site-footer__support-link btn" href="{{ page.link }}">{{ page.title }}</a>
+                        </p>
+                    {% endfor %}
+
+                {% endif %}
+
+            </div>
+        </div>
+
+        {% if options.footer_mission %}
+            <p class="site-footer__copyright">{{ options.footer_copyright }}</p>
+        {% endif %}
+
+    </div>
+</footer>

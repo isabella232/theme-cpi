@@ -1,0 +1,34 @@
+<div class="article-authors__author{% if author.getPicture %} article-authors__author--has-image{% endif %}">
+
+    {% if author.getPicture %}
+        <a class="article-authors__author-img-link" href="{{ author.link }}">
+
+            {% if author.partnerOrg.getIcon %}
+                <img class="article-authors__partner-icon" src="{{ author.partnerOrg.getIcon.src }}" alt="{{ author.partnerOrg.title }}"/>
+            {% endif %}
+            <img class="article-authors__author-img" src="{{ author.getPicture }}" alt="{{ author.formattedName }}"/>
+        </a>
+    {% endif %}
+
+    <div class="article-authors__author-text">
+
+        {% if author.formattedName %}
+            <p class="article-authors__author-name">
+                <a class="article-authors__author-name-link" href="{{ author.link }}">
+                    {{ author.formattedName }}
+                </a>
+            </p>
+        {% endif %}
+
+        {% if author.job_title %}
+            <p class="article-authors__author-jobtitle">{{ author.job_title }}</p>
+        {% endif %}
+
+        {% if author.organization %}
+            <p class="article-authors__author-jobtitle">
+                {{ author.organization  }}
+            </p>
+        {% endif %}
+    </div>
+
+</div>

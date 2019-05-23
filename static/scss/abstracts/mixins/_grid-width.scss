@@ -1,0 +1,21 @@
+@mixin grid-width($col-count: 6, $context-col-count: $layout-col-count, $context-gutter-count: $context-col-count - 1, $gutter-count: $col-count - 1, $property: 'width', $gallery-gutters: false, $important: null) {
+
+    $percentage-width: grid-cols-to-pct-width($col-count, $context-col-count, $context-gutter-count, $gutter-count);
+
+    // property and value output
+    #{$property}: $percentage-width $important;
+
+
+    @if $gallery-gutters {
+        $items-per-row: $context-col-count / $col-count;
+
+        &:nth-of-type(n) {
+            @include grid-width($col-count: 0, $gutter-count: 1, $context-col-count: $context-col-count, $property: 'margin-right', $gallery-gutters: false);
+        }
+
+        &:nth-child(#{$items-per-row}n),
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}

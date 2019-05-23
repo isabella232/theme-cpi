@@ -1,0 +1,41 @@
+.tz-simple-list {
+  border-top: 10px solid $c-blue-bright;
+  border-right: 10px solid $c-blue-bright;
+  padding-top: $space-xl;
+  margin: 0 auto;
+  >li {
+    @include padding(0 $space-md $space-xl 0);
+    min-height: 150px;
+    @include mq($bp--lg) {
+      @include grid-width(1, $context-col-count: 10, $gutter-count: 1, $property: 'padding-right');
+    }
+    @include mq($bp--xl) {
+      padding-bottom: $space-xxl;
+    }
+  }
+  >li:last-of-type .tz-simple {
+    padding-bottom: 0;
+  }
+  @include mq($bp--lg) {
+    @include grid-width(10);
+    border-width: 15px;
+    padding-top: $space-xxl;
+  }
+}
+
+.tz-simple-list-header {
+  background-color: $c-white;
+  display: inline-block;
+  @include padding (10px 40px 10px 0);
+  position: relative;
+  z-index: 3;
+}
+
+.tz-simple-list-header+.tz-simple-list {
+  margin-top: -56px;
+  position: relative;
+  z-index: 2;
+  @include mq($bp--md) {
+    margin-top: -80px;
+  }
+}

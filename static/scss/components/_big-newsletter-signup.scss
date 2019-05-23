@@ -1,0 +1,141 @@
+.big-newsletter-signup {
+    @include site-pad(horiz);
+    @include padding($space-xl x);
+    background-color: $c-coral;
+    color: $c-white;
+    position: relative;
+    z-index: 2;
+
+    @include mq($bp--lg) {
+        @include padding($space-xxxl x);
+    }
+
+    @include mq($bp--xl) {
+        @include padding($space-xxxxl x);
+    }
+
+    &::before {
+        @include pseudo(0 0 x x);
+        @include size(100%);
+        background: linear-gradient(to right, $c-coral 5%, rgba($c-coral, 0) 100%);
+        z-index: 2;
+    }
+
+    @include mq($bp--md) {
+        &::before {
+            @include size(60%,
+            100%);
+        }
+    }
+}
+
+.big-newsletter-signup__image {
+    @include pseudo(0 0 x x);
+    @include size(100%);
+    background-blend-mode: multiply;
+    background-position: right 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.2;
+    z-index: 1;
+
+    @include mq($bp--md) {
+        @include size(60%,
+        100%);
+    }
+}
+
+.big-newsletter-signup__inner {
+    max-width: $layout-content;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+
+    @include mq($bp--md) {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+
+        >* {
+            @include grid-width(6);
+        }
+    }
+
+    @include mq($bp--xl) {
+        > :last-child {
+            @include grid-width(5);
+        }
+    }
+}
+
+.big-newsletter-signup__head {
+    @include fluid-font(24px $bp--xs,
+    42px $bp--lg);
+    font: 500 24px / 1 $f-larish;
+    color: $c-white;
+    margin: 0 0 $space-md;
+
+    @include mq($bp--lg) {
+        margin-bottom: $space-lg;
+    }
+}
+
+.big-newsletter-signup__text {
+    margin: 0 0 $space-lg;
+
+    @include mq($bp--md) {
+        margin-bottom: 0;
+    }
+}
+
+.big-newsletter-signup__p {
+    @include fluid-font(14px $bp--xs,
+    18px $bp--lg);
+    font: 500 14px / 1.375 $f-maison;
+    letter-spacing: 0.1px;
+    color: $c-white;
+}
+
+// the form
+.big-newsletter-signup__form {
+    position: relative;
+
+    input:not([type=submit]):not([type=file]) {
+        border: 0;
+        border-bottom: 2px solid rgba($c-white, 0.5);
+        color: $c-white;
+        transition: all $t-reg;
+
+        &:focus {
+            border: 0;
+            border-bottom: 2px solid $c-white;
+        }
+
+        &::placeholder {
+            color: rgba($c-white, 0.5);
+        }
+    }
+
+    @include mq($bp--md) {
+        max-width: 400px;
+    }
+
+    label {
+        @include hide(true);
+    }
+
+    .btn {
+        @include absolute(3px 0 x x);
+        padding: 5px;
+        transition: all $t-fast;
+
+        &:hover {
+            opacity: 0.75;
+        }
+
+        &:focus {
+            background-color: transparent;
+            @include focus-shadow($c-white);
+        }
+    }
+}

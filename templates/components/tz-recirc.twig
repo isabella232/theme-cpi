@@ -1,0 +1,17 @@
+<article class="tz-recirc">
+    {% if post.articleTopic %}
+        <h4 class="tz-recirc__topic">
+            <a class="tz-recirc__topic-link" href="{{ post.articleTopic.link }}">{{ post.articleTopic.title }}</a>
+        </h4>
+    {% endif %}
+
+    <h3 class="tz-recirc__title">
+        <a class="tz-recirc__title-link" href="{{ post.link }}">{{ post.title }}</a>
+    </h3>
+
+    {% if post.get_field('subtitle') %}
+        <div class="tz-recirc__subtitle">
+            {{ post.get_field('subtitle') }}
+        </div>
+    {% endif %}
+</article>

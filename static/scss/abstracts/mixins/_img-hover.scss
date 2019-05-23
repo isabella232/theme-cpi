@@ -1,0 +1,6 @@
+@mixin img-hover {
+  transition: all $t-fast linear;
+  &:hover {
+    opacity: 0.9;
+  }
+}

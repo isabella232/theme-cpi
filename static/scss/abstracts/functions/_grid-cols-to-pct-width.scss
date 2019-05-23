@@ -1,0 +1,8 @@
+@function grid-cols-to-pct-width($col-count: 6, $context-col-count: $layout-col-count, $context-gutter-count: $context-col-count - 1, $gutter-count: $col-count - 1) {
+
+    $width: grid-cols-to-px-width($col-count, $gutter-count);
+    $context-width: grid-cols-to-px-width($context-col-count, $context-gutter-count);
+    $percentage-width: percentage($width / $context-width);
+
+    @return $percentage-width;
+}

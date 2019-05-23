@@ -1,0 +1,121 @@
+.site-header {
+  @include site-pad(horiz);
+  @include padding(20px x);
+  position: relative;
+  z-index: 3;
+  @include mq($bp--md) {
+    @include padding(30px x);
+  }
+}
+
+.site-header--tucked,
+body.archive.topic-type-blog:not(.paged) .site-header {
+  // special case
+  @include absolute(0 x x 0);
+  width: 100%;
+}
+
+.site-header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  max-width: $layout-content;
+}
+
+// Size SVG correctly
+$site-logo-ratio: 56 / 260;
+.site-header__logo-link {
+  @include focus(default);
+  display: block;
+  svg {
+    display: block;
+    @include size(140px, 140px * $site-logo-ratio);
+    @include mq($bp--lg) {
+      @include size(220px, 220px * $site-logo-ratio);
+    }
+  }
+}
+
+.site-header__nav {
+  display: flex;
+  flex-shrink: 0;
+}
+
+// center icon within the space left by the article topper
+@include mq(0, $bp--topper-splits) {
+  .site-header__nav-item {
+    transform: translateX(5px);
+  }
+}
+
+// style link and text the same
+.site-header__nav-link,
+.menu-button {
+  @include focus(default);
+  @include padding($space-sm x);
+  @include smooth-text;
+  color: $c-blue-dark;
+  display: block;
+  font: 500 16px / 1.5 $f-druk;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  transition: all $t-reg linear;
+  @include mq($bp--md) {
+    font-size: 18px;
+  }
+  @include mq($bp--lg) {
+    font-size: 20px;
+  }
+  &:hover {
+    color: $c-blue-bright;
+    svg {
+      stroke: $c-blue-bright;
+    }
+  }
+}
+
+.site-header__nav-link {
+  margin-right: $space-lg;
+  @include mq(0, $bp--topper-splits) {
+    display: none; // hide site header page links on mobile
+  }
+}
+
+// on image, light-background treatment,
+// burger covers image until topper splits
+@include mq(0, $bp--topper-splits) {
+  .site-header--tucked.site-header--onlight:not(.site-header--no-image) {
+    .site-header__nav-link,
+    .menu-button {
+      color: $c-white;
+      svg {
+        stroke: $c-white;
+      }
+      &:hover {
+        color: $c-white;
+        opacity: 0.75;
+        svg {
+          color: $c-white;
+        }
+      }
+    }
+  }
+}
+
+.site-header--tucked.site-header--ondark {
+  .site-header__nav-link,
+  .menu-button {
+    color: $c-white;
+    svg {
+      stroke: $c-white;
+    }
+    &:hover {
+      color: $c-white;
+      opacity: 0.75;
+      svg {
+        color: $c-white;
+      }
+    }
+  }
+}

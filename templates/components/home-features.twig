@@ -1,0 +1,15 @@
+{% if homeFeatures %}
+    <section class="home-features home-section">
+
+        <h2 class="home-features__head">
+            <span class="home-features__head-inner">
+                Featured Stories
+            </span>
+        </h2>
+        <ul class="home-features__list">
+            {% for post in homeFeatures %}
+                <li>{% include "components/tz-featured.twig" %}</li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endif %}

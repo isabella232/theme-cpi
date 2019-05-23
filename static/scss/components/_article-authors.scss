@@ -1,0 +1,113 @@
+// Authors container
+.article-authors {
+    @include block-spacing-md(bottom);
+    @include margin(x auto);
+
+    &--article {
+        @include mq($bp--article-split-2) {
+            @include grid-width(9, $context-col-count: 7);
+        }
+    }
+}
+
+.article-authors__inner {
+    align-items: flex-start;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+// Author
+.article-authors__author {
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+    margin: 0 $space-md $space-md 0;
+
+    &:not(.article-authors__author--has-image) {
+        padding-top: 0; // compensates for lack of image
+
+        @include mq($bp--sm) {
+            padding-top: 7px; // compensates for lack of image
+        }
+    }
+
+    @include mq($bp--sm) {
+        // padding-bottom: $space-lg;
+    }
+
+    @include mq($bp--md) {
+        padding: 0 $space-lg 0 0;
+        max-width: 45%;
+    }
+
+    @include mq($bp--article-split-2) {
+        max-width: 32%;
+    }
+}
+
+.article-authors__author-img-link {
+    @include focus(imageWrap);
+    @include img-hover;
+    display: block;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.article-authors__author-img {
+    @include size(40px);
+    border-radius: 50%;
+    display: block;
+    object-fit: cover;
+    margin: 0 18px 0 0;
+    overflow: hidden;
+
+    @include mq($bp--sm) {
+        @include size(60px);
+    }
+}
+
+.article-authors__partner-icon {
+    @include absolute(25px x x 20px);
+    @include size(20px);
+
+    @include mq($bp--sm) {
+        @include absolute(40px x x 32px);
+        @include size(40px);
+    }
+}
+
+.article-authors__author-text {
+    flex-shrink: 1;
+    padding-top: 0px;
+
+    @include mq($bp--sm) {
+        padding-top: 4px;
+    }
+}
+
+.article-authors__author-name-link,
+.article-authors__author-jobtitle {
+    font: 600 14px / 1.3 $f-maison;
+    margin: 0 $space-sm 0 0;
+
+    @include mq($bp--sm) {
+        font-size: 16px;
+    }
+}
+
+.article-authors__author-name-link {
+    color: $c-blue-bright;
+    transition: color $t-med;
+
+    &:hover {
+        color: $c-coral;
+    }
+}
+
+.article-authors__author-jobtitle {
+    color: $c-gray;
+    display: inline-block;
+    font-weight: 400;
+}

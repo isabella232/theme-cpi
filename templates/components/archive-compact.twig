@@ -1,0 +1,14 @@
+<div class="archive-compact-content {{headingIsTopper ? 'archive-compact-content--topper'}}">
+    <div class="archive-compact-content__inner">
+        <div class="archive-compact-main">
+            {% if heading %}
+                <h2 class="archive-compact-head">{{ heading }}</h2>
+            {% endif %}
+            <ul class="tz-compact-list">
+                {% for post in posts %}
+                    <li>{% include "components/tz-compact.twig"%}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>

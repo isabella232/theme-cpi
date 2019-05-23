@@ -1,0 +1,105 @@
+<head>
+    {% set og_title = wp_title ? wp_title: site.name %}
+    {% set og_type = article ? 'article' : 'website' %}
+
+    {% set og_image = article.thumbnail ? TimberImage(article.thumbnail).src | resize (1170, 600) : site.theme.link ~ '/static/img/cpi-default-share.png' %}
+    {% set og_image_alt = article.thumbnail ? TimberImage(article.thumbnail).alt : 'CPI logo' %}
+
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+
+    {% if isGoogleOptimizeTest == true %}
+        <!-- Page hiding snippet (recommended) -->
+        <style>
+            .async-hide {
+                opacity: 0 !important;
+            }
+        </style>
+        <script>
+            (function (a, s, y, n, c, h, i, d, e) {
+                s.className += ' ' + y;
+                h.start = 1 * new Date;
+                h.end = i = function () {
+                    s.className = s.className.replace(RegExp(' ?' + y), '')
+                };
+                (a[n] = a[n] || []).hide = h;
+                setTimeout(function () {
+                    i();
+                    h.end = null
+                }, c);
+                h.timeout = c;
+            })(window, document.documentElement, 'async-hide', 'dataLayer', 4000, {'GTM-TLB5Z9K': true});
+        </script>
+    {% endif %}
+
+    {% if hostname == 'publicintegrity.org' %}
+        <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-3383794-4"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+            gtag('config', 'UA-3383794-4', {'optimize_id': 'GTM-TLB5Z9K'});
+        </script>
+        <script type="text/javascript">
+            var _sf_startpt = (new Date()).getTime()
+        </script>
+    {% endif %}
+
+    <title>
+        {% if wp_title %}{{ wp_title }}
+        {% else %}{{ site.name }}
+        {% endif %}
+    </title>
+    {{ function( 'wp_head' ) }}
+
+    <link rel="preload" href="{{ theme.link }}/static/fonts/maisonneue/MaisonNeue-Demi.woff" as="font" type="font/woff" crossorigin="crossorigin">
+    <link rel="preload" href="{{ theme.link }}/static/fonts/maisonneue/MaisonNeue-Book.woff" as="font" type="font/woff" crossorigin="crossorigin">
+    <link rel="preload" href="{{ theme.link }}/static/fonts/druk/Druk-Bold-Web.woff" as="font" type="font/woff" crossorigin="crossorigin">
+
+    <link rel="stylesheet" id="cpi-theme-css" href="{{ theme.link }}/dist/app.css?v={{ theme_version }}" type="text/css" media="all"/>
+
+    <!-- Open Graph (Facebook) -->
+    <meta property="og:site_name" content="{{ site.name }}">
+    <meta property="og:site" content="{{ site.link }}">
+    <meta property="og:locale" content="en_us">
+    <meta property="og:type" content="{{ og_type }}">
+    <meta property="og:title" content="{{ og_title }}">
+    <meta property="og:url" content="{{ article.link|default(site.link) }}">
+    <meta property="og:image" content="{{ og_image }}">
+    <meta property="og:image:height" content="1170">
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:alt" content="{{ og_image_alt }}">
+    <meta property="og:description" content="{{ article.get_field('subtitle') |striptags|default(site.description) }}">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@Publici">
+    <meta name="twitter:title" content="{{ og_title }}">
+
+    <meta name="twitter:description" content="{{ article.get_field('subtitle') |striptags|default(site.description) }}">
+    <meta name="twitter:image" content="{{og_image}}">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ theme.link }}/static/img/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="{{ theme.link }}/static/img/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ theme.link }}/static/img/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ theme.link }}/static/img/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ theme.link }}/static/img/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ theme.link }}/static/img/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="{{ theme.link }}/static/img/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ theme.link }}/static/img/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ theme.link }}/static/img/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ theme.link }}/static/img/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ theme.link }}/static/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{ theme.link }}/static/img/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ theme.link }}/static/img/favicon/favicon-16x16.png">
+
+    {% if hostname == 'dev-public-integrity.pantheonsite.io' %}
+        <script src="https://browser.sentry-cdn.com/4.2.1/bundle.min.js" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            Sentry.init({dsn: 'https://e8431b46cf9b427980db6178b2aba298@sentry.io/1308405'});
+        </script>
+    {% endif %}
+
+</head>

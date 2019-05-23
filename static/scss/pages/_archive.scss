@@ -1,0 +1,36 @@
+.archive-main {
+  @include mq($bp--article-split-1) {
+    @include grid-width(10);
+    @include margin(x auto);
+  }
+}
+
+.archive-main__head {
+  @include block-spacing-md(bottom);
+  @include fluid-font(21px $bp--xxs, 28px $bp--xl);
+  color: $c-blue-bright;
+  font: 500 21px / 1.1 $f-larish;
+}
+
+.archive-main__all-btn {
+  margin: 0;
+}
+
+.archive-featured-list {
+  >* {
+    @include block-spacing-lg(bottom);
+  }
+}
+
+.archive-section {
+  @include block-spacing-xl(bottom);
+}
+
+.archive-content {
+  @include site-pad(horiz);
+}
+
+.archive-content__inner {
+  @include margin(0 auto);
+  max-width: $layout-content;
+}

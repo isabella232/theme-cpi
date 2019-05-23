@@ -1,0 +1,64 @@
+{
+    "key": "group_5bc8e8942ae32",
+    "title": "Mini Profile",
+    "fields": [
+        {
+            "key": "field_5bc8e89740415",
+            "label": "Mini Profile Heading",
+            "name": "mini_profile_heading",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "*The Center for Public Integrity* is an investigative news organization dedicated to exposing abuses of power in Washington.",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5bc8e8cb40416",
+            "label": "Linked Page",
+            "name": "mini_profile_linked_page",
+            "type": "relationship",
+            "instructions": "Link to the support or about page.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": ["page"],
+            "taxonomy": "",
+            "filters": ["search"],
+            "elements": "",
+            "min": 0,
+            "max": 1,
+            "return_format": "object"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "site-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1539893520
+}

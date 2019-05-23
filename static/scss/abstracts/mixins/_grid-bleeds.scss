@@ -1,0 +1,54 @@
+// Bleed settings
+$extra-bleed: 1px;
+$grid-width-at-max: $layout-content;
+// Right-edge bleeds
+@mixin right-edge-bleed($col-count, $context-col-count: $layout-col-count, $begin-at: 0) {
+  $pct-width: grid-cols-to-pct-width($col-count, $context-col-count);
+  $pixel-width-at-max: grid-cols-to-px-width($col-count); // mobile
+  @if $begin-at==0 {
+    width: calc(#{$pct-width} + #{$site-padding--mobile} + #{$extra-bleed});
+  }
+  @if $begin-at <=$bp--md {
+    @include mq($bp--md) {
+      width: calc(#{$pct-width} + #{$site-padding--md + $extra-bleed});
+    }
+  }
+  @if $begin-at <=$bp--lg {
+    @include mq($bp--lg) {
+      width: calc(#{$pct-width} + #{$site-padding--lg + $extra-bleed});
+    } // grid has hit max-width
+  }
+  @if $begin-at <=$bp--grid-reaches-max-width {
+    @include mq($bp--grid-reaches-max-width) {
+      width: calc(( (100vw - #{$grid-width-at-max}) / 2)+#{$pixel-width-at-max + $extra-bleed});
+    }
+  }
+} // Left-edge bleeds
+@mixin left-edge-bleed ($col-count, $context-col-count: $layout-col-count, $begin-at: 0) {
+  $pixel-width-at-max: grid-cols-to-px-width($col-count);
+  $pct-width: grid-cols-to-pct-width($col-count, $context-col-count); // mobile
+  @if $begin-at==0 {
+    width: calc(#{$pct-width}+#{$site-padding--mobile}+#{$extra-bleed});
+    margin-left: -#{$site-padding--mobile + $extra-bleed};
+  }
+  @if $begin-at <=$bp--md {
+    @include mq($bp--md) {
+      width: calc(#{$pct-width}+#{$site-padding--md}+#{$extra-bleed});
+      margin-left: -#{$site-padding--md + $extra-bleed};
+    }
+  }
+  @if $begin-at <=$bp--lg {
+    @include mq($bp--lg) {
+      width: calc(#{$pct-width}+#{$site-padding--lg}+#{$extra-bleed});
+      margin-left: -#{$site-padding--lg + $extra-bleed};
+    }
+  } // grid has hit max-width
+  @if $begin-at <=$bp--grid-reaches-max-width {
+    @include mq($bp--grid-reaches-max-width) {
+      // For CSS calc to output a negative number, we must use '0px' — NOT '0' — in the expression below
+      /* stylelint-disable-next-line length-zero-no-unit */
+      margin-left: calc(0px - ((100vw - #{$grid-width-at-max})/2));
+      width: calc(( (100vw - #{$grid-width-at-max}) / 2)+#{$pixel-width-at-max + $extra-bleed});
+    }
+  }
+} // left-edge-bleed

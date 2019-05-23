@@ -1,0 +1,24 @@
+<div class="archive-content">
+    <div class="archive-content__inner">
+
+        {% set featuredArticles = author.featured_articles %}
+        {% if featuredArticles %}
+            <section class="archive-section">
+                <h2 class="archive-main__head tz-simple-list-header">Featured</h2>
+                <ul class="tz-simple-list">
+                    {% for post_ref in featuredArticles %}
+                        {% set post = TimberPost(post_ref) %}
+                        <li>{% include "components/tz-simple.twig" with {'dateNotTopic': true, 'post': post} %}</li>
+                    {% endfor %}
+                </ul>
+            </section>
+        {% endif %}
+    </div>
+</div>
+
+{% if posts %}
+    {% set heading = featuredArticles | length ? 'More from ' ~ author.formattedName %}
+
+    {% include "components/archive-compact.twig" with {'posts' : posts, 'heading' : heading}%}
+
+{% endif %}

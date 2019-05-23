@@ -1,0 +1,17 @@
+// Fonts
+// See abstracs/mixins/_font-face
+// Maison Neue
+@include font-face('MaisonNeue', 'maisonneue/MaisonNeue-Book', 400, normal);
+@include font-face('MaisonNeue', 'maisonneue/MaisonNeue-BookItalic', 400, italic);
+@include font-face('MaisonNeue', 'maisonneue/MaisonNeue-Medium', 500, normal);
+@include font-face('MaisonNeue', 'maisonneue/MaisonNeue-MediumItalic', 500, italic);
+@include font-face('MaisonNeue', 'maisonneue/MaisonNeue-Demi', 600, normal);
+@include font-face('MaisonNeue', 'maisonneue/MaisonNeue-DemiItalic', 600, italic);
+// Larish Neue
+@include font-face('LarishNeue', '/larishneue/larish_neue_semibold', 500, normal);
+@include font-face('LarishNeue', '/larishneue/larish_neue_semibold_italic', 500, italic);
+// Druk
+@include font-face('Druk', 'druk/Druk-Medium-Web', 500, normal);
+@include font-face('Druk', 'druk/Druk-MediumItalic-Web', 500, italic);
+@include font-face('Druk', 'druk/Druk-Bold-Web', 600, normal);
+@include font-face('Druk', 'druk/Druk-BoldItalic-Web', 600, italic);

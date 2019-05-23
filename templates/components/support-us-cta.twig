@@ -1,0 +1,17 @@
+<div class="support-us-cta">
+    <div class="support-us-cta__inner">
+        {% if options.support_us_headline %}
+            <h2 class="support-us-cta__head">
+                {{ options.support_us_headline | replace({' *': ' <strong>'}) |  replace({'*': '</strong>'}) }}
+            </h2>
+        {% endif %}
+
+        {% if options.support_us_page[0] %}
+            <p class="support-us-cta__btn">
+                {% set linked_page = TimberPost(options.support_us_page)[0] %}
+                <a class="btn" href="{{ linked_page.link }}">
+                    <span>{{ linked_page.title }}</span></a>
+            </p>
+        {% endif %}
+    </div>
+</div>

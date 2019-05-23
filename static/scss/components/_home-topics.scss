@@ -1,0 +1,112 @@
+// Home Topics
+.home-topics {
+  @include site-pad(horiz);
+  @include site-pad(bottom);
+  background-color: $c-beige-light;
+  position: relative;
+  z-index: 2;
+  @include mq($bp--md) {
+    margin-top: $space-xxl;
+  }
+}
+
+.home-topics__inner {
+  margin: 0 auto;
+  max-width: $layout-content;
+}
+
+.home-topics__head {
+  @include head-type;
+  padding-top: $site-padding--mobile;
+  margin-bottom: $space-xl;
+  @include mq($bp--md) {
+    padding-top: 0;
+    position: relative;
+    top: -0.5em;
+  }
+}
+
+.home-topics__list {
+  list-style: none;
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.home-topics__item {
+  @include block-spacing-lg(bottom);
+  position: relative;
+  width: 100%;
+  padding-left: 75px;
+  @include mq($bp--xs) {
+    @include grid-width(6, $gallery-gutters: true);
+
+  }
+  @include mq($bp--lg) {
+    @include grid-width(4, $gallery-gutters: true);
+
+  }
+}
+
+.home-topics__item-illo-link {
+  @include absolute(0 x x 0);
+  @include focus(imageWrap);
+  @include img-hover;
+  margin-top: -10px;
+}
+
+.home-topics__item-illo-figure {
+  @include size(60px);
+  border-radius: 50%;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.home-topics__item-illo {
+  //   @include size(60px);
+  //   object-fit: cover;
+}
+
+.home-topics__item-head {
+  @include block-spacing-sm(bottom);
+}
+
+.home-topics__item-head-link {
+  @include fluid-font(18px $bp--xs, 28px $bp--lg);
+  color: $c-coral;
+  font: 500 18px / 1.375 $f-larish;
+  transition: color $t-reg;
+  &:hover {
+    color: $c-blue-bright;
+  }
+}
+
+.home-topics__sublist {
+  list-style: none;
+}
+
+.home-topics__subitem {
+  margin: 0 0 $space-sm;
+}
+
+.home-topics__sublink {
+  @include arrow-small(right, after);
+  color: $c-blue-dark;
+  display: block;
+  font: 500 13px / 1.1 $f-maison;
+  transition: color $t-reg;
+  @include mq($bp--sm) {
+    font-size: 14px;
+  }
+  svg {
+    @include relative(3px x x 4px);
+    opacity: 0;
+  }
+  &:hover {
+    color: $c-blue-bright;
+    svg {
+      opacity: 1;
+    }
+  }
+}

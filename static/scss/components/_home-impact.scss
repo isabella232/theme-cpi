@@ -1,0 +1,124 @@
+// Impact pieces
+.home-impact {
+  @include site-pad(horiz);
+  position: relative;
+  z-index: 2;
+}
+
+.home-impact__inner {
+  margin: 0 auto;
+  max-width: $layout-content;
+}
+
+.home-impact__head {
+  @include head-type;
+}
+
+$bp--impact-items-split-1: $bp--lg;
+$bp--impact-items-split-2: 1300px;
+.home-impact__item {
+  @include block-spacing-lg(bottom);
+  @include mq($bp--impact-items-split-1) {
+    &--has-image {
+      align-items: flex-start;
+      display: flex;
+      justify-content: space-between;
+    }
+    &--reverse {
+      .home-impact__item-figure {
+        order: 1;
+      }
+      .home-impact__item-text {
+        order: 2;
+      }
+    }
+  }
+  @include mq($bp--impact-items-split-2) {
+    @include grid-width(10);
+    @include margin(x auto);
+  }
+}
+
+.home-impact__item--has-image .home-impact__item-text {
+  @include mq($bp--impact-items-split-1) {
+    order: 1;
+    @include grid-width(7.5);
+  }
+  @include mq($bp--impact-items-split-2) {
+    @include grid-width(6.5, 10);
+  }
+}
+
+.home-impact__item-figure {
+  float: right;
+  margin-left: $space-lg;
+  position: relative;
+  img {
+    @include size(80px);
+    object-fit: cover;
+  }
+  @include mq($bp--impact-items-split-1) {
+    @include grid-width(4);
+    float: none;
+    height: auto;
+    margin-left: 0;
+    order: 2;
+    img {
+      @include size(100%, auto);
+    }
+  }
+  @include mq($bp--impact-items-split-2) {
+    @include grid-width(3, 10);
+  }
+}
+
+.home-impact__item-new {
+  @include absolute(-8px x x -15px);
+  @include flag;
+  @include mq($bp--lg) {
+    @include absolute(-18px 15px x auto);
+  }
+}
+
+.home-impact__item-head-link {
+  display: block;
+  &:hover {
+    .home-impact__item-head {
+      color: $c-blue-bright;
+    }
+  }
+}
+
+.home-impact__item-head {
+  @include fluid-font(32px $bp--sm, 64px $bp--xl);
+  color: $c-blue-dark;
+  font: 500 32px / 1 $f-druk;
+  text-transform: uppercase;
+  transition: color $t-reg;
+  strong {
+    color: $c-coral;
+  }
+}
+
+.home-impact__item-overline {
+  @include block-spacing(bottom);
+  @include small-caps($c-coral);
+}
+
+.home-impact__item-dek {
+  @include block-spacing;
+  @include fluid-font(16px $bp--sm, 22px $bp--xl);
+  font: 400 16px / 1.3 $f-maison;
+  color: $c-gray-mid;
+  p {
+    margin: 0 0 1em;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.home-impact__read-link {
+  @include arrow-small('right', 'after', $c-blue-bright, $c-coral);
+  @include small-caps;
+}

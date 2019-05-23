@@ -1,0 +1,47 @@
+{% if pagination.total > 1 %}
+
+    {% set first_page = pagination.pages | first %}
+    {% set last_page = pagination.pages | last %}
+    {% set total_pages = last_page.name %}
+    {% set current_page = pagination.current %}
+
+    <div class="pagination">
+        <div class="pagination__inner">
+
+            <ul class="pagination__number-list">
+                {% for page in pagination.pages %}
+                    <li class="pagination__item">
+                        {% if page.link %}
+                            <a href="{{ page.link }}" class="pagination__number pagination__number--link {{ page.class }}">{{ page.title }}</a>
+                        {% else %}
+                            <span class="pagination__number {{ page.class }}">{{ page.title }}</span>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <ul class="pagination__controls">
+
+                <li class="pagination__back">
+                    <a href="{% if pagination.prev %}{{ pagination.prev.link }}{% else %}#{% endif %}" class="pagination__arrow pagination__arrow--prev{% if not pagination.prev %} pagination__arrow--disabled{% endif %}" {% if pagination.prev.link %} rel="prev" {% endif %}>
+                        <span class="aria-hidden">Previous Page</span>
+                        <svg>
+                            <use xlink:href="#page-arrow-left"></use>
+                        </svg>
+                    </a>
+                </li>
+
+                <li class="pagination__forward">
+                    <a href="{% if pagination.next.link %}{{ pagination.next.link }}{% else %}#{% endif %}" class="pagination__arrow pagination__arrow--next {% if not pagination.next.link %} pagination__arrow--disabled{% endif %}" {% if pagination.next.link %} rel="next" {% endif %}>
+                        <span class="aria-hidden">Next Page</span>
+                        <svg>
+                            <use xlink:href="#page-arrow-right"></use>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+
+{% endif %}

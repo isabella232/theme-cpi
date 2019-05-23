@@ -1,0 +1,31 @@
+<div class="tz-compact">
+    <div class="tz-compact__inner">
+
+        <div class="tz-compact__primary">
+            <a class="tz-compact__image-link" href="{{ post.link }}">
+                <figure class="tz-compact__image">
+                    {% if post.thumbnail %}
+                        <img src="{{ TimberImage(post.thumbnail).src | resize (100, 100) }}" alt="{{ post.thumbnail.alt }}"/>
+                    {% else %}
+                        <img src="{{ site.theme.path }}/static/img/default-tz-image.svg" alt="No image available"/>
+                    {% endif %}
+                </figure>
+            </a>
+            <h2 class="tz-compact__title">
+                <a class="tz-compact__title-link" href="{{ post.link }}">{{ post.title }}</a>
+            </h2>
+        </div>
+
+        <div class="tz-compact__meta">
+            <p class="tz-compact__date">{{ post.date | date('F j, Y')}}</p>
+
+            <p class="tz-compact__topic">
+                <a class="tz-compact__topic-link" href="{{ post.category.link }} ">
+                    {{ post.category }}
+                </a>
+            </p>
+
+        </div>
+
+    </div>
+</div>

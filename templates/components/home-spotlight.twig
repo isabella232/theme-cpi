@@ -1,0 +1,53 @@
+{% if page.home_spotlight_headline %}
+    {% set dest_url = null %}
+    {% if 'article' == page.home_spotlight_link_type and page.home_spotlight_linked_article %}
+        {% set the_linked_article = page.get_field('home_spotlight_linked_article')[0] %}
+        {% set dest_url = the_linked_article.link %}
+    {% endif %}
+    {% if 'url' == page.home_spotlight_link_type and page.home_spotlight_linked_url %}
+        {% set dest_url = page.home_spotlight_linked_url %}
+    {% endif %}
+
+    <section class="home-spotlight home-section" {% if page.home_spotlight_image %} style="background-image: url('{{ TimberImage( page.home_spotlight_image).src | resize (700, 900) }}');" {% endif %}>
+        <div class="home-spotlight__inner">
+
+            <div class="home-spotlight__text">
+
+                {% if page.home_spotlight_overline %}
+                    <h3 class="home-spotlight__overline">{{  page.home_spotlight_overline }}</h3>
+                {% endif %}
+
+                {% if dest_url %}
+                    <a class="home-spotlight__head-link" href="{{ dest_url }}">
+                    {% endif %}
+
+                    {% if page.home_spotlight_headline %}
+                        <h2 class="home-spotlight__head">{{  page.home_spotlight_headline }}</h2>
+                    {% endif %}
+
+                    {% if dest_url %}
+                    </a>
+                {% endif %}
+
+                {% if page.home_spotlight_dek %}
+                    <div class="home-spotlight__dek">
+                        {{  page.home_spotlight_dek }}
+                    </div>
+                {% endif %}
+
+                {% if dest_url %}
+                    <div class="home-spotlight__outro">
+                        <p>
+                            <a class="home-spotlight__read-link" href="{{ dest_url }}">Read
+                                <svg>
+                                    <use xlink:href="#arrow-small"></use>
+                                </svg>
+                            </a>
+                        </p>
+                    </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </section>
+{% endif %}

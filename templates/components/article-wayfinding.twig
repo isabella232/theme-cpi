@@ -1,0 +1,43 @@
+{% set topic = article.articleTopic ? article.articleTopic %}
+{% set articleIsPartOfSeries = topic.series and topic.name == term.name and article.seriesPlace %}
+
+{# ArticlesToList: either all the articles in the series or just the active article #}
+{% set articlesToList = articleIsPartOfSeries ? topic.featuredPosts : [article]%}
+
+{% if articlesToList %}
+    <nav class="article-wayfinding">
+        <div class="article-wayfinding__inner">
+
+            {% if articleIsPartOfSeries %}
+                <h3 class="article-wayfinding__head">
+                    <a href="{{ topic.link }}" class="article-wayfinding__head-link">{{ topic }}</a>
+                </h3>
+            {% endif %}
+
+            {% if articlesToList %}
+                <ul class="article-wayfinding__list">
+
+                    {% for item in articlesToList %}
+
+                        {# set active article bool (force true if not a series (and just showing current article)) #}
+
+                        {% set isCurrentArticle = topic ? item.seriesPlace == article.seriesPlace : true %}
+                        {% set seriesPrefix = articleIsPartOfSeries ? 'Part ' ~ item.seriesPlace ~ ': ' %}
+
+                        <li class="article-wayfinding__item {{isCurrentArticle ? ' article-wayfinding__item--current'}}">
+                            <a href="{{ item.link }}" class="article-wayfinding__link">
+                                <h4 class="article-wayfinding__title">{{ seriesPrefix }}{{ item.title }}</h4>
+                            </a>
+
+                            {% if isCurrentArticle %}
+                                <nav class="article-chapters"></nav>
+                            {% endif %}
+
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+        </div>
+    </nav>
+{% endif %}

@@ -1,0 +1,41 @@
+{% set shareTitle = article.title ~ ' | Center for Public Integrity' %}
+{% set shareTitleTwitter = article.title ~ ' via @Publici' %}
+<div class="article-share article-share--{{ classes }}">
+    <h3 class="article-share__head">Share this article</h3>
+    <ul class="article-share__list">
+        <li class="article-share__item article-share__item--facebook">
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{ article.link }}" class="article-share__link" target="_blank">
+                <span class="article-share__text">Share on Facebook</span>
+                <svg>
+                    <use xlink:href="#icon-facebook"></use>
+                </svg>
+            </a>
+        </li>
+        <li class="article-share__item article-share__item--twitter">
+            <a href="https://twitter.com/intent/tweet?url={{ article.link }}&amp;text={{ shareTitleTwitter }}" class="article-share__link" target="_blank">
+                <span class="article-share__text">Share on Twitter</span>
+                <svg>
+                    <use xlink:href="#icon-twitter"></use>
+                </svg>
+            </a>
+        </li>
+        <li class="article-share__item article-share__item--reddit">
+            <a href="https://www.reddit.com/submit?url={{ article.link }}&title={{ shareTitle }}" class="article-share__link" target="_blank">
+                <span class="article-share__text ">Share on Reddit</span>
+                <svg>
+                    <use xlink:href="#icon-reddit"></use>
+                </svg>
+            </a>
+        </li>
+
+        <li class="article-share__item article-share__item--email">
+            <a href="mailto:?subject={{ shareTitle }}&body={{ article.link }}" class="article-share__link">
+                <span class="article-share__text">Share by Email</span>
+                <svg>
+                    <use xlink:href="#icon-email"></use>
+                </svg>
+            </a>
+        </li>
+
+    </ul>
+</div>

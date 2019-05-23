@@ -1,0 +1,63 @@
+$bp--topics-nav-splits: $bp--md;
+.archive-topics-nav {
+  @include site-pad;
+  background-color: mix($c-blue-dark, $c-white, 95%);
+}
+
+.archive-topics-nav__inner {
+  margin: 0 auto;
+  max-width: $layout-content;
+}
+
+.archive-topics-nav--has-image .archive-topics-nav__inner {
+  @include mq($bp--topics-nav-splits) {
+    align-items: flex-start;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.archive-topics-nav__image {
+  width: 80px;
+  float: right;
+  margin: 0 0 $space-xl;
+  @include mq($bp--topics-nav-splits) {
+    @include grid-width(5);
+    float: none;
+    margin-bottom: 0;
+  }
+}
+
+.archive-topics-nav__text {
+  @include mq($bp--topics-nav-splits) {
+    @include grid-width(6);
+  }
+}
+
+.archive-topics-nav__head {
+  @include head-type;
+  color: $c-white;
+} // Subtopics
+.archive-topics-nav__list {
+  list-style: none;
+  margin: 0 0 $space-xl;
+  @include mq($bp--xs) {
+    column-count: 2;
+    column-gap: $layout-gutter-width;
+  }
+}
+
+.archive-topics-nav__item {
+  display: block;
+  margin: 0 0 $space-md;
+  position: relative;
+}
+
+.archive-topics-nav__link {
+  color: $c-white;
+  font: 500 14px / 1.2 $f-larish;
+  transition: color $t-reg;
+  &:hover {
+    color: $c-blue-bright;
+  }
+}

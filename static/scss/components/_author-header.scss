@@ -1,0 +1,240 @@
+// extend background into header area
+body.tax-author:not(.paged) {
+  &::before {
+    @include pseudo(0 0 x x);
+    height: 150px;
+    background-color: $c-mint-light;
+    pointer-events: none;
+    width: calc(100vw - #{$site-padding--mobile});
+    z-index: -1;
+    @include mq($bp--md) {
+      width: calc(100vw - #{$site-padding--md});
+    }
+    @include mq($bp--lg) {
+      width: calc(100vw - #{$site-padding--lg});
+    }
+    @include mq($bp--grid-reaches-max-width) {
+      width: calc(#{$layout-content} + (100vw - #{$layout-content}) / 2);
+    }
+  }
+}
+
+.author-header {
+  @include block-spacing-lg(bottom);
+  @include site-pad(horiz);
+  position: relative;
+  z-index: 2;
+  @include grid-lines(100%, absolute);
+  &::before {
+    @include pseudo(0 0 x x);
+    @include size(50vw, 100%);
+    background-color: $c-mint-light;
+    pointer-events: none;
+    z-index: -1;
+  }
+  .grid-lines {
+    top: -150px;
+    height: calc(100% + 150px);
+  }
+}
+
+.author-header__inner {
+  @include padding($space-lg x);
+  background-color: $c-mint-light;
+  margin: 0 auto;
+  max-width: $layout-content;
+  position: relative;
+  .author-header--no-image & {
+    padding-left: $space-md;
+    @include mq($bp--lg) {
+      padding-left: $space-xl;
+    }
+  }
+}
+
+.author-header__row {
+  @include block-spacing-md(bottom);
+  align-items: stretch;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.author-header__meta-job-org {
+  @include block-spacing-sm(bottom);
+}
+
+.author-header__row {
+  @include mq($bp--author-header-splits) {
+    display: flex;
+  }
+}
+
+.author-header__text {
+  @include mq($bp--author-header-splits) {
+    order: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+    margin: 0 0 $space-md 0;
+  }
+}
+
+.author-header__name {
+  @include fluid-font(20px $bp--xs, 56px $bp--lg);
+  color: $c-blue-dark;
+  font: 20px / 1.1 $f-larish; //   margin: 0 0 $space-md;
+  @include block-spacing-sm(bottom);
+}
+
+.author-header__jobtitle,
+.author-header__organization {
+  @include fluid-font(14px $bp--xs, 24px $bp--lg);
+  font: 500 14px / 1.2 $f-maison;
+  letter-spacing: 0.3px;
+  color: $c-blue-dark;
+  margin: 0 0 $space-xs 0;
+}
+
+.author-header__organization {
+  color: $c-gray-mid-2;
+}
+
+.author-header__bio {
+  @include body-type;
+  padding-left: $space-lg;
+  @include mq($bp--author-header-splits) {
+    @include grid-width(10);
+    @include grid-width(1, $gutter-count: 1, $property: 'margin-left');
+    padding-left: 0;
+  }
+} // Meta
+.author-header__figure {
+  @include grid-width(3);
+  @include grid-width(1, $gutter-count: 2, $property: 'margin-right');
+}
+
+.author-header__img {
+  display: block;
+  @include size(120px);
+  width: 100%;
+  height: auto;
+  display: block;
+  position: relative;
+  @include mq($bp--author-header-splits) {
+    width: 100%;
+    height: auto;
+    margin: 0 0 $space-md 0;
+    order: 1
+  }
+}
+
+.author-header__text {
+  @include grid-width(8);
+  order: 2;
+}
+
+.author-header__meta {
+  width: 100%;
+  @include mq($bp--md) {
+    @include grid-width(7, $context-col-count: 8);
+  }
+}
+
+.author-header__meta-list {
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.author-header__meta-item {
+  margin: 0 $space-xs 0 0;
+  @include mq($bp--lg) {
+    marign-right: $space-sm;
+  }
+}
+
+.author-header__meta-link {
+  @include size(30px);
+  align-items: center;
+  color: $c-blue-bright;
+  display: flex;
+  border: 1px solid $c-gray-mid-3;
+  border-radius: 50%;
+  justify-content: center;
+  position: relative;
+  transition: all $t-reg;
+  &[disabled] {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  @include mq($bp--lg) {
+    @include size(45px);
+  }
+  svg {
+    @include size(12px);
+    fill: $c-blue-dark;
+    @include mq($bp--lg) {
+      @include size(21px);
+    }
+  }
+  &:hover {
+    border-color: $c-blue-bright;
+    background-color: $c-blue-bright;
+    svg {
+      fill: $c-white;
+    }
+  }
+}
+
+// PGP button
+.author-header__meta-item--pgp {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.author-header__pgp-btn {
+  align-items: center;
+  color: $c-blue-dark;
+  display: flex;
+  fill: $c-blue-dark;
+  font: 600 11px / 1.2 $f-maison;
+  justify-content: flex-start;
+  svg {
+    display: none;
+  }
+  &.copy-to-clipboard--success {
+    color: $c-coral;
+    svg {
+      fill: $c-coral;
+    }
+  }
+  @include mq($bp--sm) {
+    font-size: 13px;
+    svg {
+      @include size(21px);
+      display: block;
+      fill: $c-blue-dark;
+      margin-right: $space-sm;
+      transition: fill $t-reg;
+    }
+  }
+}
+
+.author-header__item-text,
+.author-header__item-pgp-content {
+  @include hide;
+}
+
+.author-header__item-feedback {
+  @include absolute(50% x x x);
+  @include small-caps($c-blue-bright);
+  left: calc(100% + 15px);
+  margin-top: -0.5em;
+  min-width: 120px;
+  text-align: left;
+}
+
+.author-header__pgp {
+  margin: 0;
+}

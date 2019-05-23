@@ -1,0 +1,127 @@
+.member-form {
+  background-color: $c-mint-light;
+  border-bottom: 1px solid $c-blue-bright;
+  border-top: 1px solid $c-blue-bright;
+  padding: $space-lg;
+  margin-left: -#{$site-padding--mobile};
+  margin-right: -#{$site-padding--mobile};
+  input[type=number] {
+    @include padding($space-md);
+    background-color: $c-white;
+  }
+  input[type=radio] {
+    @include hide;
+  }
+  label {
+    cursor: pointer;
+  }
+  @include mq($bp--xs) {
+    @include margin(x 0)
+  }
+  @include mq($bp--lg) {
+    @include padding($space-xxl)
+  }
+}
+
+.member-form__intro {
+  @include block-spacing-sm(bottom);
+  @include fluid-font(18px $bp--xs, 24px $bp--xl);
+  color: $c-blue-dark;
+  font: 18px / 1.4 $f-larish;
+}
+
+.member-form__controls {
+  position: relative;
+  margin-bottom: $space-lg;
+}
+
+.member-form__group {
+  @include block-spacing-sm(bottom);
+}
+
+.member-form__group--number {
+  width: 100%;
+  position: relative;
+  @include mq($bp--sm) {
+    width: 110px;
+  }
+  span {
+    @include absolute(50% x x $space-sm);
+    color: $c-blue-dark;
+    margin-top: -10px;
+    font: 400 20px / 1 $f-larish;
+    z-index: 2;
+  }
+  input[type=number] {
+    font: 400 20px / 1 $f-larish;
+    padding-left: $space-lg;
+  }
+}
+
+// Radios
+.member-form__set--radios {
+  align-items: flex-start;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.member-form__group--radio {
+  margin: 0 $space-md 0 0;
+  span {
+    padding: 3px 0 $space-xs 0;
+    font: 500 18px / 1 $f-druk;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    @include mq($bp--lg) {
+      font-size: 20px;
+    }
+  }
+  input[type=radio]~span {
+    color: $c-blue-dark;
+    border-bottom: 6px solid transparent;
+    transition: all $t-reg;
+  }
+  input[type=radio]:checked~span {
+    color: $c-blue-bright;
+    border-color: $c-blue-bright;
+  }
+  @include mq($bp--xl) {
+    margin-right: $space-lg;
+  }
+}
+
+div.member-form__radio-help {
+  @include block-spacing-md(bottom);
+  strong {
+    font-weight: 600;
+  }
+}
+
+// submit
+.member-form__submit {
+  width: 200px;
+  &:focus {
+    background-color: $c-coral;
+    color: $c-white;
+    outline: 0;
+  }
+}
+
+@include mq($bp--sm) {
+  .member-form__controls {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  .member-form__set--number {
+    flex-shrink: 1;
+    flex-grow: 1;
+    margin-bottom: 0;
+    margin-right: $space-xl;
+  }
+  .member-form__set--radios {
+    padding-top: $space-sm;
+    width: 70%;
+  }
+}

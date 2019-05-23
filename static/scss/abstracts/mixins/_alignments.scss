@@ -1,0 +1,122 @@
+@mixin align-left {
+    @include mq($bp--md) {
+        float: left;
+        margin-right: $space-lg;
+        margin-top: 0;
+        width: 50%;
+    }
+}
+
+@mixin align-right {
+    @include mq($bp--md) {
+        float: right;
+        margin-left: $space-lg;
+        margin-top: 0;
+        width: 50%;
+    }
+}
+
+$indent-three-col: grid-cols-to-px-width(3, $gutter-count: 3);
+
+@mixin align-full($table: false) {
+    max-width: 100vw;
+    position: relative;
+    z-index: 10;
+
+    @if ($table==true) {
+        // @include site-pad(horiz);
+        width: calc(100vw - #{2* $site-padding--mobile});
+
+        @include mq($bp--md) {
+            width: calc(100vw - #{2* $site-padding--md});
+        }
+
+        @include mq($bp--lg) {
+            @include padding(x $site-padding--md);
+
+        }
+
+    }
+
+    @if ($table==false) {
+        width: calc(100vw + 4px);
+
+        margin-left: -#{$site-padding--mobile};
+        margin-right: -#{$site-padding--mobile};
+
+        @include mq($bp--md) {
+            margin-left: -#{$site-padding--md};
+            margin-right: -#{$site-padding--md};
+        }
+    }
+
+    @include mq($bp--article-split-1) {
+        margin-left: -36.35vw;
+        margin-right: auto;
+    }
+
+    @include mq($bp--article-split-2) {
+        margin-left: -30vw;
+        margin-right: auto;
+    }
+
+    @include mq($bp--grid-reaches-max-width) {
+        margin-left: calc(-#{$indent-three-col} - ((100vw - #{$layout-content}) / 2));
+        // margin-left: -#{$indent-three-col};
+        margin-right: auto;
+    }
+
+    figcaption {
+        background-color: $c-white;
+        margin-left: $space-lg;
+        margin-right: $space-lg;
+        padding-bottom: $space-md;
+        position: relative;
+
+        // cover gap betweeen image and caption
+        &:after {
+            @include pseudo(-20px x x 0);
+            @include size(100%, 30px);
+            z-index: -1;
+            background-color: $c-white;
+        }
+    }
+
+    img {
+        width: 100% !important;
+    }
+}
+
+// Wordpress outputs differing markup for images, video, and other embeds. The align-none mixin helps achieve the same layout whether or not the figcaption selector is a sibling or descendent of the selector where it's been applied.
+$hang-img-margin: grid-cols-to-pct-width(2, 7, $gutter-count: 2);
+$hang-img-width: grid-cols-to-pct-width(2, 7);
+$hang-video-margin: grid-cols-to-pct-width(2, 9, $gutter-count: 2);
+$hang-video-width: grid-cols-to-pct-width(2, 9);
+
+@mixin align-none($img: true) {
+    $selector: if($img, '~ figcaption', 'figcaption');
+    $margin-right: if($img, -#{$hang-img-margin}, 0);
+    $width: if($img, $hang-img-width, $hang-video-width);
+
+    @include mq($bp--article-split-2) {
+        @include grid-width(9, 7);
+        clear: both;
+        max-width: none;
+
+        #{$selector} {
+            width: $width;
+            margin-right: $margin-right;
+            padding-top: 34px;
+            padding-left: 0;
+            float: right;
+
+            &::before {
+                top: 0;
+            }
+        }
+
+        // figcaption
+    }
+
+    // mq
+}

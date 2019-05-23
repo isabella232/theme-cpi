@@ -1,0 +1,24 @@
+<section class="big-newsletter-signup">
+
+    {% if options.big_newsletter_signup_image %}
+        <div class="big-newsletter-signup__image" style="background-image:url('{{TimberImage( options.big_newsletter_signup_image).src | resize (800, 800, 'center') }}');"></div>
+    {% endif %}
+
+    <div class="big-newsletter-signup__inner">
+        <div class="big-newsletter-signup__text">
+
+            {% if options.big_newsletter_signup_head %}
+                <h3 class="big-newsletter-signup__head">{{ options.big_newsletter_signup_head }}</h3>
+            {% endif %}
+
+            {% if options.big_newsletter_signup_body %}
+                <p class="big-newsletter-signup__p">{{ options.big_newsletter_signup_body }}</p>
+            {% endif %}
+
+        </div>
+
+        <div class="big-newsletter-signup__form">
+            {% include "components/mailchimp-form.twig" %}
+        </div>
+    </div>
+</section>

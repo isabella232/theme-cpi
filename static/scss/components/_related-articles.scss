@@ -1,0 +1,110 @@
+// the tease
+$related-outdent: grid-cols-to-pct-width(2, 7, $gutter-count: 2);
+.related-articles {
+  @include block-spacing-lg(bottom);
+  border-top: 8px solid $c-blue-bright;
+  border-bottom: 2px solid $c-blue-bright;
+  padding-top: $space-md;
+  @include mq($bp--md) {
+    @include grid-width(5);
+    border-bottom: 0;
+    border-left: 8px solid $c-blue-bright;
+    padding-left: $space-lg;
+    margin-left: $layout-gutter-pct;
+    float: right;
+  }
+  @include mq($bp--article-split-1) {
+    @include grid-width(4, $context-col-count: 8);
+    border-width: 12px;
+    padding-top: $space-xl;
+  }
+  @include mq($bp--article-split-2) {
+    @include grid-width(4, $context-col-count: 7);
+    margin-right: -#{$related-outdent};
+    padding-left: $space-xl;
+  }
+}
+
+h3.related-articles__head {
+  margin-top: 0;
+  @include block-spacing-sm(bottom);
+  @include fluid-font(18px $bp--xxs, 24px $bp--xl);
+  color: $c-blue-bright;
+  font: 500 18px / 1.2 $f-larish;
+  padding: 0;
+}
+
+ul.related-articles__items {
+  margin: 0;
+  padding: 0;
+}
+
+li.tz-related {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 0 0 $space-sm !important;
+  padding: 0 !important;
+  &:before {
+    display: none !important;
+  }
+}
+
+h4.tz-related__topic {
+  margin: 0 0 $space-sm !important;
+  padding: 0 !important;
+}
+
+a.tz-related__topic-link {
+  @include small-caps($c-coral, $c-blue-bright);
+  background: none !important;
+}
+
+h3.tz-related__title {
+  line-height: 1.2;
+  margin: 0 0 $space-xs;
+  padding: 0 !important;
+}
+
+a.tz-related__title-link {
+  @include fluid-font(16px $bp--xxs, 18px $bp--xl);
+  font: 500 16px / 1.2 $f-larish;
+  color: $c-blue-dark;
+  display: block;
+  transition: color $t-reg;
+  background: none !important;
+  &:hover {
+    color: $c-blue-bright;
+  }
+}
+
+.tz-related__text {
+  padding-right: $space-sm;
+  @include mq($bp--lg) {
+    padding-right: $space-md;
+  }
+}
+
+.tz-related__image {
+  @include size(50px);
+  flex-shrink: 0;
+  @include mq($bp--lg) {
+    @include size(70px);
+  }
+}
+
+.tz-related__image-link {
+  display: block;
+  img {
+    @include img-hover;
+    display: block;
+  }
+}
+
+.tz-related__read {}
+
+a.tz-related__read-link {
+  @include arrow-small(right, after, $c-blue-bright, $c-coral);
+  @include small-caps;
+  background: none !important;
+}

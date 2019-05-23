@@ -1,0 +1,78 @@
+{
+    "key": "group_5bb2226eb01f4",
+    "title": "Article Topper",
+    "fields": [
+        {
+            "key": "field_5bb223c162c69",
+            "label": "Topper Style",
+            "name": "topper_style",
+            "type": "select",
+            "instructions": "Choose a style for the article's topper. Articles without an attached Featured Image will always have the No-Image style applied.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "light": "Image, Light Background",
+                "dark": "Image, Dark Background",
+                "big": "Image, Full-Width",
+                "no-image": "No Image, Light Background"
+            },
+            "default_value": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "array",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_5bdb45692482d",
+            "label": "Topper tucked under logo?",
+            "name": "topper_is_tucked",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5bb223c162c69",
+                        "operator": "!=",
+                        "value": "no-image"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1541097221
+}

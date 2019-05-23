@@ -1,0 +1,43 @@
+// Home Spotlight
+.support-us-cta {
+  @include site-pad();
+  background-color: $c-mint-light;
+  position: relative;
+  z-index: 2;
+}
+
+.support-us-cta__inner {
+  margin: 0 auto;
+  max-width: $layout-content;
+  @include mq($bp--lg) {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.support-us-cta__head {
+  @include fluid-font(24px $bp--xs, 42px $bp--lg);
+  color: $c-blue-dark;
+  font: 24px / 1.2 $f-larish;
+  margin: 0 0 $space-lg;
+  strong {
+    color: $c-blue-bright;
+  }
+  @include mq($bp--lg) {
+    @include grid-width(9);
+    margin-bottom: 0;
+  }
+}
+
+.support-us-cta__btn {
+  flex-shrink: 0;
+  .btn {
+    width: 200px;
+    white-space: nowrap;
+    &:focus {
+      background-color: $c-coral;
+      color: $c-white;
+    }
+  }
+}

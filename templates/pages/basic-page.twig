@@ -1,0 +1,75 @@
+{% extends "layouts/base.twig" %}
+
+{% block pageBody %}
+
+    <div class="page-content">
+        <div class="page-content__inner">
+            <div class="page-content__row">
+
+                {% if pageDirectory %}
+                    <aside class="page-sidebar">
+                        <h2 class="page-sidebar__head">{{ pageSidebarHead }}</h2>
+                        <ul class="page-sidebar__list">
+                            {% for pageItem in pageDirectory %}
+                                {% set isActive = post.id == pageItem.id %}
+                                <li class="page-sidebar__item">
+                                    <a class="page-sidebar__link{{ isActive ? ' page-sidebar__link--active' }} " href="{{ pageItem.link }}">{{ pageItem.title }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </aside>
+                {% endif %}
+
+                <div class="page-main gutenberg-content gutenberg-content--page">
+
+                    {# Special fields for the About Us Landing page #}
+                    {% if post.about_intro_big or post.about_intro_image or post.about_intro_text or post.about_content%}
+                        <section class="about-intro">
+                            <h1 class="about-intro__head">{{ post.title}}</h1>
+
+                            {% if post.about_intro_big %}
+                                <div class="about-intro__big-paragraph">
+                                    <div class="basic-text">
+                                        {{ post.get_field('about_intro_big') }}
+                                    </div>
+                                </div>
+                            {% endif %}
+
+                            <div class="about-intro__secondary">
+
+                                {% if post.about_intro_image %}
+                                    <figure class="about-intro__image">
+                                        <img src="{{ TimberImage(post.about_intro_image).src | resize (800, 600) }}" alt="{{ post.about_intro_image.alt }}"/>
+                                    </figure>
+                                {% endif %}
+
+                                {% if post.about_intro_text %}
+                                    <div class="about-intro__intro-text basic-text">
+                                        {{ post.get_field('about_intro_text') }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </section>
+
+                        {% if post.about_content %}
+                            <div class="about-content basic-text">
+                                {{ post.get_field('about_content') }}
+                            </div>
+                        {% endif %}
+                    {% endif %}
+
+                    {% if post.content %}
+                        <h1 class="page-title">{{ post.title }}</h1>
+                        <div class="basic-text js-hang-punc">
+                            {{ post.content }}
+                        </div>
+                    {% endif %}
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    {% include "components/big-newsletter-signup.twig" %}
+
+{% endblock %}

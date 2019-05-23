@@ -1,0 +1,26 @@
+{% if home_partners_logos %}
+
+    <section class="home-partners home-section">
+        <div class="home-partners__inner">
+
+            <div class="home-partners__text">
+                <h2 class="home-partners__head">Our Partners</h2>
+                {% if page.home_partners_text %}
+                    <div class="home-partners__body">
+                        {{ page.home_partners_text }}
+                    </div>
+                {% endif %}
+
+            </div>
+
+            <div class="home-partners__logos">
+                {% for logo in home_partners_logos %}
+                    <img src="{{ logo.src }}" alt="{{ logo.alt }}"/>
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </section>
+
+{% endif %}

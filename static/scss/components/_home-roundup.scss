@@ -1,0 +1,41 @@
+// Editors Roundup
+.home-roundup {
+  @include site-pad(horiz);
+  position: relative;
+  z-index: 2;
+}
+
+.home-roundup__inner {
+  margin: 0 auto;
+  max-width: $layout-content;
+}
+
+.home-roundup__head {
+  @include head-type;
+}
+
+.home-roundup__list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  @include mq($bp--xl) {
+    @include grid-width(10);
+    @include grid-width(1, $gutter-count: 1, $property: 'margin-left');
+  }
+}
+
+.home-roundup__list>* {
+  @include block-spacing-md('bottom');
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+  @include mq($bp--md) {
+    @include grid-width(6);
+    padding-right: $space-md;
+  }
+  @include mq($bp--xl) {
+    @include grid-width(5, 10);
+  }
+}

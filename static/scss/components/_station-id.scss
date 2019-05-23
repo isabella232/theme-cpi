@@ -1,0 +1,114 @@
+.station-id {
+    @include site-pad(vert);
+    margin-top: -1em;
+    background-color: $c-white;
+    position: relative;
+    z-index: 2;
+
+    @include mq($bp--sm) {
+        justify-content: space-between;
+        align-items: flex-start;
+        display: flex;
+
+    }
+}
+
+h4.station-id__head {
+    @include small-caps($c-coral);
+    margin: 0 0 $space-sm;
+}
+
+.station-id__text {
+    @include fluid-font(16px $bp--xxs, 32px $bp--xxl);
+    color: $c-blue-dark;
+    font: 300 16px / 1.25 $f-larish;
+    margin-top: -1.75em;
+
+    @include mq($bp--sm) {
+        @include grid-width(10);
+    }
+
+    @include mq($bp--lg) {
+        margin-top: -1.4em
+    }
+}
+
+p.station-id__outro {
+    margin: 0;
+}
+
+a.station-id__outro-link {
+    @include arrow-small('right', 'after', $c-blue-bright, $c-coral);
+    @include small-caps($c-blue-bright, $c-coral);
+    background: none;
+}
+
+.station-id__glyph svg {
+    @include size(30px);
+    flex-shrink: 0;
+
+    @include mq($bp--sm) {
+        @include size(45px);
+    }
+
+    @include mq($bp--md) {
+        @include size(60px);
+    }
+
+    @include mq($bp--article-split-1) {
+        @include size(75px);
+    }
+}
+
+.station-id__glyph {
+    margin-top: 20px;
+
+    @include mq($bp--sm) {
+        @include grid-width(2);
+        margin-top: 0;
+    }
+}
+
+.gutenberg-content--article {
+    $station-id-outdent--article-split-1: grid-cols-to-pct-width(1, 8, $gutter-count: 1);
+
+    @include mq($bp--article-split-1) {
+        .station-id {
+            margin-left: -#{$station-id-outdent--article-split-1};
+        }
+
+        .station-id__glyph {
+            @include grid-width(2, $context-col-count: 9);
+
+            svg {
+                margin-left: -37.5px;
+                @include relative(x x x 44%);
+            }
+        }
+
+        .station-id__text {
+            @include grid-width(7, $context-col-count: 9);
+        }
+    }
+
+    $station-id-outdent--article-split-2: grid-cols-to-pct-width(1, 7, $gutter-count: 1);
+
+    @include mq($bp--article-split-2) {
+        .station-id {
+            @include grid-width(10, $context-col-count: 7);
+            margin-left: -#{$station-id-outdent--article-split-2};
+        }
+
+        .station-id__glyph {
+            @include grid-width(2, $context-col-count: 10);
+
+            svg {
+                left: 45%;
+            }
+        }
+
+        .station-id__text {
+            @include grid-width(8, $context-col-count: 10);
+        }
+    }
+}

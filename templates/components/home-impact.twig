@@ -1,0 +1,74 @@
+{% if home_impact %}
+
+    <section class="home-impact home-section">
+        <div class="home-impact__inner">
+            <h2 class="home-impact__head">Our Impact</h2>
+            {% for item in home_impact %}
+                {% set dest_url = null %}
+                {% if 'article' == item.link_type and item.linked_article %}
+                    {% set the_linked_article = item.linked_article[0] %}
+                    {% set dest_url = the_linked_article.link %}
+                {% endif %}
+                {% if 'url' == item.link_type and item.linked_url %}
+                    {% set dest_url = item.linked_url %}
+                {% endif %}
+
+                <div class="home-impact__item{{item.illustration ? ' home-impact__item--has-image': ''}}{{ loop.index is divisible by(2) ? ' home-impact__item--reverse' : ''}}">
+
+                    {% if item.illustration %}
+                        <figure class="home-impact__item-figure">
+                            {% if item.flag %}
+                                <h4 class="home-impact__item-new">{{ item.flag }}</h4>
+                            {% endif %}
+
+                            {% if dest_url %}
+                                <a href="{{ dest_url }}">
+                                {% endif %}
+                                <img src="{{ TimberImage(item.illustration).src | resize (350, 500) }}" alt="{{ item.illustration.alt }}"/>
+                                {% if dest_url %}
+                                </a>
+                            {% endif %}
+                        </figure>
+                    {% endif %}
+
+                    <div class="home-impact__item-text">
+
+                        {% if item.overline %}
+                            <h3 class="home-impact__item-overline">{{ item.overline }}</h3>
+                        {% endif %}
+
+                        {% if item.headline %}
+                            {% if dest_url %}
+                                <a class="home-impact__item-head-link" href="{{ dest_url }}">
+                                {% endif %}
+                                <h2 class="home-impact__item-head">{{ item.headline | replace({' *': ' <strong>'}) |  replace({'*': '</strong>'}) }}</h2>
+                                {% if dest_url %}
+                                </a>
+                            {% endif %}
+                        {% endif %}
+
+                        {% if item.dek %}
+                            <div class="home-impact__item-dek">
+                                {{ item.dek }}
+                            </div>
+                        {% endif %}
+
+                        {% if dest_url %}
+                            <div class="home-impact__outro">
+                                <p>
+                                    <a class="home-impact__read-link" href="{{ dest_url }}">Read
+                                        <svg>
+                                            <use xlink:href="#arrow-small"></use>
+                                        </svg>
+                                    </a>
+                                </p>
+                            </div>
+                        {% endif %}
+
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+</section>

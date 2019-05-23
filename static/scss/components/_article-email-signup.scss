@@ -1,0 +1,86 @@
+.article-email-signup {
+  @include block-spacing-md();
+  background-color: $c-beige-light;
+  padding: $space-lg;
+  position: relative;
+  @include mq($bp--article-split-2) {
+    padding: $space-xl;
+    @include grid-width(9, $context-col-count: 7);
+  }
+}
+
+.article-email-signup__logo {
+  @include absolute(-5px x x 10px);
+  @include size(130px);
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.05;
+}
+
+.article-email-signup__inner {
+  position: relative;
+  z-index: 2;
+}
+
+.article-email-signup__row {
+  @include mq($bp--md) {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    >* {
+      @include grid-width(6);
+    }
+  }
+}
+
+h4.article-email-signup__head {
+  color: $c-coral;
+  margin: 0 0 $space-md !important;
+  padding-top: 0 !important;
+  font: 500 18px / 1.2 $f-larish !important;
+  @include mq($bp--md) {
+    font-size: 24px !important;
+  }
+  @include mq($bp--lg) {
+    font-size: 28px !important;
+    margin-bottom: $space-lg;
+  }
+  @include mq($bp--xl) {
+    font-size: 35px !important;
+    margin-bottom: $space-xl;
+  }
+}
+
+.article-email-signup__text {
+  margin: 0 0 $space-lg;
+  @include mq($bp--md) {
+    margin: 0 !important;
+  }
+}
+
+.article-email-signup__form {
+  position: relative;
+  input:not([type=submit]):not([type=file]) {
+    border: 0;
+    border-bottom: 2px solid $c-blue-bright;
+    color: $c-blue-dark;
+    transition: all $t-reg;
+    &:focus {
+      border: 0;
+      border-bottom: 2px solid $c-coral;
+    }
+    &::placeholder {
+      color: rgba($c-gray, 0.5);
+    }
+  }
+  label {
+    @include hide(true);
+  }
+  .btn {
+    @include absolute(3px 0 x x);
+    transition: all $t-fast;
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+}

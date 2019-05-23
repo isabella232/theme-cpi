@@ -1,0 +1,20 @@
+@mixin pullquote-type {
+  &.hang-punc-small {
+    text-indent: -0.45em;
+  }
+  &.hang-punc-medium {
+    text-indent: -0.77em;
+  }
+  &.hang-punc-large {
+    text-indent: -1.2em;
+  }
+  p {
+    @include fluid-font(24px $bp--xxs, 45px $bp--xl);
+    color: $c-blue-bright;
+    font: 500 24px / 1.1 $f-larish;
+    margin: 0;
+  }
+  cite {
+    @include cite-type;
+  }
+}

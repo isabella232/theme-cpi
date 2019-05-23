@@ -1,0 +1,32 @@
+@mixin focus-outline($color: $c-blue-bright) {
+  outline: 3px solid rgba($color, 0.2);
+}
+
+@mixin focus-shadow($color: $c-blue-bright) {
+  box-shadow: 0 0 0 3px rgba($color, 0.2);
+}
+
+@mixin focus($type: 'default') {
+  @if $type=='default' {
+    outline: 0;
+    &:focus {
+      @include focus-outline;
+    }
+  }
+  @elseif $type=='imageWrap' {
+    outline: 0;
+    &:focus {
+      outline: 0;
+      figure {
+        @include focus-shadow;
+        opacity: 0.9;
+      }
+    }
+  }
+  @elseif $type=='textField' {
+    outline: 0;
+    &:focus {
+      border-color: $c-blue-bright;
+    }
+  }
+}

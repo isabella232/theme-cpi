@@ -1,0 +1,84 @@
+{
+    "key": "group_5bec86e13b2bc",
+    "title": "Related Articles",
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/relatedarticles"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1542334582,
+    "fields": [
+        {
+            "key": "field_5bec86eff7f53",
+            "label": "Header Text",
+            "name": "header_text",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Related Articles",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5bec8713f7f54",
+            "label": "Chosen Articles",
+            "name": "chosen_articles",
+            "type": "repeater",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 1,
+            "max": 4,
+            "layout": "table",
+            "button_label": "Add an article",
+            "sub_fields": [
+                {
+                    "key": "field_5bec8760f7f55",
+                    "label": "Related Article",
+                    "name": "related_article",
+                    "type": "post_object",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": ["post"],
+                    "taxonomy": "",
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "return_format": "object",
+                    "ui": 1
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,20 @@
+<aside class="article-email-signup">
+
+    <div class="article-email-signup__inner">
+
+        {% if email_signup_headline %}
+            <h4 class="article-email-signup__head">{{ email_signup_headline }}</h3>
+        {% endif %}
+
+        <div class="article-email-signup__row">
+            {% if email_signup_text %}
+                <p class="article-email-signup__text">{{ email_signup_text }}</p>
+            {% endif %}
+
+            <div class="article-email-signup__form">
+                {% include 'components/mailchimp-form.twig' %}
+            </div>
+
+        </div>
+    </div>
+</aside>

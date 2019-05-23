@@ -1,0 +1,23 @@
+{% if options.mini_profile_heading %}
+
+    <section class="mini-profile">
+        <div class="mini-profile__inner">
+            <h3 class="mini-profile__head">
+                {{ options.mini_profile_heading | replace({' *' : ' <strong>'}) | replace({'*' : '</strong>'}) }}
+            </h3>
+
+            {% set linked_page = TimberPost(options.mini_profile_linked_page)[0] %}
+
+            {% if linked_page %}
+                <p class="mini-profile__outro">
+                    <a href="{{ linked_page.link }}" class="mini-profile__outro-link">{{ linked_page.title }}
+                        <svg>
+                            <use xlink:href="#arrow-small"></use>
+                        </svg>
+                    </a>
+                </p>
+            {% endif %}
+        </div>
+    </section>
+
+{% endif %}

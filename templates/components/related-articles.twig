@@ -1,0 +1,49 @@
+{% if relatedArticles is not empty %}
+
+    <div class="related-articles">
+        <div class="related-articles__inner">
+            {% if relatedArticlesHeader %}
+
+                <h3 class="related-articles__head">{{ relatedArticlesHeader }}</h3>
+            {% endif %}
+            <ul class="related-articles__items">
+                {% for article in relatedArticles %}
+                    <li class="tz-related">
+
+                        <div class="tz-related__text">
+
+                            {% if article.articleTopic %}
+                                <h4 class="tz-related__topic">
+                                    <a class="tz-related__topic-link" href="{{ article.articleTopic.link }}">{{ article.articleTopic.name }}</a>
+                                </h4>
+                            {% endif %}
+
+                            <h3 class="tz-related__title">
+                                <a class="tz-related__title-link" href="{{ article.link }}">{{ article.title }}</a>
+                            </h3>
+
+                            <p class="tz-related__read">
+                                <a class="tz-related__read-link" href="{{ article.link }}">Read
+                                    <svg>
+                                        <use xlink:href="#arrow-small"></use>
+                                    </svg>
+                                </a>
+                            </p>
+                        </div>
+
+                        <div class="tz-related__image">
+                            <a class="tz-related__image-link" href="{{ article.link }}">
+                                {% if article.getThumbnail.src %}
+                                    <img src="{{ article.getThumbnail.src | resize (100, 100) }}" alt="{{ article.getThumbnail.alt }}"/>
+                                {% else %}
+                                    <img src="{{ site.theme.path }}/static/img/default-tz-image.svg" alt="No image available"/>
+                                {% endif %}
+                            </a>
+                        </div>
+
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endif %}

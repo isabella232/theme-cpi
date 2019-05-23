@@ -1,0 +1,63 @@
+{% set latest = pagination.current == 1 ? posts | slice(0, 4) : 0 %}
+{% set more = pagination.current == 1 ? posts | slice(4) : 0 %}
+
+<div class="archive-content">
+    <div class="archive-content__inner">
+        <h3 class="archive-main__head">Latest</h3>
+
+        <ul class="tz-roundup-list">
+            {% for post in latest %}
+                <li>{% include "components/tz-roundup.twig" with {'post' : post, 'dateNotTopic': true }%}</li>
+            {% endfor %}
+        </ul>
+
+        {% if featured_posts %}
+            <h2 class="archive-main__head">Featured</h2>
+
+            <section class="archive-section">
+                <div class="archive-featured-list">
+                    {% for post in featured_posts %}
+                        {% set articleTopperStyle = post.topper_style ? post.topper_style : 'light' %}
+
+                        {% include "components/article-topper.twig" with {'article' : post, 'articleTopperContext': 'tease'} %}
+                    {% endfor %}
+                </div>
+            </section>
+        {% endif %}
+    </div>
+</div>
+
+<section class="archive-newsletter">
+    {% include "components/big-newsletter-signup.twig" %}
+</section>
+
+<div class="archive-content">
+    <div class="archive-content__inner">
+
+        {% if more %}
+            <h2 class="archive-main__head tz-simple-list-header">More in
+                {{ term.title }}</h2>
+
+            <ul class="tz-simple-list">
+                {% for post in more %}
+                    <li>{% include "components/tz-simple.twig" with {'dateNotTopic': true} %}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        {% if pagination.total > 1 %}
+            <p class="archive-main__all-btn">
+                <a href="{{ pagination.pages[1].link }}" class="btn">More</a>
+            </p>
+        {% endif %}
+
+        {% include "components/mini-profile.twig" %}
+
+    </div>
+</div>
+
+{% if term.featuredAuthors %}
+    {% include "components/archive-topics-featured-authors.twig" with {'authors' : term.featuredAuthors }%}
+{% endif %}
+
+{% include "components/archive-topics-nav.twig" %}

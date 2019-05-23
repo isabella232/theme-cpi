@@ -1,0 +1,37 @@
+.archive-compact-header {
+  @include site-pad(horiz);
+  padding-top: 50px;
+}
+
+.archive-compact-header__title {
+  @include fluid-font(24px $bp--xs, 56px $bp--lg) color: $c-blue-dark;
+  font: 500 24px /1 $f-larish;
+  margin: 0 auto $space-xl;
+  max-width: $layout-content;
+}
+
+.archive-compact-content {
+  @include site-pad(horiz);
+  &--topper {
+    @include site-pad(top);
+  }
+}
+
+.archive-compact-content__inner {
+  @include margin(0 auto);
+  max-width: $layout-content;
+}
+
+.archive-compact-content+.pagination {
+  margin-top: -1px;
+}
+
+.archive-compact-head {
+  @include fluid-font(21px $bp--xxs, 28px $bp--xl);
+  color: $c-blue-bright;
+  font: 500 21px / 1.1 $f-larish;
+  margin-bottom: $space-sm;
+  @include mq($bp--md) {
+    margin-bottom: $space-md;
+  }
+}

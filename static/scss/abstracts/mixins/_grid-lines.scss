@@ -1,0 +1,39 @@
+@mixin grid-lines($height: 100vh, $position: fixed) {
+  .grid-lines {
+    @include site-pad(horiz);
+    position: $position;
+    left: 0;
+    top: 0;
+    display: block;
+    height: $height;
+    pointer-events: none;
+    width: 100%;
+    z-index: 1;
+  }
+  .grid-lines__content {
+    position: relative;
+    display: flex;
+    height: $height;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: $layout-content;
+  }
+  .grid-lines__line {
+    @include grid-width(6);
+    height: $height;
+    border-right: 1px solid $c-gridline;
+    display: block;
+    &:first-of-type {
+      border-left: 1px solid $c-gridline;
+    }
+    &--4 {
+      display: none;
+    }
+    @include mq($bp--md) {
+      @include grid-width(3);
+      &--4 {
+        display: block;
+      }
+    }
+  }
+}

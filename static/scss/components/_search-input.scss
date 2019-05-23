@@ -1,0 +1,31 @@
+.search-input {
+  position: relative;
+  input:not([type=submit]):not([type=file]) {
+    @include fluid-font(16px $bp--md, 21px $bp--xl);
+    @include smooth-text;
+    border: 0;
+    border-bottom: 2px solid $c-blue-dark;
+    color: $c-blue-bright;
+    font: 500 16px / 1 $f-maison;
+    letter-spacing: 0;
+    &::placeholder {
+      color: rgba($c-gray, 1);
+    }
+    &:focus {
+      border-color: $c-blue-bright;
+      &::placeholder {
+        color: rgba($c-gray, 0.5);
+      }
+      ~.ais-search-box--magnifier-wrapper svg {
+        fill: $c-blue-bright;
+      }
+    }
+  }
+  .ais-search-box--magnifier-wrapper svg {
+    @include size(24px);
+    @include absolute(0 0 x x);
+    display: block;
+    fill: $c-blue-dark;
+    transition: fill $t-reg;
+  }
+}

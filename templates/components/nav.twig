@@ -1,0 +1,107 @@
+<div class="nav js-nav">
+    <div class="nav__inner">
+
+        <header class="nav__header">
+            <div class="nav__header-inner">
+
+                <button class="nav__close js-nav-close">
+                    <svg>
+                        <use xlink:href="#nav-close"></use>
+                    </svg>
+                    <span class="visually-hidden">Close Menu</span>
+                </button>
+
+                <div class="nav__pages">
+                    <ul class="nav__pages-list">
+                        {% for item in nav_pages_menu.items %}
+                            <li class="nav__pages-item">
+                                <a href="{{ item.link }}" class="nav__pages-link">{{ item.name }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+            </div>
+        </header>
+
+        <div class="nav__main">
+
+            <div class="nav__main-inner">
+
+                <div class="nav__search">
+
+                    <div class="nav__search-box">
+                        <div id="js-search-box">
+                            <!-- SearchBox widget will appear here -->
+                        </div>
+                    </div>
+
+                    <p class="search-results__stats" id="js-stats-container"></p>
+
+                    <ul id="js-search-results" class="search-results tz-result-list"></ul>
+
+                    <div class="nav__search-pagination">
+                        <div class="pagination pagination--algolia">
+                            <div class="pagination__inner" id="js-search-pagination"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                {% include "components/search-scripts.twig" %}
+
+                <nav class="nav__topics">
+                    <h2 class="nav__subhead">Explore Our Topics</h2>
+                    {# TODO: control for menu items without illustrations #}
+                    {% set topicsMenuItems = nav_topics_menu_items?: nav_topics_menu.items %}
+
+                    {% if topicsMenuItems %}
+                        <ul class="nav__topics-list">
+                            {% for item in topicsMenuItems %}
+                                <li class="nav__topics-item">
+                                    <header class="nav__topics-item-header">
+                                        {% set illustration = item.getImage?: null %}
+                                        <a class="nav__topics-item-illo-link" href="{{ item.link }}">
+                                            {% if illustration.src %}
+                                                <img class="nav__topics-item-illo" src="{{ illustration.src | resize (350, 350) }}" alt="{{ illustration.alt }}"/>
+                                            {% else %}
+                                                <img class="nav__topics-item-illo" src="{{ site.theme.path }}/static/img/default-tz-image.svg" alt="No image available"/>
+                                            {% endif %}
+                                        </a>
+
+                                        <h4 class="nav__topics-item-head">
+                                            <a href="{{ item.link }}" class="nav__topics-item-head-link">{{ item.name }}</a>
+                                        </h4>
+
+                                        <p class="nav__topics-all">
+                                            <a class="nav__topics-all-link" href="{{ item.link }}">See All
+                                                <svg>
+                                                    <use xlink:href="#arrow-small"></use>
+                                                </svg>
+                                            </a>
+                                        </p>
+                                    </header>
+
+                                    {% set children = item.menuChildren?: item.children %}
+                                    {% if children %}
+                                        {# limit subtopics on menu? #}
+                                        {% set subTopics = children | length > 4 ? children[0 : 4]: children %}
+                                        <ul class="nav__topics-sublist">
+                                            {% for subItem in subTopics %}
+                                                <li class="nav__topics-subitem">
+                                                    <a class="nav__topics-sublink" href="{{subItem.link}}">{{ subItem.name }}</a>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </nav>
+            </div>
+        </div>
+
+    </div>
+</div>

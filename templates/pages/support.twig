@@ -1,0 +1,80 @@
+{% extends "layouts/base.twig" %}
+
+{% block pageBody %}
+    <header class="support-header">
+        <div class="support-header__inner">
+            {% if page.topper_headline %}
+                <h1 class="support-header__head">
+                    {{ page.topper_headline | replace({' *' : ' <strong>'}) | replace({'*' : '</strong>'}) }}</h1>
+            {% endif %}
+
+            {% if page.topper_citation %}
+                <cite class="support-header__citation">{{ page.topper_citation}}</cite>
+            {% endif %}
+            {% if page.topper_intro_text %}
+                <p class="support-header__intro">{{ page.topper_intro_text}}</p>
+            {% endif %}
+
+        </div>
+    </header>
+
+    <div class="page-content">
+        <div class="page-content__inner">
+            <div class="page-content__row">
+
+                <aside class="page-sidebar">
+                    {{ page.get_field('sidebar_content') }}
+                </aside>
+
+                <div class="page-main gutenberg-content gutenberg-content--page">
+                    <div class="support-content__form-wrap basic-text">
+                        {% if page.text_above_form %}
+                            <div class="support-content__member-form-block support-content__member-form-block--above-form">
+                                {{ page.get_field('text_above_form') }}
+                            </div>
+                        {% endif %}
+
+                        <div class="support-content__member-form-block">
+                            {% include 'components/member-form.twig' with { 'support_page': page } %}
+                        </div>
+
+                        {% if page.text_below_form %}
+                            <div class="support-content__member-form-block support-content__member-form-block--below-form">
+                                {{ page.get_field('text_below_form') }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% if page.main_column_text %}
+                <div class="support-extra gutenberg-content gutenberg-content--page">
+                    <div class="support-extra__inner basic-text">
+                        {{ page.get_field('main_column_text')}}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    {% if page.get_field('support_summary_text') %}
+        <div class="support-summary">
+            <div class="support-summary__inner">
+
+                {% if page.support_summary_image %}
+                    <div class="support-summary__image">
+                        <figure>
+                            <img src="{{ TimberImage(page.support_summary_image).src | resize (600, 400) }}"/>
+                        </figure>
+                    </div>
+                {% endif %}
+
+                <div class="support-summary__text">
+                    {{ page.get_field('support_summary_text') }}
+                </div>
+
+            </div>
+
+        </div>
+    {% endif %}
+
+{% endblock %}

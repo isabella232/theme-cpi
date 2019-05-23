@@ -1,0 +1,61 @@
+$bp--home-about-us-splits: $bp--lg;
+// Home About Us
+.home-about-us {
+  @include site-pad(horiz);
+  @include padding($space-lg x);
+  @include mq($bp--lg) {
+    @include padding(120px x);
+  }
+  @include mq($bp--xl) {
+    @include padding(160px x);
+  }
+  background: $c-blue-dark no-repeat right top;
+  background-size: 100% auto;
+  color: $c-white;
+  position: relative;
+  z-index: 1;
+  @include mq($bp--home-about-us-splits) {
+    background-position: right center;
+    background-size: 38% auto;
+  }
+  &::before {
+    @include pseudo(0 x x 0);
+    @include size(100%);
+    z-index: 1;
+    background: linear-gradient(to bottom, rgba($c-blue-dark, 0.6) 0%, $c-blue-dark 200px, $c-blue-dark 100%);
+    @include mq($bp--home-about-us-splits) {
+      background: linear-gradient(to left, rgba($c-blue-dark, 0.6) 0%, $c-blue-dark 32%, $c-blue-dark 35%);
+    }
+  }
+}
+
+.home-about-us__inner {
+  margin: 0 auto;
+  max-width: $layout-content;
+}
+
+.home-about-us__head {
+  @include block-spacing-sm(bottom);
+  @include fluid-font(36px $bp--xs, 84px $bp--lg);
+  font: 500 36px / 1 $f-druk;
+  text-transform: uppercase;
+  strong {
+    color: $c-blue-bright;
+  }
+}
+
+.home-about-us__text {
+  padding-top: 200px;
+  position: relative;
+  z-index: 2;
+  @include mq($bp--home-about-us-splits) {
+    @include grid-width(8);
+    padding: 0;
+  }
+}
+
+.home-about-us__body {
+  @include fluid-font(16px $bp--sm, 22px $bp--xl);
+  color: $c-white;
+  font: 400 16px / 1.3 $f-maison;
+}

@@ -1,0 +1,43 @@
+<div class="tz-featured">
+
+    <a class="tz-featured__image-link" href="{{ post.link }}">
+        <figure class="tz-featured__image">
+            {% if post.thumbnail %}
+                <img src="{{ TimberImage(post.thumbnail).src | resize (350, 350) }}" alt="{{ post.thumbnail.alt }}"/>
+            {% else %}
+                <img src="{{ site.theme.path }}/static/img/default-tz-image.svg" alt="No image available"/>
+            {% endif %}
+        </figure>
+    </a>
+
+    <div class="tz-featured__text">
+
+        {% if post.category %}
+            <h4 class="tz-featured__topic">
+                <a class="tz-featured__topic-link" href=" {{ post.category.link }} ">{{ post.category }}</a>
+            </h4>
+        {% endif %}
+        <h2 class="tz-featured__title">
+            <a class="tz-featured__title-link" href="{{ post.link }}">{{ post.title }}</a>
+        </h2>
+
+        <div class="tz-featured__outro">
+            {% if post.articlePartners %}
+                <ul class="tz-featured__partners">
+                    {% for partner in post.articlePartners %}
+                        {% if partner.getIcon %}
+                            <li class="tz-featured__partner">
+                                {# Get partner_icon (ACF custom field) from the full Term object #}
+                                <img src="{{ partner.getIcon.src }}" alt="{{ partner.name }}"/>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            {% if post.formattedAuthors %}
+                <p class="tz-featured__authors">{{ post.formattedAuthors }}</p>
+            {% endif %}
+        </div>
+    </div>
+</div>

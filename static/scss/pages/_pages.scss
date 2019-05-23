@@ -1,0 +1,114 @@
+body.page:not(.page-template-page-compact-archives):not(.page-template-page-search) {
+  @include grid-lines;
+}
+
+.page-content {
+  @include site-pad;
+  position: relative;
+  z-index: 2;
+  @include mq($bp--xl) {
+    padding-top: 120px;
+  }
+}
+
+.page-content__inner {
+  @include margin(0 auto);
+  max-width: $layout-content;
+}
+
+.page-title,
+.gutenberg-content--page .basic-text h2 {
+  @include fluid-font(21px $bp--xxs, 48px $bp--xl);
+  @include block-spacing-lg(top);
+  @include block-spacing-sm(bottom);
+  color: $c-blue-bright;
+  font: 500 21px / 1.1 $f-larish;
+  padding: 0;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.page-title {
+  @include head-type;
+  margin-top: 0 !important;
+}
+
+.page-content__row {
+  @include mq($bp--article-split-1) {
+    align-items: flex-start;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.page-main {
+  background-color: $c-white;
+  margin-bottom: $space-lg;
+  order: 1;
+  @include mq($bp--article-split-1) {
+    @include grid-width(8);
+    position: relative;
+    left: -1px; // cover grid line
+  }
+}
+
+.page-sidebar {
+  background-color: $c-white;
+  border-top: 8px solid $c-blue-bright;
+  padding-top: $space-lg;
+  padding-bottom: $space-xl;
+  order: 2;
+  h2 {
+    @include fluid-font(18px $bp--xs, 24px $bp--lg);
+    color: $c-blue-bright;
+    font: 500 18px / 1 $f-larish;
+    margin-bottom: $space-md;
+    text-transform: none;
+    @include mq($bp--lg) {
+      margin-bottom: $space-xl;
+    }
+  }
+  p {
+    @include block-spacing-md(bottom);
+    @include fluid-font(14px $bp--xs, 18px $bp--lg);
+    font: 400 14px / 1.375 $f-maison;
+  }
+  @include mq($bp--article-split-1) {
+    @include admin-bar-top($space-lg);
+    @include grid-width(3);
+    border-right: 8px solid $c-blue-bright;
+    max-height: calc(100vh - #{2 * $space-lg});
+    padding-right: $space-lg;
+    padding-bottom: 0;
+    position: sticky;
+  }
+}
+
+.page-sidebar__list {
+  list-style: none;
+}
+
+.page-sidebar__item {
+  margin: 0 0 $space-sm;
+  @include mq($bp--md) {
+    margin-bottom: $space-md;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.page-sidebar__link {
+  @include fluid-font(16px $bp--xs, 21px $bp--lg);
+  @include smooth-text;
+  color: $c-blue-dark;
+  display: block;
+  font: 600 16px / 1.1 $f-maison;
+  transition: color $t-reg;
+  &:hover {
+    color: $c-blue-bright;
+  }
+  &--active {
+    color: $c-coral;
+  }
+}

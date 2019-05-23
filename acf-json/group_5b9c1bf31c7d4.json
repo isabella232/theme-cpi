@@ -1,0 +1,46 @@
+{
+    "key": "group_5b9c1bf31c7d4",
+    "title": "Post Authors",
+    "fields": [
+        {
+            "key": "field_5ba1075a229c3",
+            "label": "Author(s)",
+            "name": "authors",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "55%",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "author",
+            "field_type": "multi_select",
+            "allow_null": 1,
+            "add_term": 0,
+            "save_terms": 1,
+            "load_terms": 0,
+            "return_format": "object",
+            "multiple": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1538683660
+}
